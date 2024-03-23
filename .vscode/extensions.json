@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "usernamehw.errorlens",
+    "kisstkondoros.vscode-gutter-preview",
+    "aaron-bond.better-comments",
+    "pflannery.vscode-versionlens",
+    "yzhang.markdown-all-in-one"
+  ]
+}

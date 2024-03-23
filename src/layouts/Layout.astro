@@ -1,0 +1,57 @@
+---
+import "@fontsource-variable/sora"
+
+import Header from "@/sections/Header.astro"
+import Footer from "@/sections/Footer.astro"
+
+interface Props {
+  description: string
+  title: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="es" dir="ltr">
+  <head>
+    <title>{title}</title>
+
+    <meta charset="utf-8" />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+
+  <body
+    class="mx-auto max-w-6xl overflow-x-hidden px-2 font-sora text-primary selection:bg-primary selection:text-secondary lg:px-10"
+  >
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary: #333;
+    --color-secondary: #ddd;
+  }
+
+  html {
+    background: var(--color-secondary) url("/images/concrete.png") repeat;
+  }
+
+  & :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2.5 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-lg border-2 border-solid border-transparent bg-primary bg-clip-content;
+  }
+</style>

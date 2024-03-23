@@ -1,0 +1,33 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json,pnpm-lock.yaml,yarn.lock",
+    "astro.config.js": "tsconfig.json",
+    "tailwind.config.js": "postcss.config.js",
+    ".eslintrc.json": ".eslintignore",
+    ".prettierrc.json": ".prettierignore"
+  },
+  "editor.linkedEditing": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  "files.associations": {
+    "*.svg": "html"
+  },
+  "files.exclude": {
+    "dist": true,
+    ".astro": true,
+    "node_modules": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
+  "prettier.documentSelectors": ["**/*.astro"]
+}

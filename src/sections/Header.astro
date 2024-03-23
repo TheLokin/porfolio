@@ -1,0 +1,113 @@
+---
+import Code from "@/icons/Code.astro"
+import List from "@/icons/List.astro"
+import X from "@/icons/X.astro"
+---
+
+<header>
+  <nav>
+    <div class="flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-2 text-lg font-semibold">
+        <Code class="size-8" />
+        TheLokin
+      </a>
+
+      <div class="md:hidden">
+        <button
+          id="mobile-menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="col-start-1 row-start-1 inline-flex size-8 duration-300 ease-out motion-safe:transition"
+        >
+          <span class="sr-only">Abrir menú principal</span>
+          <List aria-hidden="true" class="" />
+          <X
+            aria-hidden="true"
+            class="col-start-1 row-start-1 duration-300 ease-out motion-safe:transition"
+          />
+        </button>
+      </div>
+
+      <div class="hidden md:block">
+        <ul class="flex gap-x-4">
+          <li>
+            <a href="/#experience" class="text-lg font-semibold">Experiencia</a>
+          </li>
+          <li>
+            <a href="/#proyects" class="text-lg font-semibold">Proyectos</a>
+          </li>
+          <li>
+            <a href="/#about" class="text-lg font-semibold">Sobre mí</a>
+          </li>
+          <li>
+            <a href="/#contact" class="text-lg font-semibold">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden">
+      <ul class="flex flex-col gap-y-4 py-4">
+        <li>
+          <a href="/#experience" class="text-lg font-semibold">Experiencia</a>
+        </li>
+        <li>
+          <a href="/#proyects" class="text-lg font-semibold">Proyectos</a>
+        </li>
+        <li>
+          <a href="/#about" class="text-lg font-semibold">Sobre mí</a>
+        </li>
+        <li>
+          <a href="/#contact" class="text-lg font-semibold">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const $mobileMenuToggle = document.getElementById("mobile-menu-toggle")
+
+  $mobileMenuToggle?.addEventListener("click", () => {
+    const $mobileMenu = document.getElementById("mobile-menu")
+    const state = !$mobileMenu?.classList.toggle("hidden") || false
+
+    $mobileMenuToggle?.setAttribute("aria-expanded", state.toString())
+  })
+</script>
+
+<style>
+  a {
+    @apply relative;
+  }
+
+  a::before {
+    @apply absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-primary transition-transform duration-200 ease-in-out content-[""] any-hover:scale-x-100;
+  }
+
+  .swap {
+    @apply inline-grid cursor-pointer;
+  }
+
+  .swap > * {
+    @apply col-start-1 row-start-1 duration-300 ease-out;
+    transition-property: transform, opacity;
+  }
+
+  .swap input {
+    @apply appearance-none;
+  }
+
+  .swap-rotate .swap-on {
+    @apply rotate-45 opacity-0;
+  }
+
+  .swap-rotate input:checked ~ .swap-off {
+    @apply -rotate-45 opacity-0;
+  }
+
+  .swap-rotate input:checked ~ .swap-on {
+    @apply rotate-0 opacity-100;
+  }
+</style>

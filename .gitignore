@@ -1,0 +1,26 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# packages
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store

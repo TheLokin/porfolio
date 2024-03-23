@@ -1,0 +1,42 @@
+---
+import LinkedIn from "@/icons/LinkedIn.astro"
+import GitHub from "@/icons/GitHub.astro"
+
+const currentYear = new Date().getFullYear()
+---
+
+<footer
+  class="flex flex-col items-center justify-between border-t-2 border-primary py-4 sm:flex-row"
+>
+  <span class="text-center text-sm leading-5 sm:text-base">
+    &copy; {currentYear} TheLokin
+    <span aria-hidden="true" class="hidden sm:inline">|</span>
+    <br aria-hidden="true" class="block sm:hidden" />
+    Casi todos los derechos reservados.
+  </span>
+  <span aria-hidden="true" class="mt-4 w-full border-t-2 border-primary pt-4 sm:hidden"></span>
+  <ul class="flex gap-4 [&>li]:size-8">
+    <li>
+      <a
+        rel="noopener"
+        target="_blank"
+        href="https://www.linkedin.com/in/diegoramil/"
+        aria-label="LinkedIn de TheLokin, se abrirá en una nueva pestaña"
+        class="inline-block size-full any-hover:scale-125 any-hover:opacity-70 motion-safe:transition"
+      >
+        <LinkedIn />
+      </a>
+    </li>
+    <li>
+      <a
+        rel="noopener"
+        target="_blank"
+        href="https://github.com/TheLokin"
+        aria-label="GitHub de TheLokin, se abrirá en una nueva pestaña"
+        class="inline-block size-full any-hover:scale-125 any-hover:opacity-70 motion-safe:transition"
+      >
+        <GitHub />
+      </a>
+    </li>
+  </ul>
+</footer>
