@@ -8,10 +8,12 @@
   stroke-linejoin="round"
 >
   <path d="m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16" />
+
   <style>
     svg {
       color: #000;
     }
+
     @media (prefers-color-scheme: dark) {
       svg {
         color: #fff;
