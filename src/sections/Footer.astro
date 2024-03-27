@@ -1,20 +1,18 @@
 ---
 import GitHub from "@/icons/GitHub.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
-
-const currentYear = new Date().getFullYear()
 ---
 
 <footer
   class="flex flex-col items-center justify-between border-t-2 border-primary py-4 sm:flex-row"
 >
   <span class="text-center text-sm leading-5 sm:text-base">
-    &copy; {currentYear} TheLokin
+    &copy; {new Date().getFullYear()} TheLokin
     <span aria-hidden="true" class="hidden sm:inline">|</span>
     <br aria-hidden="true" class="block sm:hidden" />
     Casi todos los derechos reservados.
   </span>
-  <span aria-hidden="true" class="mt-4 w-full border-t-2 border-primary pt-4 sm:hidden"></span>
+  <hr aria-hidden="true" class="mt-4 w-full border-t-2 border-primary pt-4 sm:hidden" />
   <ul class="flex gap-4 [&>li]:size-8">
     <li>
       <a
