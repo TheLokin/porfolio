@@ -1,40 +1,37 @@
 ---
+import LinkButton from "@/components/LinkButton.astro"
+import Separator from "@/components/Separator.astro"
+
 import GitHub from "@/icons/GitHub.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 ---
 
-<footer
-  class="flex flex-col items-center justify-between border-t-2 border-primary py-4 sm:flex-row"
->
-  <span class="text-center text-sm leading-5 sm:text-base">
+<footer class="flex flex-col items-center justify-between md:flex-row">
+  <span class="text-center text-sm leading-5 md:text-base">
     &copy; {new Date().getFullYear()} TheLokin
-    <span aria-hidden="true" class="hidden sm:inline">|</span>
-    <br aria-hidden="true" class="block sm:hidden" />
+    <span aria-hidden="true" class="hidden md:inline">|</span>
+    <br aria-hidden="true" class="block md:hidden" />
     Casi todos los derechos reservados.
   </span>
-  <hr aria-hidden="true" class="mt-4 w-full border-t-2 border-primary pt-4 sm:hidden" />
-  <ul class="flex gap-4 [&>li]:size-8">
-    <li>
-      <a
-        rel="noopener"
-        target="_blank"
-        href="https://www.linkedin.com/in/diegoramil/"
-        aria-label="LinkedIn de TheLokin, se abrirá en una nueva pestaña"
-        class="inline-block size-full any-hover:scale-125 any-hover:opacity-70 motion-safe:transition"
-      >
-        <LinkedIn />
-      </a>
-    </li>
-    <li>
-      <a
-        rel="noopener"
-        target="_blank"
-        href="https://github.com/TheLokin"
-        aria-label="GitHub de TheLokin, se abrirá en una nueva pestaña"
-        class="inline-block size-full any-hover:scale-125 any-hover:opacity-70 motion-safe:transition"
-      >
-        <GitHub />
-      </a>
-    </li>
-  </ul>
+  <Separator class="md:hidden" />
+  <nav>
+    <ul class="flex gap-4 [&>li]:size-8">
+      <li>
+        <LinkButton
+          href="https://www.linkedin.com/in/diegoramil/"
+          aria-label="LinkedIn de TheLokin, se abrirá en una nueva pestaña"
+        >
+          <LinkedIn />
+        </LinkButton>
+      </li>
+      <li>
+        <LinkButton
+          href="https://github.com/TheLokin"
+          aria-label="GitHub de TheLokin, se abrirá en una nueva pestaña"
+        >
+          <GitHub />
+        </LinkButton>
+      </li>
+    </ul>
+  </nav>
 </footer>
