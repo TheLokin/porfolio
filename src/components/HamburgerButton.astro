@@ -9,26 +9,16 @@ const { active = false, class: classname, ...props } = Astro.props
   type="button"
   aria-expanded="false"
   aria-label="Abrir menú principal"
-  class:list={["toggle", classname]}
+  class:list={["toggle inline-grid size-8", classname]}
   {...props}
 >
   <List
     id="mobile-menu-toggle-off"
-    class:list={[
-      "col-start-1 row-start-1 duration-300 ease-out motion-safe:transition",
-      {
-        "rotate-45 opacity-0": active,
-      },
-    ]}
+    class="col-start-1 row-start-1 duration-300 ease-out motion-safe:transition"
   />
   <X
     id="mobile-menu-toggle-on"
-    class:list={[
-      "col-start-1 row-start-1 duration-300 ease-out motion-safe:transition",
-      {
-        "rotate-45 opacity-0": !active,
-      },
-    ]}
+    class="col-start-1 row-start-1 rotate-45 opacity-0 duration-300 ease-out motion-safe:transition"
   />
 </button>
 
@@ -53,10 +43,6 @@ const { active = false, class: classname, ...props } = Astro.props
 </script>
 
 <style>
-  .toggle {
-    @apply inline-grid size-8;
-  }
-
   .toggle-off {
     @apply -rotate-45 opacity-0;
   }
