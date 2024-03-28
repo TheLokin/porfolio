@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import { Image } from "astro:assets"
 ---
 
 <Layout
@@ -17,7 +18,14 @@ import Layout from "@/layouts/Layout.astro"
           <br />
           Ubicado en <strong class="font-extrabold">España.</strong>
         </h1>
-        <img class="size-32 sm:size-64" src="/images/logo.png" alt="TheLokin" />
+        <Image
+          width={800}
+          height={800}
+          src="/images/logo.avif"
+          alt="Logo de TheLokin"
+          loading="eager"
+          class="size-32 sm:size-64"
+        />
       </div>
     </section>
     <section id="experience" class="mb-96">
