@@ -1,13 +1,14 @@
 ---
 import "@fontsource-variable/sora"
 
+import Separator from "@/components/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
 import { ViewTransitions } from "astro:transitions"
 
 interface Props {
-  description: string
   title: string
+  description: string
 }
 
 const { title, description } = Astro.props
@@ -33,6 +34,7 @@ const { title, description } = Astro.props
   >
     <Header />
     <slot />
+    <Separator />
     <Footer />
   </body>
 </html>
@@ -44,7 +46,7 @@ const { title, description } = Astro.props
   }
 
   html {
-    background: var(--color-secondary) url("/images/concrete.png") repeat;
+    background: var(--color-secondary) url("/images/concrete.avif");
   }
 
   & :focus-visible {
