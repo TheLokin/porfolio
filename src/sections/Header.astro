@@ -6,7 +6,7 @@ import Code from "@/icons/Code.astro"
 
 import Footer from "@/sections/Footer.astro"
 
-const pages = [
+const menu = [
   {
     name: "Experiencia",
     href: "/#experience",
@@ -36,7 +36,7 @@ const pages = [
     <nav class="hidden md:block">
       <ul class="flex gap-x-4">
         {
-          pages.map(({ name, href }) => (
+          menu.map(({ name, href }) => (
             <li>
               <a href={href} class="text-lg font-semibold">
                 {name}
@@ -57,7 +57,7 @@ const pages = [
     <nav>
       <ul class="flex flex-col gap-y-4">
         {
-          pages.map(({ name, href }) => (
+          menu.map(({ name, href }) => (
             <li class="flex justify-center">
               <a href={href} class="text-lg font-semibold">
                 {name}
