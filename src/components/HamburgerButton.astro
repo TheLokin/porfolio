@@ -1,0 +1,67 @@
+---
+import List from "@/icons/List.astro"
+import X from "@/icons/X.astro"
+
+const { active = false, class: classname, ...props } = Astro.props
+---
+
+<button
+  type="button"
+  aria-expanded="false"
+  aria-label="Abrir menú principal"
+  class:list={["toggle", classname]}
+  {...props}
+>
+  <List
+    id="mobile-menu-toggle-off"
+    class:list={[
+      "col-start-1 row-start-1 duration-300 ease-out motion-safe:transition",
+      {
+        "rotate-45 opacity-0": active,
+      },
+    ]}
+  />
+  <X
+    id="mobile-menu-toggle-on"
+    class:list={[
+      "col-start-1 row-start-1 duration-300 ease-out motion-safe:transition",
+      {
+        "rotate-45 opacity-0": !active,
+      },
+    ]}
+  />
+</button>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const toggleButtons = document.querySelectorAll(".toggle")
+
+    toggleButtons?.forEach((toggleButton) => {
+      toggleButton.addEventListener("click", () => {
+        const menuToggleOff = document.getElementById("mobile-menu-toggle-off")
+
+        menuToggleOff?.classList.toggle("toggle-off")
+
+        const menuToggleOn = document.getElementById("mobile-menu-toggle-on")
+
+        menuToggleOn?.classList.toggle("toggle-on")
+
+        toggleButton.dispatchEvent(new CustomEvent("toggle"))
+      })
+    })
+  })
+</script>
+
+<style>
+  .toggle {
+    @apply inline-grid size-8;
+  }
+
+  .toggle-off {
+    @apply -rotate-45 opacity-0;
+  }
+
+  .toggle-on {
+    @apply rotate-0 opacity-100;
+  }
+</style>
