@@ -1,10 +1,12 @@
 import tailwind from "@astrojs/tailwind"
 import { defineConfig } from "astro/config"
 import vercel from "@astrojs/vercel/serverless"
+import sitemap from "@astrojs/sitemap"
 
+// https://astro.build/config
 export default defineConfig({
-  output: "server",
-  integrations: [tailwind()],
+  output: "hybrid",
+  integrations: [tailwind(), sitemap()],
   devToolbar: {
     enabled: false,
   },
