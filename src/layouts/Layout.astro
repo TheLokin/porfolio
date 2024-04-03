@@ -27,8 +27,10 @@ export const prerender = false
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
 
-    {/* https://github.com/withastro/prettier-plugin-astro/issues/316 */}
-    {() => <ViewTransitions />}
+    {
+      /* https://github.com/withastro/prettier-plugin-astro/issues/316 */
+      () => <ViewTransitions />
+    }
   </head>
 
   <body
