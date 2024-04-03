@@ -25,6 +25,7 @@
   "files.exclude": {
     "dist": true,
     ".astro": true,
+    ".vercel": true,
     "node_modules": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
