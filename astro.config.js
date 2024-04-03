@@ -6,7 +6,6 @@ import sitemap from "@astrojs/sitemap"
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
-  compressHTML: true,
   site: "https://thelokin.vercel.app",
   integrations: [tailwind(), sitemap()],
   devToolbar: {
