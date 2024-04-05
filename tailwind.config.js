@@ -3,6 +3,9 @@
 export default {
   content: ["./src/**/*.{html,md,mdx,js,jsx,astro,ts,tsx,svelte,vue}"],
   theme: {
+    data: {
+      open: "state=open",
+    },
     extend: {
       fontFamily: {
         sora: ["Sora Variable", "system-ui", "sans-serif"],
