@@ -34,7 +34,11 @@ export const prerender = false
   </head>
 
   <body
-    class="mx-auto max-w-6xl overflow-x-hidden px-2 font-sora text-primary selection:bg-primary selection:text-secondary lg:px-10"
+    class:list={[
+      "mx-auto max-w-6xl overflow-x-hidden px-2 lg:px-10",
+      "font-sora text-primary",
+      "selection:bg-primary selection:text-secondary",
+    ]}
   >
     <Header />
     <slot />
@@ -49,7 +53,7 @@ export const prerender = false
     --color-secondary: #ddd;
   }
 
-  html {
+  body {
     background: var(--color-secondary) url("/images/concrete.avif");
   }
 
