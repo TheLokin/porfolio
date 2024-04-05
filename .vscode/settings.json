@@ -29,6 +29,7 @@
     "node_modules": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "tailwindCSS.classAttributes": ["class", "class:list", "className"],
   "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "prettier.documentSelectors": ["**/*.astro"]
 }
