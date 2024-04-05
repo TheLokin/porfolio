@@ -38,7 +38,7 @@ const menu = [
         {
           menu.map(({ name, href }) => (
             <li>
-              <a href={href} class="text-lg font-semibold">
+              <a href={href} class="relative text-lg font-semibold">
                 {name}
               </a>
             </li>
@@ -67,7 +67,7 @@ const menu = [
         {
           menu.map(({ name, href }) => (
             <li class="flex justify-center">
-              <a href={href} class="text-lg font-semibold">
+              <a id="" href={href} class="text-lg font-semibold">
                 {name}
               </a>
             </li>
@@ -82,16 +82,40 @@ const menu = [
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    document.addEventListener("menu:click", () => {
-      const mobileMenu = document.getElementById("mobile-menu")
+    const menuButtons = document.getElementsByName("menu")
+    const mobileMenu = document.getElementById("mobile-menu")
+    const anchors = Array.from(mobileMenu?.getElementsByTagName("a") || [])
 
-      mobileMenu?.setAttribute(
-        "data-state",
-        mobileMenu?.dataset.state === "open" ? "closed" : "open",
-      )
+    menuButtons.forEach((menuButton) => {
+      menuButton.addEventListener("click", () => {
+        menuButtons.forEach((menuButton) => {
+          menuButton.setAttribute(
+            "data-state",
+            menuButton.dataset.state === "open" ? "closed" : "open",
+          )
+        })
 
-      document.body.classList.toggle("overflow-hidden")
-      document.body.classList.toggle("md:overflow-auto")
+        mobileMenu?.setAttribute(
+          "data-state",
+          mobileMenu?.dataset.state === "open" ? "closed" : "open",
+        )
+
+        document.body.classList.toggle("overflow-hidden")
+        document.body.classList.toggle("md:overflow-auto")
+      })
+    })
+
+    anchors.forEach((anchor) => {
+      anchor.addEventListener("click", () => {
+        menuButtons.forEach((button) => {
+          button.setAttribute("data-state", "closed")
+        })
+
+        mobileMenu?.setAttribute("data-state", "closed")
+
+        document.body.classList.remove("overflow-hidden")
+        document.body.classList.remove("md:overflow-auto")
+      })
     })
   })
 </script>
@@ -106,10 +130,6 @@ const menu = [
   /* #mobile-menu.open {
     pointer-events: all;
   } */
-
-  a {
-    @apply relative;
-  }
 
   a::before {
     @apply absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-primary transition-transform duration-200 ease-in-out content-[""] any-hover:scale-x-100;

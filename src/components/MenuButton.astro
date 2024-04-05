@@ -35,19 +35,3 @@ const { open, class: classname, ...props } = Astro.props
     ]}
   />
 </button>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const buttons = document.getElementsByName("menu")
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        buttons.forEach((button) => {
-          button.setAttribute("data-state", button.dataset.state === "open" ? "closed" : "open")
-        })
-
-        document.dispatchEvent(new CustomEvent("menu:click"))
-      })
-    })
-  })
-</script>
