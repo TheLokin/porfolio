@@ -1,0 +1,53 @@
+---
+import List from "@/icons/List.astro"
+import X from "@/icons/X.astro"
+
+interface Props {
+  open: boolean
+  class?: string
+}
+
+const { open, class: classname, ...props } = Astro.props
+---
+
+<button
+  name="menu"
+  type="button"
+  aria-expanded={open}
+  aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
+  data-state="closed"
+  class:list={["group inline-grid size-8", classname]}
+  {...props}
+>
+  <List
+    class:list={[
+      "col-start-1 row-start-1",
+      "duration-300 ease-out motion-safe:transition",
+      "group-data-open:-rotate-45 group-data-open:opacity-0",
+    ]}
+  />
+  <X
+    class:list={[
+      "col-start-1 row-start-1",
+      "duration-300 ease-out motion-safe:transition",
+      "rotate-45 opacity-0",
+      "group-data-open:rotate-0 group-data-open:opacity-100",
+    ]}
+  />
+</button>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.getElementsByName("menu")
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((button) => {
+          button.setAttribute("data-state", button.dataset.state === "open" ? "closed" : "open")
+        })
+
+        document.dispatchEvent(new CustomEvent("menu:click"))
+      })
+    })
+  })
+</script>

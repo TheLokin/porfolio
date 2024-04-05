@@ -1,5 +1,5 @@
 ---
-import HamburgerButton from "@/components/HamburgerButton.astro"
+import MenuButton from "@/components/MenuButton.astro"
 import Separator from "@/components/Separator.astro"
 
 import Code from "@/icons/Code.astro"
@@ -27,12 +27,12 @@ const menu = [
 ---
 
 <header>
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between py-4">
     <a href="/" class="inline-flex items-center gap-2 text-lg font-semibold">
       <Code class="size-8" />
       TheLokin
     </a>
-    <HamburgerButton id="mobile-menu-toggle" aria-controls="mobile-menu" class="md:hidden" />
+    <MenuButton open={false} aria-controls="mobile-menu" class="md:hidden" />
     <nav class="hidden md:block">
       <ul class="flex gap-x-4">
         {
@@ -48,10 +48,18 @@ const menu = [
     </nav>
   </div>
 
-  <div id="mobile-menu" class="fixed inset-0 hidden px-2 md:hidden">
-    <div class="flex justify-between">
+  <div
+    id="mobile-menu"
+    data-state="closed"
+    class:list={[
+      "opac fixed inset-0 px-2 py-4 opacity-0 md:hidden",
+      "duration-300 ease-out motion-safe:transition-opacity",
+      "data-open:opacity-100",
+    ]}
+  >
+    <div class="flex items-center justify-between">
       <span class="text-xl font-semibold uppercase">Menú</span>
-      <HamburgerButton aria-controls="mobile-menu" />
+      <MenuButton open={true} aria-controls="mobile-menu" />
     </div>
     <Separator />
     <nav>
@@ -74,14 +82,16 @@ const menu = [
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const menuToggle = document.getElementById("mobile-menu-toggle")
-
-    menuToggle?.addEventListener("toggle", () => {
+    document.addEventListener("menu:click", () => {
       const mobileMenu = document.getElementById("mobile-menu")
 
-      mobileMenu?.classList.toggle("hidden")
+      mobileMenu?.setAttribute(
+        "data-state",
+        mobileMenu?.dataset.state === "open" ? "closed" : "open",
+      )
 
       document.body.classList.toggle("overflow-hidden")
+      document.body.classList.toggle("md:overflow-auto")
     })
   })
 </script>
@@ -89,7 +99,13 @@ const menu = [
 <style>
   #mobile-menu {
     background: var(--color-secondary) url("/images/concrete.avif");
+    /*pointer-events: none;
+    scrollbar-gutter: stable; */
   }
+
+  /* #mobile-menu.open {
+    pointer-events: all;
+  } */
 
   a {
     @apply relative;
