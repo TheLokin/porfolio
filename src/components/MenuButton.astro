@@ -22,15 +22,14 @@ const { open, class: classname, ...props } = Astro.props
   <List
     class:list={[
       "col-start-1 row-start-1",
-      "duration-300 ease-out motion-safe:transition",
+      "duration-300 ease-out motion-safe:transition-[transform,opacity]",
       "group-data-open:-rotate-45 group-data-open:opacity-0",
     ]}
   />
   <X
     class:list={[
-      "col-start-1 row-start-1",
-      "duration-300 ease-out motion-safe:transition",
-      "rotate-45 opacity-0",
+      "col-start-1 row-start-1 rotate-45 opacity-0",
+      "duration-300 ease-out motion-safe:transition-[transform,opacity]",
       "group-data-open:rotate-0 group-data-open:opacity-100",
     ]}
   />
