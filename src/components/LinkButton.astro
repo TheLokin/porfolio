@@ -7,8 +7,9 @@ const { class: classname, ...props } = Astro.props
   target="_blank"
   class:list={[
     "inline-block size-full",
-    "motion-safe:transition-[scale,opacity]",
+    "transition-[transform,opacity] duration-200 ease-out",
     "any-hover:scale-125 any-hover:opacity-70",
+    "motion-reduce:transition-none motion-reduce:any-hover:scale-100",
     classname,
   ]}
   {...props}
