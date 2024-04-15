@@ -38,7 +38,15 @@ const menu = [
         {
           menu.map(({ name, href }) => (
             <li>
-              <a href={href} class="relative text-lg font-semibold">
+              <a
+                href={href}
+                class:list={[
+                  "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
+                  "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
+                  "before:any-hover:scale-x-100",
+                  "relative text-lg font-semibold",
+                ]}
+              >
                 {name}
               </a>
             </li>
@@ -52,7 +60,7 @@ const menu = [
     id="mobile-menu"
     data-state="closed"
     class:list={[
-      "pointer-events-none invisible fixed inset-0 py-4 opacity-0 md:hidden",
+      "pointer-events-none invisible fixed inset-0 bg-secondary py-4 opacity-0 md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:pointer-events-auto data-open:visible data-open:opacity-100",
     ]}
@@ -63,11 +71,11 @@ const menu = [
     </div>
     <Separator />
     <nav>
-      <ul class="flex flex-col gap-y-4">
+      <ul id="mobile-menu-anchors" class="flex flex-col gap-y-4">
         {
           menu.map(({ name, href }) => (
             <li class="flex justify-center">
-              <a id="" href={href} class="text-lg font-semibold">
+              <a href={href} class="text-lg font-semibold">
                 {name}
               </a>
             </li>
@@ -84,39 +92,27 @@ const menu = [
   document.addEventListener("astro:page-load", () => {
     const menuButtons = document.getElementsByName("menu")
     const mobileMenu = document.getElementById("mobile-menu")
-    const anchors = Array.from(mobileMenu?.getElementsByTagName("a") || [])
+    const anchors = document.querySelectorAll("#mobile-menu-anchors a")
 
-    menuButtons.forEach((menuButton) => {
-      menuButton.addEventListener("click", () => {
-        menuButtons.forEach((menuButton) => {
-          menuButton.setAttribute(
-            "data-state",
-            menuButton.dataset.state === "open" ? "closed" : "open",
-          )
-        })
-
-        mobileMenu?.setAttribute(
+    const toggleMenu = () => {
+      menuButtons.forEach((menuButton) => {
+        menuButton.setAttribute(
           "data-state",
-          mobileMenu?.dataset.state === "open" ? "closed" : "open",
+          menuButton.dataset.state === "open" ? "closed" : "open",
         )
-
-        document.body.classList.toggle("overflow-hidden")
-        document.body.classList.toggle("md:overflow-auto")
       })
-    })
 
-    anchors.forEach((anchor) => {
-      anchor.addEventListener("click", () => {
-        menuButtons.forEach((button) => {
-          button.setAttribute("data-state", "closed")
-        })
+      mobileMenu?.setAttribute(
+        "data-state",
+        mobileMenu?.dataset.state === "open" ? "closed" : "open",
+      )
 
-        mobileMenu?.setAttribute("data-state", "closed")
+      document.body.classList.toggle("overflow-hidden")
+      document.body.classList.toggle("md:overflow-auto")
+    }
 
-        document.body.classList.remove("overflow-hidden")
-        document.body.classList.remove("md:overflow-auto")
-      })
-    })
+    menuButtons.forEach((menuButton) => menuButton.addEventListener("click", toggleMenu))
+    anchors.forEach((anchor) => anchor.addEventListener("click", toggleMenu))
 
     const adjustScrollbar = () => {
       const scrollbarWidth = window.innerWidth - document.body.clientWidth
@@ -130,14 +126,3 @@ const menu = [
     window.addEventListener("resize", adjustScrollbar, true)
   })
 </script>
-
-<style>
-  #mobile-menu {
-    background: var(--color-secondary) url("/images/concrete.avif");
-    scrollbar-color: var(--color-secondary) url("/images/concrete.avif");
-  }
-
-  a::before {
-    @apply absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-primary transition-transform duration-200 ease-in-out content-[""] any-hover:scale-x-100;
-  }
-</style>
