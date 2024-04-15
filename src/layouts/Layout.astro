@@ -35,9 +35,9 @@ export const prerender = false
 
   <body
     class:list={[
-      "mx-auto max-w-6xl overflow-x-hidden px-2 lg:px-10",
-      "font-sora text-primary",
+      "font-sora text-primary antialiased",
       "selection:bg-primary selection:text-secondary",
+      "mx-auto max-w-6xl overflow-x-hidden px-2 lg:px-10",
     ]}
   >
     <Header />
@@ -53,7 +53,7 @@ export const prerender = false
     --color-secondary: #ddd;
   }
 
-  body {
+  html {
     background: var(--color-secondary) url("/images/concrete.avif");
     scrollbar-gutter: stable;
   }

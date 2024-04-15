@@ -52,8 +52,8 @@ const menu = [
     id="mobile-menu"
     data-state="closed"
     class:list={[
-      "pointer-events-none invisible fixed inset-0 px-2 py-4 opacity-0 md:hidden",
-      "duration-300 ease-in-out motion-safe:transition-[visibility,opacity]",
+      "pointer-events-none invisible fixed inset-0 py-4 opacity-0 md:hidden",
+      "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:pointer-events-auto data-open:visible data-open:opacity-100",
     ]}
   >
@@ -117,13 +117,24 @@ const menu = [
         document.body.classList.remove("md:overflow-auto")
       })
     })
+
+    const adjustScrollbar = () => {
+      const scrollbarWidth = window.innerWidth - document.body.clientWidth
+
+      mobileMenu?.style.setProperty("padding-left", `${8 + scrollbarWidth}px`)
+      mobileMenu?.style.setProperty("padding-right", `${8 + scrollbarWidth}px`)
+    }
+
+    adjustScrollbar()
+
+    window.addEventListener("resize", adjustScrollbar, true)
   })
 </script>
 
 <style>
   #mobile-menu {
     background: var(--color-secondary) url("/images/concrete.avif");
-    scrollbar-gutter: stable;
+    scrollbar-color: var(--color-secondary) url("/images/concrete.avif");
   }
 
   a::before {
