@@ -36,8 +36,8 @@ export const prerender = false
   <body
     class:list={[
       "font-sora text-primary antialiased",
+      "mx-auto max-w-6xl bg-secondary px-2 lg:px-10",
       "selection:bg-primary selection:text-secondary",
-      "mx-auto max-w-6xl overflow-x-hidden px-2 lg:px-10",
     ]}
   >
     <Header />
@@ -54,7 +54,6 @@ export const prerender = false
   }
 
   html {
-    background: var(--color-secondary) url("/images/concrete.avif");
     scrollbar-gutter: stable;
   }
 
@@ -63,7 +62,7 @@ export const prerender = false
   }
 
   ::-webkit-scrollbar {
-    @apply w-2.5 rounded-lg;
+    @apply w-2.5;
   }
 
   ::-webkit-scrollbar-thumb {
