@@ -5,6 +5,7 @@ export default {
   theme: {
     data: {
       open: "state=open",
+      closed: "state=closed",
     },
     extend: {
       fontFamily: {
