@@ -75,7 +75,12 @@ const menu = [
         {
           menu.map(({ name, href }) => (
             <li class="flex justify-center">
-              <a href={href} class="text-lg font-semibold">
+              <a href={href} class:list={[
+                  "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
+                  "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
+                  "before:any-hover:scale-x-100",
+                  "relative text-lg font-semibold",
+                ]}>
                 {name}
               </a>
             </li>
