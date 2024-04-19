@@ -1,6 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro"
 import { Image } from "astro:assets"
+
+import Layout from "@/layouts/Layout.astro"
+
+import About from "@/sections/About.astro"
+import Contact from "@/sections/Contact.astro"
+import Experience from "@/sections/Experience.astro"
+import Proyects from "@/sections/Proyects.astro"
 ---
 
 <Layout
@@ -28,17 +34,9 @@ import { Image } from "astro:assets"
         />
       </div>
     </section>
-    <section id="experience" class="mb-96">
-      <h2>Experiencia</h2>
-    </section>
-    <section id="proyects" class="mb-96">
-      <h2>Proyectos</h2>
-    </section>
-    <section id="about" class="mb-96">
-      <h2>Sobre mí</h2>
-    </section>
-    <section id="contact" class="mb-96">
-      <h2>Contacto</h2>
-    </section>
+    <Experience />
+    <Proyects />
+    <About />
+    <Contact />
   </main>
 </Layout>
