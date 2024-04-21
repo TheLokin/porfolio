@@ -17,4 +17,11 @@ export default defineConfig({
       enabled: true,
     },
   }),
+  experimental: {
+    security: {
+      csrfProtection: {
+        origin: true,
+      },
+    },
+  },
 })
