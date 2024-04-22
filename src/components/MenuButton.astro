@@ -2,16 +2,10 @@
 import List from "@/icons/List.astro"
 import X from "@/icons/X.astro"
 
-interface Props {
-  open: boolean
-  class?: string
-}
-
 const { open, class: classname, ...props } = Astro.props
 ---
 
 <button
-  name="menu"
   type="button"
   aria-expanded={open}
   aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
