@@ -1,12 +1,13 @@
 ---
 import "@fontsource-variable/sora"
 
+import { ViewTransitions } from "astro:transitions"
+
 import Separator from "@/components/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
-import { ViewTransitions } from "astro:transitions"
 
-const { title, description } = Astro.props
+const { title } = Astro.props
 
 export const prerender = false
 ---
@@ -14,13 +15,24 @@ export const prerender = false
 <!doctype html>
 <html lang="es" dir="ltr">
   <head>
-    <title>{title}</title>
-
     <meta charset="utf-8" />
-    <meta name="description" content={description} />
+    <title>{`Porfolio de TheLokin - ${title}`}</title>
+    <meta
+      name="description"
+      content="Contrata a TheLokin para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
+    />
 
+    <link rel="canonical" href="https://thelokin.vercel.app" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#ddd" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta
+      name="keywords"
+      content="porfolio, desarrollador, informático, página web, aplicación móvil, thelokin"
+    />
 
     {
       /* https://github.com/withastro/prettier-plugin-astro/issues/316 */
