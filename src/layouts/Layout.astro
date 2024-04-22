@@ -6,11 +6,6 @@ import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
 import { ViewTransitions } from "astro:transitions"
 
-interface Props {
-  title: string
-  description: string
-}
-
 const { title, description } = Astro.props
 
 export const prerender = false
@@ -54,7 +49,7 @@ export const prerender = false
   }
 
   html {
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable both-edges;
   }
 
   strong {
