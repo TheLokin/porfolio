@@ -32,9 +32,9 @@ const menu = [
       <Code class="size-8" />
       TheLokin
     </a>
-    <MenuButton open={false} aria-controls="mobile-menu" class="md:hidden" />
+    <MenuButton open={false} aria-controls="menu-content" class="md:hidden" />
     <nav class="hidden md:block">
-      <ul class="flex gap-x-4">
+      <ul class="flex gap-4">
         {
           menu.map(({ name, href }) => (
             <li>
@@ -57,30 +57,25 @@ const menu = [
   </div>
 
   <div
-    id="mobile-menu"
+    id="menu-content"
     data-state="closed"
     class:list={[
-      "pointer-events-none invisible fixed inset-0 bg-secondary py-4 opacity-0 md:hidden",
+      "invisible fixed inset-0 bg-secondary px-2 py-4 opacity-0 md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
-      "data-open:pointer-events-auto data-open:visible data-open:opacity-100",
+      "data-open:visible data-open:opacity-100",
     ]}
   >
     <div class="flex items-center justify-between">
       <span class="text-xl font-semibold uppercase">Menú</span>
-      <MenuButton open={true} aria-controls="mobile-menu" />
+      <MenuButton open={true} aria-controls="menu-content" />
     </div>
     <Separator />
     <nav>
-      <ul id="mobile-menu-anchors" class="flex flex-col gap-y-4">
+      <ul id="menu-content-anchors" class="flex flex-col gap-4">
         {
           menu.map(({ name, href }) => (
             <li class="flex justify-center">
-              <a href={href} class:list={[
-                  "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
-                  "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
-                  "before:any-hover:scale-x-100",
-                  "relative text-lg font-semibold",
-                ]}>
+              <a href={href} class="text-lg font-semibold">
                 {name}
               </a>
             </li>
@@ -95,9 +90,9 @@ const menu = [
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const menuButtons = document.getElementsByName("menu")
-    const mobileMenu = document.getElementById("mobile-menu")
-    const anchors = document.querySelectorAll("#mobile-menu-anchors a")
+    const menuButtons = document.getElementsByName("menu-button")
+    const menuContent = document.getElementById("menu-content")
+    const menuAnchors = document.querySelectorAll("#menu-content-anchors a")
 
     const toggleMenu = () => {
       menuButtons.forEach((menuButton) => {
@@ -107,23 +102,40 @@ const menu = [
         )
       })
 
-      mobileMenu?.setAttribute(
+      menuContent?.setAttribute(
         "data-state",
-        mobileMenu?.dataset.state === "open" ? "closed" : "open",
+        menuContent.dataset.state === "open" ? "closed" : "open",
       )
+
+      const accessibleElements = Array.from(
+        menuContent?.querySelectorAll("button, a, input, textarea, select, details, [tabindex]") ||
+          [],
+      )
+
+      Array.from(
+        document.querySelectorAll("button, a, input, textarea, select, details, [tabindex]"),
+      )
+        .filter((element) => !accessibleElements.includes(element))
+        .forEach((accessibleElement) => {
+          if (accessibleElement.getAttribute("tabindex") === null) {
+            accessibleElement.setAttribute("tabindex", "-1")
+          } else {
+            accessibleElement.removeAttribute("tabindex")
+          }
+        })
 
       document.body.classList.toggle("overflow-hidden")
       document.body.classList.toggle("md:overflow-auto")
     }
 
     menuButtons.forEach((menuButton) => menuButton.addEventListener("click", toggleMenu))
-    anchors.forEach((anchor) => anchor.addEventListener("click", toggleMenu))
+    menuAnchors.forEach((menuAnchor) => menuAnchor.addEventListener("click", toggleMenu))
 
     const adjustScrollbar = () => {
-      const scrollbarWidth = window.innerWidth - document.body.clientWidth
-
-      mobileMenu?.style.setProperty("padding-left", `${8 + scrollbarWidth}px`)
-      mobileMenu?.style.setProperty("padding-right", `${8 + scrollbarWidth}px`)
+      menuContent?.style.setProperty(
+        "padding-right",
+        `${8 + window.innerWidth - document.body.clientWidth}px`,
+      )
     }
 
     adjustScrollbar()
