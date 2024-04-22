@@ -2,17 +2,13 @@
 import { Image } from "astro:assets"
 
 import Layout from "@/layouts/Layout.astro"
-
 import About from "@/sections/About.astro"
 import Contact from "@/sections/Contact.astro"
 import Experience from "@/sections/Experience.astro"
 import Proyects from "@/sections/Proyects.astro"
 ---
 
-<Layout
-  title="Porfolio de TheLokin - Desarrollador y Programador Frontend con más de 2 años de experiencia"
-  description="Contrata a TheLokin para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
->
+<Layout title="Desarrollador y Programador Frontend con más de 2 años de experiencia">
   <main>
     <section>
       <div class="flex flex-col-reverse items-center justify-between sm:flex-row">
@@ -27,7 +23,7 @@ import Proyects from "@/sections/Proyects.astro"
         <Image
           width={800}
           height={800}
-          src="/images/logo.avif"
+          src="/images/logo.png"
           alt="Logo de TheLokin"
           loading="eager"
           class="size-32 sm:size-64"
