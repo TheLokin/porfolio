@@ -24,13 +24,13 @@ const menu = [
 ]
 ---
 
-<header>
-  <div class="flex items-center justify-between py-4">
+<header class="sticky top-0 z-50">
+  <div id="navbar" class="flex items-center justify-between py-4">
     <a href="/" class="inline-flex items-center gap-2 text-lg font-semibold">
       <Code class="size-8" />
       TheLokin
     </a>
-    <MenuButton open={false} aria-controls="menu-content" class="md:hidden" />
+    <MenuButton name="menu-button" open={false} aria-controls="menu" class="md:hidden" />
     <nav class="hidden md:block">
       <ul class="flex gap-4">
         {
@@ -55,21 +55,21 @@ const menu = [
   </div>
 
   <div
-    id="menu-content"
+    id="menu"
     data-state="closed"
     class:list={[
-      "invisible fixed inset-0 z-50 bg-secondary px-2 py-4 opacity-0 md:hidden",
+      "invisible fixed inset-0 bg-secondary py-4 opacity-0 md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
   >
     <div class="flex items-center justify-between">
       <span class="text-xl font-semibold uppercase">Menú</span>
-      <MenuButton open={true} aria-controls="menu-content" />
+      <MenuButton name="menu-button" open={true} aria-controls="menu" />
     </div>
     <Separator />
     <nav>
-      <ul id="menu-content-anchors" class="flex flex-col gap-4">
+      <ul id="menu-anchors" class="flex flex-col gap-4">
         {
           menu.map(({ name, href }) => (
             <li class="flex justify-center">
@@ -86,11 +86,25 @@ const menu = [
   </div>
 </header>
 
+<style>
+  #navbar {
+    animation: blur linear both;
+    animation-timeline: scroll();
+    animation-range-end: 1%;
+  }
+
+  @keyframes blur {
+    to {
+      @apply shadow-md backdrop-blur;
+    }
+  }
+</style>
+
 <script>
   document.addEventListener("astro:page-load", () => {
     const menuButtons = document.getElementsByName("menu-button")
-    const menuContent = document.getElementById("menu-content")
-    const menuAnchors = document.querySelectorAll("#menu-content-anchors a")
+    const menuContent = document.getElementById("menu")
+    const menuAnchors = document.querySelectorAll("#menu-anchors a")
 
     const toggleMenu = () => {
       menuButtons.forEach((menuButton) => {
@@ -132,7 +146,7 @@ const menu = [
     const adjustScrollbar = () => {
       menuContent?.style.setProperty(
         "padding-right",
-        `${8 + window.innerWidth - document.body.clientWidth}px`,
+        `${window.innerWidth - document.body.clientWidth}px`,
       )
     }
 
