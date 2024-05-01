@@ -4,15 +4,20 @@ import { Image } from "astro:assets"
 
 <section id="about" class="mb-96">
   <h2>Sobre mí</h2>
-  <Image
-    width={1600}
-    height={1600}
-    src="/images/me.avif"
-    alt="Diego Ramil López"
-    loading="lazy"
-    class:list={[
-      "size-64 rotate-3 rounded-2xl",
-      "outline outline-2 -outline-offset-1 outline-primary",
-    ]}
-  />
+  <article class="flex flex-col items-center justify-between sm:flex-row">
+    <Image
+      width={1600}
+      height={1600}
+      src="/images/me.avif"
+      alt="Diego"
+      loading="lazy"
+      class:list={[
+        "size-64 rotate-3 rounded-2xl shadow-lg",
+        "outline outline-2 -outline-offset-1 outline-primary",
+      ]}
+    />
+    <div>
+      <p>Me llamo Diego</p>
+    </div>
+  </article>
 </section>
