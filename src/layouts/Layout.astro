@@ -35,6 +35,7 @@ export const prerender = false
     />
 
     {
+      /* Fix to avoid a bug formatting the code with Prettier */
       /* https://github.com/withastro/prettier-plugin-astro/issues/316 */
       () => <ViewTransitions />
     }
@@ -42,8 +43,8 @@ export const prerender = false
 
   <body
     class:list={[
+      "overflow-x-hidden bg-secondary",
       "font-sora text-primary antialiased",
-      "mx-auto max-w-6xl bg-secondary px-2 lg:px-10",
       "selection:bg-primary selection:text-secondary",
     ]}
   >
@@ -55,17 +56,16 @@ export const prerender = false
 </html>
 
 <style is:global>
-  :root {
-    --color-primary: #333;
-    --color-secondary: #ddd;
-  }
-
   html {
-    scrollbar-gutter: stable both-edges;
+    scrollbar-gutter: stable;
   }
 
   strong {
     @apply font-extrabold;
+  }
+
+  em {
+    @apply italic;
   }
 
   & :focus-visible {
