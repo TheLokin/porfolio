@@ -12,8 +12,8 @@ export default {
         sora: ["Sora Variable", "system-ui", "sans-serif"],
       },
       colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
+        primary: "#333",
+        secondary: "#ddd",
       },
     },
   },
