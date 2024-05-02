@@ -3,10 +3,23 @@ import LinkButton from "@/components/LinkButton.astro"
 import Separator from "@/components/Separator.astro"
 import GitHub from "@/icons/GitHub.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
+
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/diegoramil/",
+    label: "LinkedIn de TheLokin, se abrirá en una nueva pestaña",
+    icon: LinkedIn,
+  },
+  {
+    href: "https://github.com/TheLokin",
+    label: "GitHub de TheLokin, se abrirá en una nueva pestaña",
+    icon: GitHub,
+  },
+]
 ---
 
 <footer class="flex flex-col items-center justify-between md:flex-row">
-  <span class="text-center text-sm leading-5 md:text-base">
+  <span class="md:typography-lg typography-sm text-center">
     &copy; {new Date().getFullYear()} TheLokin
     <span aria-hidden="true" class="hidden md:inline">|</span>
     <br aria-hidden="true" class="block md:hidden" />
@@ -15,22 +28,15 @@ import LinkedIn from "@/icons/LinkedIn.astro"
   <Separator class="md:hidden" />
   <nav>
     <ul class="flex gap-4 [&>li]:size-8">
-      <li>
-        <LinkButton
-          href="https://www.linkedin.com/in/diegoramil/"
-          aria-label="LinkedIn de TheLokin, se abrirá en una nueva pestaña"
-        >
-          <LinkedIn />
-        </LinkButton>
-      </li>
-      <li>
-        <LinkButton
-          href="https://github.com/TheLokin"
-          aria-label="GitHub de TheLokin, se abrirá en una nueva pestaña"
-        >
-          <GitHub />
-        </LinkButton>
-      </li>
+      {
+        socialLinks.map((link) => (
+          <li>
+            <LinkButton href={link.href} aria-label={link.label}>
+              <link.icon />
+            </LinkButton>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </footer>
