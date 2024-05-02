@@ -13,13 +13,13 @@ export const prerender = false
 ---
 
 <!doctype html>
-<html lang="es" dir="ltr">
+<html lang="es" dir="ltr" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta charset="utf-8" />
-    <title>{`Porfolio de TheLokin - ${title}`}</title>
+    <title>{`Porfolio de Lokin - ${title}`}</title>
     <meta
       name="description"
-      content="Contrata a TheLokin para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
+      content="Contrata a Lokin para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
     />
 
     <link rel="canonical" href="https://thelokin.vercel.app" />
@@ -50,7 +50,7 @@ export const prerender = false
   >
     <Header />
     <slot />
-    <Separator />
+    <Separator class="mx-auto max-w-6xl" />
     <Footer />
   </body>
 </html>
@@ -60,16 +60,17 @@ export const prerender = false
     scrollbar-gutter: stable;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+  }
+
   strong {
     @apply font-extrabold;
-  }
-
-  em {
-    @apply italic;
-  }
-
-  u {
-    @apply underline;
   }
 
   & :focus-visible {
