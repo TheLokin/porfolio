@@ -4,7 +4,7 @@ import Separator from "@/components/Separator.astro"
 import Code from "@/icons/Code.astro"
 import Footer from "@/sections/Footer.astro"
 
-const menu = [
+const menuLinks = [
   {
     name: "Experiencia",
     href: "/#experience",
@@ -25,33 +25,35 @@ const menu = [
 ---
 
 <header class="sticky top-0 z-50">
-  <div id="navbar" class="flex items-center justify-between py-4">
-    <a href="/" class="inline-flex items-center gap-2 text-lg font-semibold">
-      <Code class="size-8" />
-      TheLokin
-    </a>
-    <MenuButton name="menu-button" open={false} aria-controls="menu" class="md:hidden" />
-    <nav class="hidden md:block">
-      <ul class="flex gap-4">
-        {
-          menu.map(({ name, href }) => (
-            <li>
-              <a
-                href={href}
-                class:list={[
-                  "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
-                  "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
-                  "before:any-hover:scale-x-100",
-                  "relative text-lg font-semibold",
-                ]}
-              >
-                {name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+  <div id="navbar">
+    <div class="mx-auto flex max-w-6xl items-center justify-between py-4">
+      <a href="/" class="typography-xl inline-flex items-center gap-2 font-semibold">
+        <Code class="size-8" />
+        TheLokin
+      </a>
+      <MenuButton name="menu-button" open={false} aria-controls="menu" class="md:hidden" />
+      <nav class="hidden md:block">
+        <ul class="flex gap-4">
+          {
+            menuLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class:list={[
+                    "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
+                    "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
+                    "before:any-hover:scale-x-100",
+                    "typography-xl relative font-semibold",
+                  ]}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
   </div>
 
   <div
@@ -64,17 +66,17 @@ const menu = [
     ]}
   >
     <div class="flex items-center justify-between">
-      <span class="text-xl font-semibold uppercase">Menú</span>
+      <span class="typography-xl font-semibold uppercase">Menú</span>
       <MenuButton name="menu-button" open={true} aria-controls="menu" />
     </div>
     <Separator />
     <nav>
       <ul id="menu-anchors" class="flex flex-col gap-4">
         {
-          menu.map(({ name, href }) => (
+          menuLinks.map((link) => (
             <li class="flex justify-center">
-              <a href={href} class="text-lg font-semibold">
-                {name}
+              <a href={link.href} class="typography-xl font-semibold">
+                {link.name}
               </a>
             </li>
           ))
@@ -95,7 +97,7 @@ const menu = [
 
   @keyframes blur {
     to {
-      @apply shadow-sm backdrop-blur;
+      @apply bg-secondary/70 shadow-sm backdrop-blur;
     }
   }
 </style>
