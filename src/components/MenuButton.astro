@@ -1,6 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types"
+
 import List from "@/icons/List.astro"
 import X from "@/icons/X.astro"
+
+interface Props extends HTMLAttributes<"button"> {
+  open: boolean
+}
 
 const { open, class: classname, ...props } = Astro.props
 ---
