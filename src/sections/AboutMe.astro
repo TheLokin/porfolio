@@ -1,9 +1,10 @@
 ---
 import { Image } from "astro:assets"
+
+import SectionContainer from "@/components/SectionContainer.astro"
 ---
 
-<section id="about" class="mb-96">
-  <h2>Sobre mí</h2>
+<SectionContainer id="about" title="Sobre mí">
   <article class="flex flex-col items-center justify-between sm:flex-row">
     <Image
       width={1600}
@@ -20,4 +21,4 @@ import { Image } from "astro:assets"
       <p class="text-pretty">Me llamo Diego</p>
     </div>
   </article>
-</section>
+</SectionContainer>
