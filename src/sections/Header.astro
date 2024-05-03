@@ -24,9 +24,9 @@ const menuLinks = [
 ]
 ---
 
-<header class="sticky top-0 z-50">
+<header class="sticky top-0 z-50 px-4">
   <div id="navbar">
-    <div class="mx-auto flex max-w-6xl items-center justify-between py-4">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
       <a href="/" class="typography-xl inline-flex items-center gap-2 font-semibold">
         <Code class="size-8" />
         TheLokin
@@ -60,18 +60,18 @@ const menuLinks = [
     id="menu"
     data-state="closed"
     class:list={[
-      "invisible fixed inset-0 bg-secondary py-4 opacity-0 md:hidden",
+      "invisible fixed inset-0 bg-secondary px-4 opacity-0 md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
   >
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between px-4 py-4">
       <span class="typography-xl font-semibold uppercase">Menú</span>
       <MenuButton name="menu-button" open={true} aria-controls="menu" />
     </div>
     <Separator />
     <nav>
-      <ul id="menu-anchors" class="flex flex-col gap-4">
+      <ul id="menu-anchors" class="flex flex-col gap-5 py-5">
         {
           menuLinks.map((link) => (
             <li class="flex justify-center">
@@ -97,7 +97,7 @@ const menuLinks = [
 
   @keyframes blur {
     to {
-      @apply bg-secondary/70 shadow-sm backdrop-blur;
+      @apply shadow-sm backdrop-blur;
     }
   }
 </style>
@@ -147,7 +147,7 @@ const menuLinks = [
 
     const adjustScrollbar = () => {
       menuContent?.style.setProperty(
-        "padding-right",
+        "margin-right",
         `${window.innerWidth - document.body.clientWidth}px`,
       )
     }
