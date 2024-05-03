@@ -27,10 +27,10 @@ const socialLinks = [
   </span>
   <Separator class="md:hidden" />
   <nav>
-    <ul class="flex gap-4 [&>li]:size-8">
+    <ul class="flex gap-4">
       {
         socialLinks.map((link) => (
-          <li>
+          <li class="size-8">
             <LinkButton
               href={link.href}
               target="_blank"
