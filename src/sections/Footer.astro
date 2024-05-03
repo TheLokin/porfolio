@@ -31,7 +31,12 @@ const socialLinks = [
       {
         socialLinks.map((link) => (
           <li>
-            <LinkButton href={link.href} aria-label={link.label}>
+            <LinkButton
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+            >
               <link.icon />
             </LinkButton>
           </li>
