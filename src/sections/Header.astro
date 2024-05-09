@@ -25,8 +25,8 @@ const menuLinks = [
 ---
 
 <header class="sticky top-0 z-50">
-  <div id="navbar" class="px-2">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+  <div id="navbar">
+    <div class="mx-auto flex max-w-6xl items-center justify-between p-4">
       <a href="/" class="typography-xl inline-flex items-center gap-2 font-semibold">
         <Code class="size-8" />
         TheLokin
@@ -60,18 +60,18 @@ const menuLinks = [
     id="menu"
     data-state="closed"
     class:list={[
-      "invisible fixed inset-0 overflow-y-auto bg-secondary px-2 opacity-0 md:hidden",
+      "scrollbar-hide invisible fixed inset-0 overflow-y-scroll bg-secondary px-2 opacity-0 md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
   >
-    <div class="flex items-center justify-between px-4 py-4">
+    <div class="flex items-center justify-between px-2 py-4">
       <span class="typography-xl font-semibold uppercase">Menú</span>
       <MenuButton name="menu-button" open={true} aria-controls="menu" />
     </div>
     <Separator />
     <nav>
-      <ul id="menu-anchors" class="flex flex-col gap-5 py-5">
+      <ul id="menu-anchors" class="flex flex-col gap-6 py-6">
         {
           menuLinks.map((link) => (
             <li class="flex justify-center">
