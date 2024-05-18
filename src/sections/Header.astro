@@ -26,8 +26,8 @@ const menuLinks = [
 
 <header class="sticky top-0 z-50">
   <div id="navbar">
-    <div class="mx-auto flex max-w-6xl items-center justify-between p-4">
-      <a href="/" class="typography-xl inline-flex items-center gap-2 font-semibold">
+    <div class="mx-auto flex max-w-6xl items-center justify-between p-4 md:px-14">
+      <a href="/" class="typography-lg inline-flex items-center gap-2 font-semibold">
         <Code class="size-8" />
         TheLokin
       </a>
@@ -43,7 +43,7 @@ const menuLinks = [
                     "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
                     "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
                     "before:any-hover:scale-x-100",
-                    "typography-xl relative font-semibold",
+                    "typography-lg relative font-semibold",
                   ]}
                 >
                   {link.name}
@@ -60,13 +60,13 @@ const menuLinks = [
     id="menu"
     data-state="closed"
     class:list={[
-      "scrollbar-hide invisible fixed inset-0 overflow-y-scroll bg-secondary px-2 opacity-0 md:hidden",
+      "invisible fixed inset-0 overflow-y-auto bg-secondary px-2 opacity-0 scrollbar-hide md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
   >
     <div class="flex items-center justify-between px-2 py-4">
-      <span class="typography-xl font-semibold uppercase">Menú</span>
+      <span class="typography-lg font-semibold uppercase">Menú</span>
       <MenuButton name="menu-button" open={true} aria-controls="menu" />
     </div>
     <Separator />
@@ -75,7 +75,7 @@ const menuLinks = [
         {
           menuLinks.map((link) => (
             <li class="flex justify-center">
-              <a href={link.href} class="typography-xl font-semibold">
+              <a href={link.href} class="typography-lg font-semibold">
                 {link.name}
               </a>
             </li>
@@ -89,6 +89,10 @@ const menuLinks = [
 </header>
 
 <style>
+  html {
+    scrollbar-gutter: stable;
+  }
+
   #navbar {
     animation: blur linear both;
     animation-timeline: scroll();
