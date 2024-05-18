@@ -1,5 +1,5 @@
 ---
-import LinkButton from "@/components/LinkButton.astro"
+import Action from "@/components/Action.astro"
 import Separator from "@/components/Separator.astro"
 import GitHub from "@/icons/GitHub.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
@@ -7,23 +7,23 @@ import LinkedIn from "@/icons/LinkedIn.astro"
 const socialLinks = [
   {
     href: "https://www.linkedin.com/in/diegoramil/",
-    label: "LinkedIn de TheLokin, se abrirá en una nueva pestaña",
+    label: "LinkedIn de Diego, se abrirá en una nueva pestaña",
     icon: LinkedIn,
   },
   {
     href: "https://github.com/TheLokin",
-    label: "GitHub de TheLokin, se abrirá en una nueva pestaña",
+    label: "GitHub de Diego, se abrirá en una nueva pestaña",
     icon: GitHub,
   },
 ]
 ---
 
 <footer class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-4">
-  <span class="md:typography-lg typography-sm text-center">
+  <span class="text-center">
     &copy; {new Date().getFullYear()} TheLokin
     <span aria-hidden="true" class="hidden md:inline">|</span>
     <br aria-hidden="true" class="block md:hidden" />
-    Casi todos los derechos reservados.
+    Diseñado y desarrollado con ❤️ y ☕
   </span>
   <Separator class="md:hidden" />
   <nav>
@@ -31,14 +31,14 @@ const socialLinks = [
       {
         socialLinks.map((link) => (
           <li class="size-8">
-            <LinkButton
+            <Action
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
             >
               <link.icon />
-            </LinkButton>
+            </Action>
           </li>
         ))
       }
