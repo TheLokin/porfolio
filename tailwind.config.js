@@ -18,71 +18,100 @@ export default {
     },
   },
   plugins: [
-    ({ addComponents }) => {
-      addComponents({
-        ".typography-xs": /* Paragraph P3 */ {
-          fontSize: "12px",
-          lineHeight: "16px",
-          tracking: "2%",
+    ({ addUtilities, addComponents, addVariant }) => {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* IE and Edge */
+          "-ms-overflow-style": "none",
+
+          /* Firefox */
+          "scrollbar-width": "none",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         },
-        ".typography-sm": /* Paragraph P1 - Button B2 */ {
-          fontSize: "16px",
-          lineHeight: "20px",
-          tracking: "2%",
-        },
-        ".typography-base": /* Heading H7 - Button B1 */ {
-          fontSize: "20px",
-          lineHeight: "24px",
-          tracking: "2%",
-        },
-        ".typography-lg": /* Heading H6 */ {
-          fontSize: "16px",
-          lineHeight: "20px",
-          tracking: "-2%",
-        },
-        ".typography-xl": /* Heading H5 */ {
-          fontSize: "20px",
-          lineHeight: "24px",
-          tracking: "-2%",
-        },
-        ".typography-2xl": /* Display (M) - Heading H4 */ {
-          fontSize: "24px",
-          lineHeight: "28px",
-          tracking: "-2%",
-        },
-        ".typography-3xl": /* Heading H3 */ {
-          fontSize: "28px",
-          lineHeight: "32px",
-          tracking: "-2%",
-        },
-        ".typography-4xl": /* Heading H2 */ {
-          fontSize: "32px",
-          lineHeight: "40px",
-          tracking: "-2%",
-        },
-        ".typography-5xl": /* Heading H1 */ {
-          fontSize: "36px",
-          lineHeight: "44px",
-          tracking: "-2%",
-        },
-        ".typography-6xl": /* Sub Heading */ {
-          fontSize: "40px",
-          lineHeight: "48px",
-          tracking: "-2%",
-        },
-        ".typography-7xl": {
-          fontSize: "44px",
-          lineHeight: "52px",
-          tracking: "-2%",
-        },
-        ".typography-8xl": /* Display */ {
-          fontSize: "48px",
-          lineHeight: "56px",
-          tracking: "-2%",
+
+        ".scrollbar-default": {
+          /* IE and Edge */
+          "-ms-overflow-style": "auto",
+
+          /* Firefox */
+          "scrollbar-width": "auto",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "block",
+          },
         },
       })
-    },
-    ({ addVariant }) => {
+
+      addComponents({
+        /* 48px */
+        ".typography-6xl": {
+          fontSize: "3rem",
+          lineHeight: "3.5rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 40px */
+        ".typography-5xl": {
+          fontSize: "2.5rem",
+          lineHeight: "3rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 36px */
+        ".typography-4xl": {
+          fontSize: "2.25rem",
+          lineHeight: "2.75rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 32px */
+        ".typography-3xl": {
+          fontSize: "2rem",
+          lineHeight: "2.5rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 28px */
+        ".typography-2xl": {
+          fontSize: "1.75rem",
+          lineHeight: "2rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 24px */
+        ".typography-xl": {
+          fontSize: "1.5rem",
+          lineHeight: "1.75rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 20px */
+        ".typography-lg": {
+          fontSize: "1.25rem",
+          lineHeight: "1.5rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 16px */
+        ".typography-base": {
+          fontSize: "1rem",
+          lineHeight: "1.25rem",
+          letterSpacing: "-0.025em",
+        },
+
+        /* 12px */
+        ".typography-sm": {
+          fontSize: "0.75rem",
+          lineHeight: "1rem",
+          letterSpacing: "-0.025em",
+        },
+      })
+
       addVariant("any-hover", "@media (any-hover: hover) { &:hover }")
     },
   ],
