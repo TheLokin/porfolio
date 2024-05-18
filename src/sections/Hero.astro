@@ -2,23 +2,21 @@
 import { Image } from "astro:assets"
 ---
 
-<section>
-  <div class="flex flex-col items-center justify-between md:flex-row-reverse">
-    <Image
-      width={800}
-      height={800}
-      src="/images/logo.png"
-      alt="Logo de TheLokin"
-      loading="eager"
-      class="size-32 md:size-64"
-    />
-    <h1 class="typography-2xl text-balance text-center md:typography-8xl md:text-start">
-      Hola, soy <strong>Lokin</strong>
-      <br />
-      <strong>Desarrollador</strong>
-      <strong>Frontend</strong>
-      <br />
-      Ubicado en <strong>España</strong>.
-    </h1>
-  </div>
+<section class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row-reverse md:px-4">
+  <Image
+    width={800}
+    height={800}
+    src="/images/logo.png"
+    alt="Logo de Lokin"
+    loading="eager"
+    class="size-32 md:size-64"
+  />
+  <h1 class="typography-xl max-w-[35rem] text-balance text-center md:text-start md:typography-6xl">
+    Hola, soy <strong>Diego</strong>
+    <br />
+    <strong>Desarrollador</strong>
+    <strong>Frontend</strong>
+    <br />
+    Ubicado en <strong>España</strong>.
+  </h1>
 </section>
