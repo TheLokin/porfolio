@@ -9,10 +9,10 @@ interface Props {
     }
     description?: string
   }[]
-  months?: boolean
+  showMonths?: boolean
 }
 
-const { elements, months = true } = Astro.props
+const { elements, showMonths = true } = Astro.props
 ---
 
 <ol
@@ -43,17 +43,17 @@ const { elements, months = true } = Astro.props
           <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
           <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
           <span class="typography-sm uppercase tracking-wide opacity-90">
-            <time datetime={element.date.from?.toISOString().substring(0, months ? 7 : 4)}>
+            <time datetime={element.date.from?.toISOString().substring(0, showMonths ? 7 : 4)}>
               {element.date.from?.toLocaleString(
                 "es",
-                months ? { month: "short", year: "numeric" } : { year: "numeric" },
+                showMonths ? { month: "short", year: "numeric" } : { year: "numeric" },
               ) || "actualidad"}
             </time>
             -
-            <time datetime={element.date.to?.toISOString().substring(0, months ? 7 : 4)}>
+            <time datetime={element.date.to?.toISOString().substring(0, showMonths ? 7 : 4)}>
               {element.date.to?.toLocaleString(
                 "es",
-                months ? { month: "short", year: "numeric" } : { year: "numeric" },
+                showMonths ? { month: "short", year: "numeric" } : { year: "numeric" },
               ) || "actualidad"}
             </time>
           </span>
