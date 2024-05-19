@@ -2,9 +2,11 @@
 import { Image } from "astro:assets"
 
 import SectionContainer from "@/components/SectionContainer.astro"
+import Package from "@/icons/Package.astro"
 ---
 
 <SectionContainer id="proyects" title="Proyectos">
+  <Package slot="icon" class="size-8" />
   <article>
     <Image
       width={1600}
