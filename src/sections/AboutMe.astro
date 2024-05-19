@@ -5,20 +5,33 @@ import SectionContainer from "@/components/SectionContainer.astro"
 ---
 
 <SectionContainer id="about" title="Sobre mí">
-  <article class="flex flex-col items-center justify-between sm:flex-row">
+  <article class="flex flex-col items-center justify-between gap-12 md:flex-row">
     <Image
       width={1600}
       height={1600}
       src="/images/me.avif"
-      alt="Diego"
+      alt="Diego Ramil López, desarrollador Frontend."
       loading="lazy"
       class:list={[
-        "m-2 size-64 rotate-3 rounded-2xl shadow-md",
+        "m-2 size-64 rotate-3 rounded-2xl drop-shadow-xl",
         "outline outline-2 -outline-offset-1 outline-primary",
       ]}
     />
-    <div>
-      <p class="text-pretty">Me llamo Diego</p>
+    <div class="flex flex-col gap-4 text-pretty">
+      <p>
+        Soy Diego, desarrollador Frontend con más de 2 años de experiencia en diversos campos de la
+        tecnología y el diseño web.
+      </p>
+      <p>
+        Me especializo en el desarrollo de interfaces de productos, alineando los objetivos
+        comerciales con las necesidades del usuario y supervisando proyectos de desarrollo
+        integrales.
+      </p>
+      <p>
+        Algunos de mis éxitos incluyen colaboraciones destacadas con empresas líderes en la
+        industria, como Navantia, una sociedad pública española dedicada a la construcción naval
+        civil y militar.
+      </p>
     </div>
   </article>
 </SectionContainer>
