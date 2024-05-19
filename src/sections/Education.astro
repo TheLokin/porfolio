@@ -1,7 +1,73 @@
 ---
 import SectionContainer from "@/components/SectionContainer.astro"
+
+const history = [
+  {
+    title: "Doctorado en Tecnologías de la Información y de las Comunicaciones en Redes Móviles",
+    description: "",
+    date: {
+      from: new Date(2023, 8),
+      to: null,
+    },
+  },
+  {
+    title: "Máster Universitario en Ingeniería Informática",
+    description: "",
+    date: { from: new Date(2021, 8), to: new Date(2023, 8) },
+  },
+  {
+    title: "Grado en Ingeniería Informática, Ingeniería del Software",
+    description: "",
+    date: {
+      from: new Date(2016, 8),
+      to: new Date(2021, 8),
+    },
+  },
+  {
+    title: "Grado en Ingeniería Informática, Ciencias de la Computación",
+    description: "",
+    date: {
+      from: new Date(2016, 8),
+      to: new Date(2021, 8),
+    },
+  },
+]
 ---
 
 <SectionContainer id="education" title="Educación">
-  <article></article>
+  <div class="mx-4 grid gap-4 sm:grid-cols-12">
+    <!--     <div class="col-span-12 sm:col-span-3">
+      <div
+        class="mb-14 text-center before:mx-auto before:mb-5 before:block before:h-3 before:w-24 before:rounded-md sm:text-left sm:before:mx-0 before:dark:bg-primary"
+      >
+        <h3 class="text-3xl font-semibold">Educación</h3>
+        <span class="text-sm font-bold uppercase tracking-wider dark:text-gray-600"
+          >Vestibulum diam nunc</span
+        >
+      </div>
+    </div> -->
+    <div class="relative col-span-12 space-y-6 px-4 sm:col-span-9">
+      <div
+        class="relative col-span-12 space-y-12 px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:-left-3 sm:before:bottom-0 sm:before:top-2 sm:before:w-0.5 before:dark:bg-gray-600"
+      >
+        {
+          history.map((education) => (
+            <div class="flex flex-col sm:relative sm:before:absolute sm:before:left-[-35px] sm:before:top-2 sm:before:z-[1] sm:before:h-4 sm:before:w-4 sm:before:rounded-full before:dark:bg-primary">
+              <h3 class="text-balance text-xl font-semibold tracking-wide">{education.title}</h3>
+              <span class="text-xs uppercase tracking-wide text-primary/90">
+                <time datetime={education.date.from?.toISOString()}>
+                  {education.date.from?.toLocaleString("es", { year: "numeric" }) || "actualidad"}
+                </time>
+                -
+                <time datetime={education.date.to?.toISOString()}>
+                  {education.date.to?.toLocaleString("es", { year: "numeric" }) || "actualidad"}
+                </time>
+              </span>
+              <p class="mt-3 text-pretty">{education.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </SectionContainer>
