@@ -1,76 +1,39 @@
 ---
 import SectionContainer from "@/components/SectionContainer.astro"
+import Timeline from "@/components/Timeline.astro"
+---
 
-const history = [
-  {
-    job: "Técnico de Apoyo a la Investigación",
-    company: "CITIC - Centro de Investigación TIC",
-    date: {
-      from: new Date(2023, 3),
-      to: null,
-    },
-    description: "",
-  },
-  {
-    job: "Desarrollador Software",
-    company: "Enxenio",
-    date: {
-      from: new Date(2022, 10),
-      to: new Date(2023, 2),
-    },
-    description: "",
-  },
-  {
-    job: "Beca de Colaboración en Departamentos Universitarios",
-    company: "Universidad de A Coruña",
-    date: {
-      from: new Date(2020, 9),
-      to: new Date(2021, 4),
-    },
-    description: `
+<SectionContainer id="experience" title="Experiencia laboral">
+  <Timeline
+    elements={[
+      {
+        title: "Técnico de Apoyo a la Investigación",
+        subtitle: "CITIC - Centro de Investigación TIC",
+        date: {
+          from: new Date(2023, 3),
+        },
+      },
+      {
+        title: "Desarrollador Software",
+        subtitle: "Enxenio",
+        date: {
+          from: new Date(2022, 10),
+          to: new Date(2023, 2),
+        },
+      },
+      {
+        title: "Beca de Colaboración en Departamentos Universitarios",
+        subtitle: "Universidad de A Coruña",
+        date: {
+          from: new Date(2020, 9),
+          to: new Date(2021, 4),
+        },
+        description: `
       Responsable del estudio y diseño de una metodología para mejorar imágenes de fondo de ojo mediante aprendizaje profundo.
       Creación y gestión de conjuntos de datos para mejorar la precisión del procesamiento de imágenes. 
       Evaluación y validación de las imágenes procesadas, optimizando los métodos de diagnóstico en oftalmología.
     `,
-  },
-]
----
-
-<SectionContainer id="experience" title="Experiencia laboral">
-  <ol
-    class:list={[
-      "md:before:absolute md:before:bottom-0 md:before:start-6 md:before:top-2 md:before:-ms-px md:before:w-0.5 md:before:bg-primary",
-      "relative flex flex-col gap-8 md:gap-12",
+      },
     ]}
-  >
-    {
-      history.map((experience) => (
-        <li
-          class:list={[
-            "md:before:absolute md:before:-start-6 md:before:top-2 md:before:-ms-2 md:before:size-4 md:before:rounded-full md:before:bg-primary",
-            "relative grid gap-x-12 gap-y-4 pb-2 md:start-12 md:grid-cols-5 md:pe-12",
-          ]}
-        >
-          <div class="col-span-2 flex flex-col">
-            <h3 class="typography-lg text-balance font-semibold tracking-wide">{experience.job}</h3>
-            <h4 class="text-balance font-medium tracking-wide">{experience.company}</h4>
-            <span class="uppercase tracking-wide opacity-90 typography-sm">
-              <time datetime={experience.date.from?.toISOString().substring(0, 7)}>
-                {experience.date.from?.toLocaleString("es", {
-                  month: "short",
-                  year: "numeric",
-                }) || "actualidad"}
-              </time>
-              -
-              <time datetime={experience.date.to?.toISOString().substring(0, 7)}>
-                {experience.date.to?.toLocaleString("es", { month: "short", year: "numeric" }) ||
-                  "actualidad"}
-              </time>
-            </span>
-          </div>
-          <p class="col-span-3 text-pretty">{experience.description}</p>
-        </li>
-      ))
-    }
-  </ol>
+  />
 </SectionContainer>

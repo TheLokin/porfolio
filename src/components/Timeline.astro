@@ -1,0 +1,65 @@
+---
+interface Props {
+  elements: {
+    title: string
+    subtitle: string
+    date: {
+      from?: Date
+      to?: Date
+    }
+    description?: string
+  }[]
+  months?: boolean
+}
+
+const { elements, months = true } = Astro.props
+---
+
+<ol
+  class:list={[
+    "md:before:absolute md:before:bottom-0 md:before:start-6 md:before:top-2 md:before:-ms-px md:before:w-0.5 md:before:bg-primary",
+    "relative flex flex-col gap-8 md:gap-12",
+  ]}
+>
+  {
+    elements.map((element) => (
+      <li
+        class:list={[
+          "md:before:absolute md:before:-start-6 md:before:top-2 md:before:-ms-2 md:before:size-4 md:before:rounded-full md:before:bg-primary",
+          "relative gap-x-12 gap-y-4 pb-2 md:start-12 md:pe-12",
+          {
+            "grid md:grid-cols-5": element.description !== undefined,
+          },
+        ]}
+      >
+        <div
+          class:list={[
+            "flex flex-col",
+            {
+              "col-span-2": element.description !== undefined,
+            },
+          ]}
+        >
+          <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
+          <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
+          <span class="uppercase tracking-wide opacity-90 typography-sm">
+            <time datetime={element.date.from?.toISOString().substring(0, months ? 7 : 4)}>
+              {element.date.from?.toLocaleString(
+                "es",
+                months ? { month: "short", year: "numeric" } : { year: "numeric" },
+              ) || "actualidad"}
+            </time>
+            -
+            <time datetime={element.date.to?.toISOString().substring(0, months ? 7 : 4)}>
+              {element.date.to?.toLocaleString(
+                "es",
+                months ? { month: "short", year: "numeric" } : { year: "numeric" },
+              ) || "actualidad"}
+            </time>
+          </span>
+        </div>
+        {element.description && <p class="col-span-3 text-pretty">{element.description}</p>}
+      </li>
+    ))
+  }
+</ol>
