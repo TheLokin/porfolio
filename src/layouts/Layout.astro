@@ -16,10 +16,10 @@ export const prerender = false
 <html lang="es" dir="ltr" class="scroll-smooth motion-reduce:scroll-auto">
   <head>
     <meta charset="utf-8" />
-    <title>{`Porfolio de Lokin - ${title}`}</title>
+    <title>{`Porfolio de Diego - ${title}`}</title>
     <meta
       name="description"
-      content="Contrata a Lokin para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
+      content="Contrata a Diego para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
     />
 
     <link rel="canonical" href="https://thelokin.vercel.app" />
@@ -31,7 +31,7 @@ export const prerender = false
     <meta name="googlebot" content="index, follow" />
     <meta
       name="keywords"
-      content="porfolio, desarrollador, informático, página web, aplicación móvil, thelokin"
+      content="diego ramil lópez, thelokin, porfolio, desarrollador, informático, página web, aplicación móvil"
     />
 
     {
@@ -44,31 +44,23 @@ export const prerender = false
   <body
     class:list={[
       "overflow-x-hidden bg-secondary",
-      "typography-base font-sora text-primary antialiased",
+      "font-sora text-primary antialiased typography-base",
       "selection:bg-primary selection:text-secondary",
     ]}
   >
     <Header />
-    <slot />
-    <Separator class="mx-auto max-w-6xl" />
-    <Footer />
+
+    <div class="mx-auto max-w-5xl px-2 md:px-10">
+      <main class="px-2 py-4 md:px-4">
+        <slot />
+      </main>
+      <Separator />
+      <Footer />
+    </div>
   </body>
 </html>
 
 <style is:global>
-  html {
-    scrollbar-gutter: stable;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply tracking-tight;
-  }
-
   strong {
     @apply font-extrabold;
   }
