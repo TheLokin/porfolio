@@ -29,6 +29,7 @@
     "node_modules": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "css.customData": [".vscode/tailwind.json"],
   "tailwindCSS.classAttributes": ["class", "class:list"],
   "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "prettier.documentSelectors": ["**/*.astro"]
