@@ -7,6 +7,7 @@ import Books from "@/icons/Books.astro"
 <SectionContainer id="education" title="Educación">
   <Books slot="icon" class="size-8" />
   <Timeline
+    options={{ year: "numeric" }}
     elements={[
       {
         title:
@@ -19,7 +20,10 @@ import Books from "@/icons/Books.astro"
       {
         title: "Máster Universitario en Ingeniería Informática",
         subtitle: "Universidad de A Coruña",
-        date: { from: new Date(2021, 8), to: new Date(2023, 8) },
+        date: {
+          from: new Date(2021, 8),
+          to: new Date(2023, 8),
+        },
       },
       {
         title: "Grado en Ingeniería Informática, Ingeniería del Software",
@@ -38,6 +42,5 @@ import Books from "@/icons/Books.astro"
         },
       },
     ]}
-    months={false}
   />
 </SectionContainer>

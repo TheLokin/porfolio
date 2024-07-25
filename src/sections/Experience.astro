@@ -7,6 +7,7 @@ import Briefcase from "@/icons/Briefcase.astro"
 <SectionContainer id="experience" title="Experiencia laboral">
   <Briefcase slot="icon" class="size-8" />
   <Timeline
+    options={{ month: "short", year: "numeric" }}
     elements={[
       {
         title: "Técnico de Apoyo a la Investigación",
@@ -14,6 +15,8 @@ import Briefcase from "@/icons/Briefcase.astro"
         date: {
           from: new Date(2023, 3),
         },
+        description:
+          "Desarrollo de aplicaciones móviles para iOS y Android. Participación en todo el ciclo de vida del desarrollo, comunicación con el cliente y trabajo en equipo para asegurar la entrega del producto y la satisfacción del cliente. Implementación de mejoras innovadoras que optimizaron el rendimiento y la usabilidad de las aplicaciones.",
       },
       {
         title: "Desarrollador Software",
@@ -22,6 +25,8 @@ import Briefcase from "@/icons/Briefcase.astro"
           from: new Date(2022, 10),
           to: new Date(2023, 2),
         },
+        description:
+          "Desarrollo de aplicaciones móviles para iOS y Android. Participación en todo el ciclo de vida del desarrollo, comunicación con el cliente y trabajo en equipo para asegurar la entrega del producto y la satisfacción del cliente. Implementación de mejoras innovadoras que optimizaron el rendimiento y la usabilidad de las aplicaciones.",
       },
       {
         title: "Beca de Colaboración en Departamentos Universitarios",

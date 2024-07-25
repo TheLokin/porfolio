@@ -4,15 +4,25 @@ interface Props {
     title: string
     subtitle: string
     date: {
-      from?: Date
+      from: Date
       to?: Date
     }
     description?: string
   }[]
-  showMonths?: boolean
+  options: Intl.DateTimeFormatOptions
 }
 
-const { elements, showMonths = true } = Astro.props
+const { elements, options } = Astro.props
+
+const formatDateTime = (date: Date, options: Intl.DateTimeFormatOptions): string => {
+  const parts = []
+
+  if (options.year) parts.push(date.getFullYear())
+  if (options.month) parts.push(String(date.getMonth() + 1).padStart(2, "0"))
+  if (options.day) parts.push(String(date.getDate()).padStart(2, "0"))
+
+  return parts.join("-")
+}
 ---
 
 <ol
@@ -43,18 +53,12 @@ const { elements, showMonths = true } = Astro.props
           <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
           <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
           <span class="typography-sm uppercase tracking-wide opacity-90">
-            <time datetime={element.date.from?.toISOString().substring(0, showMonths ? 7 : 4)}>
-              {element.date.from?.toLocaleString(
-                "es",
-                showMonths ? { month: "short", year: "numeric" } : { year: "numeric" },
-              ) || "actualidad"}
+            <time datetime={formatDateTime(element.date.from, options)}>
+              {element.date.from.toLocaleString("es", options) || "actualidad"}
             </time>
             -
-            <time datetime={element.date.to?.toISOString().substring(0, showMonths ? 7 : 4)}>
-              {element.date.to?.toLocaleString(
-                "es",
-                showMonths ? { month: "short", year: "numeric" } : { year: "numeric" },
-              ) || "actualidad"}
+            <time datetime={element.date.to && formatDateTime(element.date.to, options)}>
+              {element.date.to?.toLocaleString("es", options) || "actualidad"}
             </time>
           </span>
         </div>
