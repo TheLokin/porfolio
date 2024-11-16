@@ -5,7 +5,6 @@
     "package.json": "package-lock.json,pnpm-lock.yaml,yarn.lock",
     "astro.config.js": "tsconfig.json",
     "tailwind.config.js": "postcss.config.js",
-    ".eslintrc.json": ".eslintignore",
     ".prettierrc.json": ".prettierignore"
   },
   "editor.linkedEditing": true,
@@ -32,6 +31,5 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "css.customData": [".vscode/tailwind.json"],
   "tailwindCSS.classAttributes": ["class", "class:list"],
-  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "prettier.documentSelectors": ["**/*.astro"]
 }

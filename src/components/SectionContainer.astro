@@ -9,7 +9,9 @@ const { id, title } = Astro.props
 
 <section id={id} class="flex scroll-mt-16 flex-col gap-6">
   <div class="flex items-center gap-2">
-    <slot name="icon" />
+    <div class="hidden md:inline">
+      <slot name="icon" />
+    </div>
     <h2 class="typography-4xl font-semibold">
       {title}
     </h2>

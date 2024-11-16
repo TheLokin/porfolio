@@ -7,9 +7,11 @@ import Separator from "@/components/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
 
-const { title } = Astro.props
+interface Props {
+  title: string
+}
 
-export const prerender = false
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -31,14 +33,10 @@ export const prerender = false
     <meta name="googlebot" content="index, follow" />
     <meta
       name="keywords"
-      content="diego ramil lópez, thelokin, porfolio, desarrollador, informático, página web, aplicación móvil"
+      content="diego ramil lópez, thelokin, porfolio, desarrollador frontend, ingeniero informático"
     />
 
-    {
-      /* Fix to avoid a bug formatting the code with Prettier */
-      /* https://github.com/withastro/prettier-plugin-astro/issues/316 */
-      () => <ViewTransitions />
-    }
+    <ViewTransitions />
   </head>
 
   <body
@@ -61,6 +59,15 @@ export const prerender = false
 </html>
 
 <style is:global>
+  :root {
+    --color-primary: #333;
+    --color-secondary: #ddd;
+  }
+
+  body {
+    background: var(--color-secondary) url("/images/concrete.png");
+  }
+
   strong {
     @apply font-extrabold;
   }

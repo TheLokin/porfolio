@@ -7,7 +7,7 @@ import vercel from "@astrojs/vercel/serverless"
 // https://astro.build/config
 export default defineConfig({
   site: "https://thelokin.vercel.app",
-  output: "hybrid",
+  output: "server",
   integrations: [tailwind(), sitemap()],
   devToolbar: {
     enabled: false,

@@ -16,7 +16,7 @@ const { open, class: classname, ...props } = Astro.props
   aria-expanded={open}
   aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
   data-state="closed"
-  class:list={["group inline-grid size-8", classname]}
+  class:list={["group inline-grid size-8 shrink-0", classname]}
   {...props}
 >
   <List
