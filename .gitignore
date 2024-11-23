@@ -1,29 +1,26 @@
-# build output
-dist/
-
-# generated types
-.astro/
-
-# generated vercel files
-.vercel/
-
 # dependencies
-node_modules/
+node_modules
 
-# logs
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# build output
+dist
 
-# packages
+# vercel
+.vercel
+
+# astro
+.astro
+
+# typescript
+env.d.ts
+
+# package manager
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+bun.lockb
 
 # environment variables
-.env
-.env.production
+.env*
 
 # macOS-specific files
 .DS_Store
