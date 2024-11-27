@@ -1,9 +1,8 @@
-import { defineConfig } from "astro/config"
-
 import node from "@astrojs/node"
 import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
 import vercel from "@astrojs/vercel/serverless"
+import { defineConfig } from "astro/config"
 
 let adapter = vercel({
   webAnalytics: {
@@ -17,7 +16,6 @@ if (process.argv.includes("--node")) {
   })
 }
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://thelokin.vercel.app",
   output: "server",
