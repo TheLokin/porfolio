@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types"
+import type { VariantProps } from "class-variance-authority"
+
+import { cva } from "class-variance-authority"
+
+const variants = cva("", {
+  variants: {
+    variant: {
+      underline: [
+        "relative",
+        "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
+        "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
+        "before:any-hover:scale-x-100",
+      ],
+      icon: [
+        "inline-block size-full",
+        "transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none",
+        "any-hover:scale-125 any-hover:opacity-70 motion-reduce:any-hover:scale-100",
+      ],
+    },
+  },
+})
+
+type Props = HTMLAttributes<"a"> & VariantProps<typeof variants>
+
+const { class: className, variant, ...props } = Astro.props
+---
+
+<a class:list={[variants({ variant }), className]} {...props}>
+  <slot />
+</a>
