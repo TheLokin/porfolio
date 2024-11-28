@@ -12,7 +12,7 @@
   "dependencies": {
     "@fontsource-variable/sora": "5.1.0",
     "@vercel/analytics": "1.4.1",
-    "astro": "4.16.15"
+    "astro": "4.16.16"
   },
   "devDependencies": {
     "@astrojs/node": "8.3.4",
