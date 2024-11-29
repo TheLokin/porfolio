@@ -26,7 +26,8 @@ const links = [
 ---
 
 <header class="sticky top-0 z-50">
-  <div id="navbar">
+  {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+  <div class="transition-scroll">
     <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 md:px-14">
       <Link class="typography-lg inline-flex items-center gap-2 font-semibold" href="/">
         <Code class="size-8" />
@@ -38,7 +39,7 @@ const links = [
           {
             links.map((link) => (
               <li>
-                <Link class="typography-lg font-semibold" variant="underline" href={link.href}>
+                <Link class="typography-lg font-semibold" href={link.href} variant="underline">
                   {link.label}
                 </Link>
               </li>
@@ -82,20 +83,20 @@ const links = [
 </header>
 
 <style>
-  #navbar {
+  .transition-scroll {
     animation: blur linear both;
     animation-timeline: scroll();
     animation-range-end: 1%;
-  }
-
-  #menu {
-    background: var(--color-secondary) url("/images/concrete.png");
   }
 
   @keyframes blur {
     to {
       @apply shadow-sm backdrop-blur;
     }
+  }
+
+  #menu {
+    background: var(--color-secondary) url("/images/concrete.png");
   }
 </style>
 

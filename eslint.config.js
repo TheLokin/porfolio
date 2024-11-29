@@ -111,16 +111,7 @@ export default [
     },
   ],
   // Tailwind CSS configuration
-  ...[
-    ...eslintPluginTailwindcss.configs["flat/recommended"],
-    {
-      settings: {
-        tailwindcss: {
-          whitelist: ["transition-scroll"],
-        },
-      },
-    },
-  ],
+  ...eslintPluginTailwindcss.configs["flat/recommended"],
   // Prettier configuration
   ...[
     eslintPluginPrettier,
