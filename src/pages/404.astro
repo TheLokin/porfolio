@@ -4,23 +4,22 @@ import { Image } from "astro:assets"
 import Layout from "@/layouts/Layout.astro"
 ---
 
-<Layout title="Página no encontrada">
+<Layout title="Página no encontrada" index={false}>
   <section class="flex flex-col items-center md:flex-row md:gap-12">
     <Image
-      width={800}
+      alt="Logo de Diego Ramil López."
+      class="size-64"
       height={800}
       src="/images/logo.png"
-      alt="Logo de Lokin"
-      loading="eager"
-      class="size-64"
+      width={800}
     />
-    <div class="flex flex-col items-center text-center">
+    <hgroup class="flex flex-col items-center text-center">
       <h1 class="typography-6xl pb-8 font-extrabold uppercase">Error 404</h1>
       <h2 class="typography-3xl pb-6 font-semibold uppercase">Página no encontrada</h2>
       <p class="typography-xl max-w-80">
         ¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección sea
         correcta.
       </p>
-    </div>
+    </hgroup>
   </section>
 </Layout>
