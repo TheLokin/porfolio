@@ -1,22 +1,22 @@
 ---
 import type { HTMLAttributes } from "astro/types"
 
-import List from "@/icons/List.astro"
-import X from "@/icons/X.astro"
+import List from "@/components/icons/List.astro"
+import X from "@/components/icons/X.astro"
 
-interface Props extends HTMLAttributes<"button"> {
+type Props = HTMLAttributes<"button"> & {
   open: boolean
 }
 
-const { open, class: classname, ...props } = Astro.props
+const { open, class: className, ...props } = Astro.props
 ---
 
 <button
-  type="button"
   aria-expanded={open}
   aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
+  class:list={["group inline-grid [&_svg]:size-8 [&_svg]:shrink-0", className]}
   data-state="closed"
-  class:list={["group inline-grid size-8 shrink-0", classname]}
+  type="button"
   {...props}
 >
   <List
