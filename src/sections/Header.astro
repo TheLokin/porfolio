@@ -1,24 +1,25 @@
 ---
+import Code from "@/components/icons/Code.astro"
 import MenuButton from "@/components/MenuButton.astro"
-import Separator from "@/components/Separator.astro"
-import Code from "@/icons/Code.astro"
+import Link from "@/components/ui/Link.astro"
+import Separator from "@/components/ui/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 
 const links = [
   {
-    name: "Experiencia",
+    label: "Experiencia",
     href: "/#experience",
   },
   {
-    name: "Educación",
-    href: "/#education",
-  },
-  {
-    name: "Proyectos",
+    label: "Proyectos",
     href: "/#proyects",
   },
   {
-    name: "Sobre mí",
+    label: "Educación",
+    href: "/#education",
+  },
+  {
+    label: "Sobre mí",
     href: "/#about",
   },
 ]
@@ -27,27 +28,19 @@ const links = [
 <header class="sticky top-0 z-50">
   <div id="navbar">
     <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 md:px-14">
-      <a href="/" class="typography-lg inline-flex items-center gap-2 font-semibold">
+      <Link class="typography-lg inline-flex items-center gap-2 font-semibold" href="/">
         <Code class="size-8" />
         TheLokin
-      </a>
-      <MenuButton name="menu-button" open={false} aria-controls="menu" class="md:hidden" />
+      </Link>
+      <MenuButton aria-controls="menu" class="md:hidden" name="menu-button" open={false} />
       <nav class="hidden md:block">
         <ul class="flex gap-4">
           {
             links.map((link) => (
               <li>
-                <a
-                  href={link.href}
-                  class:list={[
-                    "before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-primary",
-                    "before:transition-transform before:duration-300 before:ease-in-out motion-reduce:before:transition-none",
-                    "before:any-hover:scale-x-100",
-                    "typography-lg relative font-semibold",
-                  ]}
-                >
-                  {link.name}
-                </a>
+                <Link class="typography-lg font-semibold" variant="underline" href={link.href}>
+                  {link.label}
+                </Link>
               </li>
             ))
           }
@@ -57,27 +50,27 @@ const links = [
   </div>
 
   <div
-    id="menu"
-    data-state="closed"
     class:list={[
       "invisible fixed inset-0 overflow-y-auto bg-secondary px-2 opacity-0 scrollbar-hide md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
+    data-state="closed"
+    id="menu"
   >
     <div class="flex items-center justify-between px-2 py-4">
       <span class="typography-lg font-semibold uppercase">Menú</span>
-      <MenuButton name="menu-button" open={true} aria-controls="menu" />
+      <MenuButton aria-controls="menu" name="menu-button" open={true} />
     </div>
     <Separator />
     <nav>
-      <ul id="menu-anchors" class="flex flex-col gap-6 py-6">
+      <ul class="flex flex-col gap-6 py-6" id="menu-anchors">
         {
           links.map((link) => (
             <li class="flex justify-center">
-              <a href={link.href} class="typography-lg font-semibold">
-                {link.name}
-              </a>
+              <Link class="typography-lg font-semibold" href={link.href}>
+                {link.label}
+              </Link>
             </li>
           ))
         }
@@ -89,10 +82,6 @@ const links = [
 </header>
 
 <style>
-  html {
-    scrollbar-gutter: stable;
-  }
-
   #navbar {
     animation: blur linear both;
     animation-timeline: scroll();
