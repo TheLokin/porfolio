@@ -2,45 +2,43 @@
 import SectionContainer from "@/components/SectionContainer.astro"
 import Timeline from "@/components/Timeline.astro"
 import Books from "@/icons/Books.astro"
+
+const education = [
+  {
+    title: "Doctorado en Tecnologías de la Información y de las Comunicaciones en Redes Móviles",
+    subtitle: "Universidad de A Coruña",
+    date: {
+      from: new Date(2023, 8),
+    },
+  },
+  {
+    title: "Máster Universitario en Ingeniería Informática",
+    subtitle: "Universidad de A Coruña",
+    date: {
+      from: new Date(2021, 8),
+      to: new Date(2023, 8),
+    },
+  },
+  {
+    title: "Grado en Ingeniería Informática, Ingeniería del Software",
+    subtitle: "Universidad de A Coruña",
+    date: {
+      from: new Date(2016, 8),
+      to: new Date(2021, 8),
+    },
+  },
+  {
+    title: "Grado en Ingeniería Informática, Ciencias de la Computación",
+    subtitle: "Universidad de A Coruña",
+    date: {
+      from: new Date(2016, 8),
+      to: new Date(2021, 8),
+    },
+  },
+]
 ---
 
 <SectionContainer id="education" title="Educación">
-  <Books slot="icon" class="size-8" />
-  <Timeline
-    options={{ year: "numeric" }}
-    elements={[
-      {
-        title:
-          "Doctorado en Tecnologías de la Información y de las Comunicaciones en Redes Móviles",
-        subtitle: "Universidad de A Coruña",
-        date: {
-          from: new Date(2023, 8),
-        },
-      },
-      {
-        title: "Máster Universitario en Ingeniería Informática",
-        subtitle: "Universidad de A Coruña",
-        date: {
-          from: new Date(2021, 8),
-          to: new Date(2023, 8),
-        },
-      },
-      {
-        title: "Grado en Ingeniería Informática, Ingeniería del Software",
-        subtitle: "Universidad de A Coruña",
-        date: {
-          from: new Date(2016, 8),
-          to: new Date(2021, 8),
-        },
-      },
-      {
-        title: "Grado en Ingeniería Informática, Ciencias de la Computación",
-        subtitle: "Universidad de A Coruña",
-        date: {
-          from: new Date(2016, 8),
-          to: new Date(2021, 8),
-        },
-      },
-    ]}
-  />
+  <Books slot="icon" />
+  <Timeline elements={education} format={{ year: "numeric" }} />
 </SectionContainer>

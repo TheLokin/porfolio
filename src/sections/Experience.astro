@@ -2,42 +2,41 @@
 import SectionContainer from "@/components/SectionContainer.astro"
 import Timeline from "@/components/Timeline.astro"
 import Briefcase from "@/icons/Briefcase.astro"
+
+const experience = [
+  {
+    title: "Técnico de Apoyo a la Investigación",
+    subtitle: "CITIC - Centro de Investigación TIC",
+    date: {
+      from: new Date(2023, 3),
+    },
+    description:
+      "Responsable del diseño y desarrollo de sistemas y componentes para herramientas de digitalización en el sector naval, alcanzando una mejora del 27% en la eficiencia de los operarios mediante la implementación de soluciones innovadoras.",
+  },
+  {
+    title: "Desarrollador Software",
+    subtitle: "Enxenio",
+    date: {
+      from: new Date(2022, 10),
+      to: new Date(2023, 2),
+    },
+    description:
+      "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto.",
+  },
+  {
+    title: "Beca de Colaboración en Departamentos Universitarios",
+    subtitle: "Universidad de A Coruña",
+    date: {
+      from: new Date(2020, 9),
+      to: new Date(2021, 4),
+    },
+    description:
+      "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico.",
+  },
+]
 ---
 
 <SectionContainer id="experience" title="Experiencia laboral">
-  <Briefcase slot="icon" class="size-8" />
-  <Timeline
-    options={{ month: "short", year: "numeric" }}
-    elements={[
-      {
-        title: "Técnico de Apoyo a la Investigación",
-        subtitle: "CITIC - Centro de Investigación TIC",
-        date: {
-          from: new Date(2023, 3),
-        },
-        description:
-          "Responsable del diseño y desarrollo de sistemas y componentes para herramientas de digitalización en el sector naval, alcanzando una mejora del 27% en la eficiencia de los operarios mediante la implementación de soluciones innovadoras.",
-      },
-      {
-        title: "Desarrollador Software",
-        subtitle: "Enxenio",
-        date: {
-          from: new Date(2022, 10),
-          to: new Date(2023, 2),
-        },
-        description:
-          "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto.",
-      },
-      {
-        title: "Beca de Colaboración en Departamentos Universitarios",
-        subtitle: "Universidad de A Coruña",
-        date: {
-          from: new Date(2020, 9),
-          to: new Date(2021, 4),
-        },
-        description:
-          "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico.",
-      },
-    ]}
-  />
+  <Briefcase slot="icon" />
+  <Timeline elements={experience} options={{ month: "short", year: "numeric" }} />
 </SectionContainer>
