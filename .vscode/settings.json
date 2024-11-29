@@ -31,5 +31,6 @@
   },
   "eslint.format.enable": true,
   "eslint.validate": ["astro", "javascript", "typescript", "javascriptreact", "typescriptreact"],
-  "prettier.documentSelectors": ["**/*.astro"]
+  "prettier.documentSelectors": ["**/*.astro"],
+  "tailwindCSS.classAttributes": ["class", "class:list"]
 }

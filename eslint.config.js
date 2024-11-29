@@ -106,15 +106,21 @@ export default [
     ...eslintPluginAstro.configs["jsx-a11y-recommended"],
     {
       rules: {
-        "astro/prefer-class-list-directive": "warn",
-        "astro/prefer-object-class-list": "warn",
-        "astro/prefer-split-class-list": "warn",
         "astro/sort-attributes": "warn",
       },
     },
   ],
   // Tailwind CSS configuration
-  ...eslintPluginTailwindcss.configs["flat/recommended"],
+  ...[
+    ...eslintPluginTailwindcss.configs["flat/recommended"],
+    {
+      settings: {
+        tailwindcss: {
+          whitelist: ["transition-scroll"],
+        },
+      },
+    },
+  ],
   // Prettier configuration
   ...[
     eslintPluginPrettier,
