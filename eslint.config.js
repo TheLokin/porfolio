@@ -102,7 +102,17 @@ export default [
     },
   ],
   // Astro configuration
-  ...eslintPluginAstro.configs["jsx-a11y-recommended"],
+  ...[
+    ...eslintPluginAstro.configs["jsx-a11y-recommended"],
+    {
+      rules: {
+        "astro/prefer-class-list-directive": "warn",
+        "astro/prefer-object-class-list": "warn",
+        "astro/prefer-split-class-list": "warn",
+        "astro/sort-attributes": "warn",
+      },
+    },
+  ],
   // Tailwind CSS configuration
   ...eslintPluginTailwindcss.configs["flat/recommended"],
   // Prettier configuration
