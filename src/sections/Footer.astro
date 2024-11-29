@@ -1,12 +1,12 @@
 ---
-import Separator from "@/components/Separator.astro"
 import SocialMedia from "@/components/SocialMedia.astro"
+import Separator from "@/components/ui/Separator.astro"
 ---
 
 <footer class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-4">
   <span class="text-center">
     &copy;
-    <span data-date>{new Date().getFullYear()}</span>
+    <span data-year>{new Date().getFullYear()}</span>
     TheLokin
     <span aria-hidden="true" class="hidden md:inline">|</span>
     <br aria-hidden="true" class="block md:hidden" />
@@ -18,9 +18,9 @@ import SocialMedia from "@/components/SocialMedia.astro"
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const dataDate = document.querySelectorAll("[data-date]")
+    const dataYear = document.querySelectorAll("[data-year]")
 
-    dataDate.forEach((date) => {
+    dataYear.forEach((date) => {
       date.textContent = new Date().getFullYear().toString()
     })
   })
