@@ -9,6 +9,9 @@
   "editor.linkedEditing": true,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
