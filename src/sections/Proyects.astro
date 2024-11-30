@@ -1,20 +1,52 @@
 ---
 import { Image } from "astro:assets"
 
+import Package from "@/components/icons/Package.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
-import Package from "@/icons/Package.astro"
+
+const TAG = {
+  TailwincCSS: {
+    name: "Tailwind CSS",
+  },
+}
+
+const proyects = [
+  {
+    title: "La Velada del Año IV",
+    description: "",
+    tags: [],
+    image: "/images/lavelada.webp",
+    alt: "La Velada del Año 4.",
+    github: "https://github.com/midudev/la-velada-web-oficial",
+  },
+  {
+    title: "Temzone",
+    description: "",
+    tags: [TAG.TailwincCSS],
+    image: "/images/temzone.png",
+    alt: "Temzone.",
+    github: "https://github.com/Temtem-Interactive-Map",
+  },
+]
 ---
 
 <SectionContainer id="proyects" title="Proyectos">
-  <Package slot="icon" class="size-8" />
-  <article>
-    <Image
-      width={1600}
-      height={1200}
-      src="/images/temzone.png"
-      alt="Diego Ramil López, desarrollador Frontend."
-      loading="lazy"
-      class:list={["max-w-64 rounded-2xl drop-shadow-xl", "outline outline-2"]}
-    />
-  </article>
+  <Package slot="icon" />
+  {
+    proyects.map((proyect) => (
+      <article class="grid gap-x-12 md:grid-cols-7">
+        <Image
+          alt={proyect.alt}
+          class="col-span-4 ms-px rounded-2xl object-cover outline outline-2 drop-shadow-xl"
+          height={960}
+          loading="lazy"
+          src={proyect.image}
+          width={720}
+        />
+        <div class="col-span-3">
+          <h3 class="typography-xl text-balance font-semibold tracking-wide">{proyect.title}</h3>
+        </div>
+      </article>
+    ))
+  }
 </SectionContainer>
