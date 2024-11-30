@@ -26,17 +26,11 @@ export async function GET() {
       },
       children: [
         {
-          type: "div",
+          type: "img",
           props: {
-            tw: "h-[300px] w-[300px] flex",
-            children: [
-              {
-                type: "img",
-                props: {
-                  src: logo.buffer,
-                },
-              },
-            ],
+            src: `data:image/png;base64,${logo.toString("base64")}`,
+            width: 300,
+            height: 300,
           },
         },
         {
