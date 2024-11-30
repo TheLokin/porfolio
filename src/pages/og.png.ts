@@ -3,12 +3,10 @@ import path from "path"
 
 import { ImageResponse } from "@vercel/og"
 
-const isProd = import.meta.env.PROD
-
 export async function GET() {
-  const basePath = `./${isProd ? "dist" : "public"}/images`
-  const logo = fs.readFileSync(path.resolve(`${basePath}/logo.png`))
-  const background = fs.readFileSync(path.resolve(`${basePath}/concrete.png`))
+  const basePath = path.join(process.cwd(), import.meta.env.PROD ? "static" : "public", "images")
+  const logo = fs.readFileSync(path.join(basePath, "logo.png"))
+  const background = fs.readFileSync(path.join(basePath, "concrete.png"))
   const [SoraRegular, SoraExtraBold] = await Promise.all([
     fetch("https://api.fontsource.org/v1/fonts/sora/latin-400-normal.ttf").then((res) =>
       res.arrayBuffer(),
