@@ -4,7 +4,11 @@ import path from "path"
 import { ImageResponse } from "@vercel/og"
 
 export async function GET() {
-  const basePath = path.join(process.cwd(), import.meta.env.PROD ? "static" : "public", "images")
+  const basePath = path.join(
+    process.cwd(),
+    import.meta.env.PROD ? "dist/client" : "public",
+    "images",
+  )
   const logo = fs.readFileSync(path.join(basePath, "logo.png"))
   const background = fs.readFileSync(path.join(basePath, "concrete.png"))
   const [SoraRegular, SoraExtraBold] = await Promise.all([
