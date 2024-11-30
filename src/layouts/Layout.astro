@@ -3,38 +3,88 @@ import "@fontsource-variable/sora"
 
 import { ViewTransitions } from "astro:transitions"
 
-import Separator from "@/components/Separator.astro"
+import Separator from "@/components/ui/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
 
-interface Props {
+type Props = {
   title: string
+  noindex?: boolean
+  nofollow?: boolean
 }
 
-const { title } = Astro.props
+const { title, noindex = false, nofollow = false } = Astro.props
+const description =
+  "Ingeniero informático con experiencia en desarrollo web y móvil. Descubre mis proyectos, desde soluciones en la nube hasta aplicaciones modernas."
+const robots = `${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`
+const openGraph = {
+  url: Astro.site?.origin,
+  title: "Porfolio de Diego",
+  description,
+  siteName: "TheLokin",
+  image: {
+    url: `${Astro.site?.origin}/og.png`,
+    alt: "Vista previa de mi porfolio de desarrollo software.",
+  },
+  twitter: "@diegoramil98",
+}
 ---
 
 <!doctype html>
-<html lang="es" dir="ltr" class="scroll-smooth motion-reduce:scroll-auto">
+<html class="scroll-smooth motion-reduce:scroll-auto" dir="ltr" lang="es">
   <head>
-    <meta charset="utf-8" />
+    {/* HTML Meta Tags */}
     <title>{`Porfolio de Diego - ${title}`}</title>
-    <meta
-      name="description"
-      content="Contrata a Diego para crear tu aplicación web o móvil. Especializado en crear aplicaciones únicas."
-    />
+    <meta charset="utf-8" />
+    <meta content={description} name="description" />
+    <meta content="Diego Ramil López" name="author" />
+    <meta content="#ddd" name="theme-color" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href={openGraph.url} rel="canonical" />
+    {/* <link href="/manifest.json" rel="manifest" /> */}
 
-    <link rel="canonical" href="https://thelokin.vercel.app" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#ddd" />
-    <meta name="viewport" content="width=device-width" />
+    {/* Favicon Meta Tags */}
+    <link href="/android-icon-128x128.png" rel="icon" sizes="128x128" />
+    <link href="/android-icon-192x192.png" rel="icon" sizes="192x192" />
+    <link href="/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" />
+    <link href="/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link href="/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+    <link href="/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="/apple-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
+    {/* Search Engine Meta Tags */}
+    <meta content={robots} name="robots" />
+    <meta content={robots} name="googlebot" />
     <meta
+      content="Diego Ramil López, desarrollador frontend, desarrollo web, desarrollo móvil, React, JavaScript, Next.js, Tailwind CSS, HTML, CSS, UI/UX, desarrollo de interfaces"
       name="keywords"
-      content="diego ramil lópez, thelokin, porfolio, desarrollador frontend, ingeniero informático"
     />
+
+    {/* Open Graph Meta Tags */}
+    <meta content="website" property="og:type" />
+    <meta content={openGraph.url} property="og:url" />
+    <meta content="es_ES" property="og:locale" />
+    {/* <meta content="en_US" property="og:locale:alternate" /> */}
+    <meta content={openGraph.title} property="og:title" />
+    <meta content={openGraph.description} property="og:description" />
+    <meta content={openGraph.siteName} property="og:site_name" />
+    <meta content={openGraph.image.url} property="og:image" />
+    <meta content={openGraph.image.alt} property="og:image:alt" />
+    <meta content="image/webp" property="og:image:type" />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+
+    {/* Twitter Meta Tags */}
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content={openGraph.twitter} name="twitter:site" />
+    <meta content={openGraph.twitter} name="twitter:creator" />
+    <meta content={openGraph.title} name="twitter:title" />
+    <meta content={openGraph.description} name="twitter:description" />
+    <meta content={openGraph.image.url} name="twitter:image" />
+    <meta content={openGraph.image.alt} name="twitter:image:alt" />
 
     <ViewTransitions />
   </head>
@@ -47,9 +97,8 @@ const { title } = Astro.props
     ]}
   >
     <Header />
-
     <div class="mx-auto max-w-5xl px-2 md:px-10">
-      <main class="px-2 py-4 md:px-4">
+      <main class="flex flex-col gap-16 px-2 py-4 pb-16 md:px-4">
         <slot />
       </main>
       <Separator />
@@ -64,16 +113,16 @@ const { title } = Astro.props
     --color-secondary: #ddd;
   }
 
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     background: var(--color-secondary) url("/images/concrete.png");
   }
 
-  strong {
-    @apply font-extrabold;
-  }
-
   & :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-primary;
+    @apply rounded-sm outline outline-2 outline-offset-2 outline-primary;
   }
 
   ::-webkit-scrollbar {
@@ -84,3 +133,34 @@ const { title } = Astro.props
     @apply rounded-lg border-2 border-solid border-transparent bg-primary bg-clip-content;
   }
 </style>
+
+<script>
+  import { Burst } from "@mojs/core"
+
+  const burst = new Burst({
+    left: 0,
+    top: 0,
+    radius: { 4: 19 },
+    angle: 45,
+    children: {
+      shape: "line",
+      radius: 3,
+      scale: 1,
+      stroke: "#333",
+      strokeDasharray: "100%",
+      strokeDashoffset: { "-100%": "100%" },
+      duration: 700,
+      easing: "quad.out",
+    },
+  })
+
+  document.addEventListener("astro:page-load", () => {
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement
+
+      if (target.matches("a") || target.matches("button")) return
+
+      burst.tune({ x: event.pageX, y: event.pageY }).replay()
+    })
+  })
+</script>
