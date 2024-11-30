@@ -1,17 +1,19 @@
-import fs from "fs"
-import path from "path"
+import type { APIRoute } from "astro"
 
 import { ImageResponse } from "@vercel/og"
 
-export async function GET() {
-  const basePath = path.join(
-    process.cwd(),
-    import.meta.env.PROD ? "dist/client" : "public",
-    "images",
-  )
-  const logo = fs.readFileSync(path.join(basePath, "logo.png"))
-  const background = fs.readFileSync(path.join(basePath, "concrete.png"))
-  const [SoraRegular, SoraExtraBold] = await Promise.all([
+const responseToDataUrl = async (response: Response) => {
+  const contentType = response.headers.get("content-type")
+  const arrayBuffer = await response.arrayBuffer()
+  const base64String = Buffer.from(arrayBuffer).toString("base64")
+
+  return `data:${contentType};base64,${base64String}`
+}
+
+export const GET: APIRoute = async ({ request }: { request: Request }) => {
+  const [logoUrl, backgroundUrl, SoraRegular, SoraExtraBold] = await Promise.all([
+    fetch(new URL("/images/logo.png", request.url)).then(responseToDataUrl),
+    fetch(new URL("/images/concrete.png", request.url)).then(responseToDataUrl),
     fetch("https://api.fontsource.org/v1/fonts/sora/latin-400-normal.ttf").then((res) =>
       res.arrayBuffer(),
     ),
@@ -27,13 +29,13 @@ export async function GET() {
       style: {
         fontFamily: "Sora Regular",
         background: "#ddd",
-        backgroundImage: `url('data:image/png;base64,${background.toString("base64")}')`,
+        backgroundImage: `url(${backgroundUrl})`,
       },
       children: [
         {
           type: "img",
           props: {
-            src: `data:image/png;base64,${logo.toString("base64")}`,
+            src: logoUrl,
             width: 300,
             height: 300,
           },
