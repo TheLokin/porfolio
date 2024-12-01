@@ -88,14 +88,14 @@ const links = [
 
 <style>
   .transition-scroll {
-    animation: blur linear both;
+    animation: shadow linear both;
     animation-timeline: scroll();
     animation-range-end: 1%;
   }
 
-  @keyframes blur {
+  @keyframes shadow {
     to {
-      @apply shadow-sm backdrop-blur;
+      @apply shadow-sm;
       background: var(--color-secondary) url("/images/concrete.png");
     }
   }
