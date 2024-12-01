@@ -34,6 +34,7 @@
     "prettier": "3.4.1",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.9",
+    "tailwind-merge": "2.5.5",
     "tailwindcss": "3.4.15",
     "typescript": "5.7.2",
     "typescript-eslint": "8.16.0"

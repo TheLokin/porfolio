@@ -1,9 +1,11 @@
 ---
 import type { HTMLAttributes } from "astro/types"
 
+import { twMerge } from "tailwind-merge"
+
 type Props = HTMLAttributes<"hr">
 
 const { class: className, ...props } = Astro.props
 ---
 
-<hr aria-hidden="true" class:list={["w-full border-t-2 border-primary", className]} {...props} />
+<hr aria-hidden="true" class={twMerge("w-full border-t-2 border-primary", className)} {...props} />
