@@ -8,17 +8,21 @@ import User from "@/icons/phosphor/User.astro"
 <SectionContainer id="about" title="Sobre mí">
   <User slot="icon" />
   <article class="flex flex-col items-center justify-between gap-12 md:flex-row">
-    <Image
-      alt="Diego Ramil López, desarrollador frontend."
+    <div
       class:list={[
-        "m-2 max-w-64 rotate-3 rounded-2xl drop-shadow-xl",
-        "outline outline-2 -outline-offset-1 outline-primary",
+        "max-w-64 rotate-3 overflow-hidden rounded-2xl drop-shadow-xl",
+        "m-2 outline outline-2 -outline-offset-1 outline-primary",
       ]}
-      height={1600}
-      loading="lazy"
-      src="/images/me.avif"
-      width={1600}
-    />
+    >
+      <Image
+        alt="Foto de perfil de Diego Ramil López."
+        class="aspect-square object-cover"
+        height={1600}
+        loading="lazy"
+        src="/images/me.avif"
+        width={1600}
+      />
+    </div>
     <div class="flex flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
       <p>
         Soy <strong>ingeniero informático por la Universidad de A Coruña</strong>. Desde noviembre
