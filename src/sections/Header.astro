@@ -1,8 +1,8 @@
 ---
-import Code from "@/components/icons/Code.astro"
 import MenuButton from "@/components/MenuButton.astro"
 import Link from "@/components/ui/Link.astro"
 import Separator from "@/components/ui/Separator.astro"
+import Code from "@/icons/phosphor/Code.astro"
 import Footer from "@/sections/Footer.astro"
 
 const links = [
@@ -29,7 +29,11 @@ const links = [
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
     <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 md:px-14">
-      <Link class="typography-lg inline-flex items-center gap-2 font-semibold" href="/">
+      <Link
+        aria-label="Ir a la página principal."
+        class="typography-lg inline-flex items-center gap-2 font-semibold tracking-wide"
+        href="/"
+      >
         <Code class="size-8" />
         TheLokin
       </Link>
@@ -92,6 +96,7 @@ const links = [
   @keyframes blur {
     to {
       @apply shadow-sm backdrop-blur;
+      background: var(--color-secondary) url("/images/concrete.png");
     }
   }
 
