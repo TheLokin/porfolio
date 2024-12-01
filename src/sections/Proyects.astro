@@ -1,30 +1,66 @@
 ---
 import { Image } from "astro:assets"
 
-import Package from "@/components/icons/Package.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
+import Badge from "@/components/ui/Badge.astro"
+import Link from "@/components/ui/Link.astro"
+import ArrowUpRight from "@/icons/phosphor/ArrowUpRight.astro"
+import GitHub from "@/icons/phosphor/GitHub.astro"
+import Package from "@/icons/phosphor/Package.astro"
+import AstroJS from "@/icons/simple/AstroJS.astro"
+import CloudflareWorkers from "@/icons/simple/CloudflareWorkers.astro"
+import ElectronJS from "@/icons/simple/ElectronJS.astro"
+import Kotlin from "@/icons/simple/Kotlin.astro"
+import TailwindCSS from "@/icons/simple/TailwindCSS.astro"
 
 const TAG = {
-  TailwincCSS: {
+  Astro: {
+    name: "Astro",
+    icon: AstroJS,
+  },
+  CloudflareWorkers: {
+    name: "Cloudflare Workers",
+    icon: CloudflareWorkers,
+  },
+  ElectronJS: {
+    name: "Electron",
+    icon: ElectronJS,
+  },
+  Kotlin: {
+    name: "Kotlin",
+    icon: Kotlin,
+  },
+  TailwindCSS: {
     name: "Tailwind CSS",
+    icon: TailwindCSS,
   },
 }
 
 const proyects = [
   {
+    id: "lavelada",
     title: "La Velada del Año IV",
-    description: "",
-    tags: [],
+    subtitle: "Página web oficial",
+    description: `
+      Contribución al desarrollo de la página web del evento de boxeo entre streamers y creadores de contenido, organizado por Ibai Llanos.
+      La iniciativa fue desarrollada como proyecto de código abierto bajo la dirección de Miguel Ángel Durán.
+    `,
+    tags: [TAG.Astro, TAG.TailwindCSS],
     image: "/images/lavelada.webp",
-    alt: "La Velada del Año 4.",
+    alt: "Captura de pantalla de la página web de La Velada del Año IV.",
     github: "https://github.com/midudev/la-velada-web-oficial",
   },
   {
+    id: "temzone",
     title: "Temzone",
-    description: "",
-    tags: [TAG.TailwincCSS],
+    subtitle: "Mapa interactivo de Temtem",
+    description: `
+      Desarrollo de una solución multiplataforma para escritorio y dispositivos móviles, diseñada como un mapa interactivo del videojuego Temtem.
+      El proyecto fue galardonado con el 3.º puesto en la XVI Edición de los Premios A Noite.
+    `,
+    tags: [TAG.Kotlin, TAG.ElectronJS, TAG.TailwindCSS, TAG.CloudflareWorkers],
     image: "/images/temzone.png",
-    alt: "Temzone.",
+    alt: "Captura de pantalla de la aplicación Temzone en dispositivos móviles.",
     github: "https://github.com/Temtem-Interactive-Map",
   },
 ]
@@ -34,17 +70,63 @@ const proyects = [
   <Package slot="icon" />
   {
     proyects.map((proyect) => (
-      <article class="grid gap-x-12 md:grid-cols-7">
-        <Image
-          alt={proyect.alt}
-          class="col-span-4 ms-px rounded-2xl object-cover outline outline-2 drop-shadow-xl"
-          height={960}
-          loading="lazy"
-          src={proyect.image}
-          width={720}
-        />
-        <div class="col-span-3">
-          <h3 class="typography-xl text-balance font-semibold tracking-wide">{proyect.title}</h3>
+      <article class="group grid grid-cols-7 gap-x-12 gap-y-4" id={proyect.id}>
+        <div
+          class:list={[
+            "col-span-7 overflow-hidden lg:col-span-4",
+            "m-[3px] rounded-2xl drop-shadow-xl",
+            "outline outline-[3px] -outline-offset-1 outline-primary",
+          ]}
+        >
+          <Image
+            alt={proyect.alt}
+            class:list={[
+              "aspect-video w-full scale-110 object-cover object-top",
+              "transition-transform duration-500 motion-reduce:transition-none",
+              "md:group-hover:scale-105",
+            ]}
+            height={960}
+            loading="lazy"
+            src={proyect.image}
+            width={720}
+          />
+        </div>
+        <div class="col-span-7 flex flex-col gap-4 lg:col-span-3">
+          <div class="flex flex-col gap-2">
+            <header>
+              <div class="flex justify-between gap-2">
+                <h3 class="flex gap-1">
+                  <Link
+                    aria-label={`Repositorio del proyecto ${proyect.title}, se abrirá en una nueva pestaña.`}
+                    class:list={[
+                      "typography-2xl text-balance font-bold tracking-wide",
+                      "before:duration-500",
+                    ]}
+                    href={proyect.github}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="underline"
+                  >
+                    {proyect.title}
+                  </Link>
+                  <ArrowUpRight aria-hidden="true" class="mt-px size-4 shrink-0" />
+                </h3>
+                <GitHub aria-hidden="true" class="mt-px size-6 shrink-0" />
+              </div>
+              <h4 class="typography-lg text-balance">{proyect.subtitle}</h4>
+            </header>
+            <ul class="flex flex-wrap gap-2">
+              {proyect.tags.map((tag) => (
+                <li>
+                  <Badge>
+                    <tag.icon />
+                    <span class="line-clamp-1">{tag.name}</span>
+                  </Badge>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p class="text-pretty">{proyect.description}</p>
         </div>
       </article>
     ))
