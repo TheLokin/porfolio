@@ -1,8 +1,8 @@
 ---
 import type { HTMLAttributes } from "astro/types"
 
-import List from "@/components/icons/List.astro"
-import X from "@/components/icons/X.astro"
+import List from "@/icons/phosphor/List.astro"
+import X from "@/icons/phosphor/X.astro"
 
 type Props = HTMLAttributes<"button"> & {
   open: boolean
@@ -14,7 +14,7 @@ const { open, class: className, ...props } = Astro.props
 <button
   aria-expanded={open}
   aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
-  class:list={["group inline-grid [&_svg]:size-8 [&_svg]:shrink-0", className]}
+  class:list={["group inline-grid", "[&_svg]:size-8 [&_svg]:shrink-0", className]}
   data-state="closed"
   type="button"
   {...props}
