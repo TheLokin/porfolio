@@ -114,7 +114,7 @@ const links = [
       menu.querySelectorAll("button, a, input, textarea, select, details, [tabindex]") || [],
     )
 
-    const toggleMenu = (state: "open" | "closed") => {
+    const handleToggleMenu = (state: "open" | "closed") => {
       menuTrigger.setAttribute("data-state", state)
       menuClose.setAttribute("data-state", state)
       menu.setAttribute("data-state", state)
@@ -136,13 +136,15 @@ const links = [
     }
 
     menuTrigger.addEventListener("click", () => {
-      toggleMenu("open")
+      handleToggleMenu("open")
       setTimeout(() => menuClose.focus(), 100)
     })
     menuClose.addEventListener("click", () => {
-      toggleMenu("closed")
+      handleToggleMenu("closed")
       menuTrigger.focus()
     })
-    menuAnchors.forEach((anchor) => anchor.addEventListener("click", () => toggleMenu("closed")))
+    menuAnchors.forEach((anchor) =>
+      anchor.addEventListener("click", () => handleToggleMenu("closed")),
+    )
   })
 </script>
