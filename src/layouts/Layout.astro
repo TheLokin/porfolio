@@ -110,10 +110,12 @@ const openGraph = {
   :root {
     --color-primary: #333;
     --color-secondary: #ddd;
+
+    --background-image: var(--color-secondary) url("/images/concrete-light.png");
   }
 
   body {
-    background: var(--color-secondary) url("/images/concrete.png");
+    background: var(--background-image);
   }
 
   & :focus-visible {
@@ -122,7 +124,7 @@ const openGraph = {
 
   ::-webkit-scrollbar {
     @apply w-2.5;
-    background: var(--color-secondary) url("/images/concrete.png");
+    background: var(--background-image);
   }
 
   ::-webkit-scrollbar-thumb {

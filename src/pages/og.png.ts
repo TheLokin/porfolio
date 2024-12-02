@@ -13,7 +13,7 @@ const responseToDataUrl = async (response: Response) => {
 export const GET: APIRoute = async ({ request }: { request: Request }) => {
   const [logoUrl, backgroundUrl, SoraRegular, SoraExtraBold] = await Promise.all([
     fetch(new URL("/images/logo.png", request.url)).then(responseToDataUrl),
-    fetch(new URL("/images/concrete.png", request.url)).then(responseToDataUrl),
+    fetch(new URL("/images/concrete-light.png", request.url)).then(responseToDataUrl),
     fetch("https://api.fontsource.org/v1/fonts/sora/latin-400-normal.ttf").then((res) =>
       res.arrayBuffer(),
     ),
