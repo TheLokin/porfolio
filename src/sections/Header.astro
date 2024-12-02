@@ -135,8 +135,14 @@ const links = [
       document.body.classList.toggle("md:overflow-auto")
     }
 
-    menuTrigger.addEventListener("click", () => toggleMenu("open"))
-    menuClose.addEventListener("click", () => toggleMenu("closed"))
+    menuTrigger.addEventListener("click", () => {
+      toggleMenu("open")
+      setTimeout(() => menuClose.focus(), 100)
+    })
+    menuClose.addEventListener("click", () => {
+      toggleMenu("closed")
+      menuTrigger.focus()
+    })
     menuAnchors.forEach((anchor) => anchor.addEventListener("click", () => toggleMenu("closed")))
   })
 </script>
