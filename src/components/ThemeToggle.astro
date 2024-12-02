@@ -1,0 +1,78 @@
+---
+import Moon from "@/icons/phosphor/Moon.astro"
+import Sun from "@/icons/phosphor/Sun.astro"
+---
+
+<button
+  class:list={[
+    "inline-grid text-primary",
+    "transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none",
+    "any-hover:scale-125 any-hover:opacity-70",
+    "[&_svg]:col-start-1 [&_svg]:row-start-1",
+    "[&_svg]:pointer-events-none [&_svg]:size-8 [&_svg]:shrink-0",
+    "[&_svg]:transition-[transform,opacity] [&_svg]:duration-300 [&_svg]:ease-out",
+  ]}
+  name="theme-toggle"
+>
+  <Sun class="dark:-rotate-45 dark:opacity-0" />
+  <Moon class="rotate-45 opacity-0 dark:rotate-0 dark:opacity-100" />
+</button>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const dispatchThemeEvent = (theme: "dark" | "light") => {
+      const event = new CustomEvent("theme", { detail: theme })
+
+      document.documentElement.dispatchEvent(event)
+    }
+
+    const getThemePreference = () => {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        const theme = localStorage.getItem("theme")
+
+        if (theme === "dark" || theme === "light") {
+          return theme
+        }
+      }
+
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+      const theme = mediaQuery.matches ? "dark" : "light"
+
+      dispatchThemeEvent(theme)
+
+      return theme
+    }
+
+    const theme = getThemePreference()
+    const isDark = theme === "dark"
+
+    document.documentElement.classList.toggle("dark", isDark)
+
+    const themeToggles = document.getElementsByName("theme-toggle")
+
+    const updateAriaLabel = (theme: "dark" | "light") => {
+      themeToggles.forEach((button) => {
+        button.setAttribute(
+          "aria-label",
+          `Cambiar a tema ${theme === "dark" ? "claro" : "oscuro"}.`,
+        )
+      })
+    }
+
+    updateAriaLabel(theme)
+
+    const handleToggleTheme = () => {
+      const isDark = document.documentElement.classList.toggle("dark")
+      const theme = isDark ? "dark" : "light"
+
+      updateAriaLabel(theme)
+      dispatchThemeEvent(theme)
+
+      localStorage.setItem("theme", theme)
+    }
+
+    themeToggles.forEach((themeToggle) => {
+      themeToggle.addEventListener("click", handleToggleTheme)
+    })
+  })
+</script>

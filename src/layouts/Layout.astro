@@ -114,6 +114,13 @@ const openGraph = {
     --background-image: var(--color-secondary) url("/images/concrete-light.png");
   }
 
+  .dark {
+    --color-primary: #ddd;
+    --color-secondary: #333;
+
+    --background-image: var(--color-secondary) url("/images/concrete-dark.png");
+  }
+
   body {
     background: var(--background-image);
   }
@@ -136,7 +143,7 @@ const openGraph = {
   import { Burst } from "@mojs/core"
 
   document.addEventListener("astro:page-load", () => {
-    const burst = new Burst({
+    const options = {
       left: 0,
       top: 0,
       radius: { 4: 19 },
@@ -151,6 +158,31 @@ const openGraph = {
         duration: 700,
         easing: "quad.out",
       },
+    }
+
+    let burst = new Burst(options)
+
+    document.documentElement.addEventListener("theme", (event) => {
+      const themeEvent = event as CustomEvent
+      const isDark = themeEvent.detail === "dark"
+
+      if (isDark) {
+        burst = new Burst({
+          ...options,
+          children: {
+            ...options.children,
+            stroke: "#ddd",
+          },
+        })
+      } else {
+        burst = new Burst({
+          ...options,
+          children: {
+            ...options.children,
+            stroke: "#333",
+          },
+        })
+      }
     })
 
     burst.el.style.zIndex = 100
