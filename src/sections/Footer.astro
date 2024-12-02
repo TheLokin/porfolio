@@ -1,21 +1,7 @@
 ---
-import Link from "@/components/ui/Link.astro"
+import GitHubLink from "@/components/GitHubLink.astro"
+import LinkedInLink from "@/components/LinkedInLink.astro"
 import Separator from "@/components/ui/Separator.astro"
-import GitHub from "@/icons/simple/GitHub.astro"
-import LinkedIn from "@/icons/simple/LinkedIn.astro"
-
-const links = [
-  {
-    href: "https://www.linkedin.com/in/diegoramil/",
-    label: "LinkedIn de Diego, se abrirá en una nueva pestaña.",
-    icon: LinkedIn,
-  },
-  {
-    href: "https://github.com/TheLokin",
-    label: "GitHub de Diego, se abrirá en una nueva pestaña.",
-    icon: GitHub,
-  },
-]
 ---
 
 <footer class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-4">
@@ -33,21 +19,12 @@ const links = [
   <Separator class="md:hidden" />
   <nav>
     <ul class="flex gap-4">
-      {
-        links.map((link) => (
-          <li>
-            <Link
-              aria-label={link.label}
-              href={link.href}
-              rel="noopener noreferrer"
-              target="_blank"
-              variant="icon"
-            >
-              <link.icon />
-            </Link>
-          </li>
-        ))
-      }
+      <li>
+        <LinkedInLink />
+      </li>
+      <li>
+        <GitHubLink />
+      </li>
     </ul>
   </nav>
 </footer>
