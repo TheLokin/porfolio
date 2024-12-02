@@ -5,15 +5,16 @@ import List from "@/icons/phosphor/List.astro"
 import X from "@/icons/phosphor/X.astro"
 
 type Props = HTMLAttributes<"button"> & {
-  open: boolean
+  state: "open" | "closed"
 }
 
-const { open, class: className, ...props } = Astro.props
+const { state, class: className, ...props } = Astro.props
+const isOpen = state === "open"
 ---
 
 <button
-  aria-expanded={open}
-  aria-label={open ? "Cerrar menú principal" : "Abrir menú principal"}
+  aria-expanded={isOpen}
+  aria-label={isOpen ? "Cerrar menú." : "Abrir menú."}
   class:list={["group inline-grid", "[&_svg]:size-8 [&_svg]:shrink-0", className]}
   data-state="closed"
   type="button"

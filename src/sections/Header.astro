@@ -25,7 +25,7 @@ const links = [
 ]
 ---
 
-<header class="sticky top-0 z-50">
+<header class="sticky top-0 z-10">
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
     <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 md:px-14">
@@ -37,7 +37,7 @@ const links = [
         <Code class="size-8 shrink-0" />
         TheLokin
       </Link>
-      <MenuButton aria-controls="menu" class="md:hidden" name="menu-button" open={false} />
+      <MenuButton aria-controls="menu" class="md:hidden" id="menu-trigger" state="closed" />
       <nav class="hidden md:block">
         <ul class="flex gap-4">
           {
@@ -53,10 +53,9 @@ const links = [
       </nav>
     </div>
   </div>
-
   <div
     class:list={[
-      "invisible fixed inset-0 overflow-y-auto bg-secondary px-2 opacity-0 scrollbar-hide md:hidden",
+      "invisible fixed inset-0 overflow-y-auto px-2 opacity-0 scrollbar-hide md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-open:visible data-open:opacity-100",
     ]}
@@ -65,7 +64,7 @@ const links = [
   >
     <div class="flex items-center justify-between px-2 py-4">
       <span class="typography-lg font-semibold uppercase">Menú</span>
-      <MenuButton aria-controls="menu" name="menu-button" open={true} />
+      <MenuButton aria-controls="menu" id="menu-close" state="open" />
     </div>
     <Separator />
     <nav>
@@ -107,37 +106,28 @@ const links = [
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const menuButtons = document.getElementsByName("menu-button")
-    const menuContent = document.getElementById("menu")
+    const menuTrigger = document.getElementById("menu-trigger") as HTMLButtonElement
+    const menuClose = document.getElementById("menu-close") as HTMLButtonElement
+    const menu = document.getElementById("menu") as HTMLDivElement
     const menuAnchors = document.querySelectorAll("#menu-anchors a")
+    const menuElements = Array.from(
+      menu.querySelectorAll("button, a, input, textarea, select, details, [tabindex]") || [],
+    )
 
-    const toggleMenu = () => {
-      menuButtons.forEach((menuButton) => {
-        menuButton.setAttribute(
-          "data-state",
-          menuButton.dataset.state === "open" ? "closed" : "open",
-        )
-      })
-
-      menuContent?.setAttribute(
-        "data-state",
-        menuContent.dataset.state === "open" ? "closed" : "open",
-      )
-
-      const accessibleElements = Array.from(
-        menuContent?.querySelectorAll("button, a, input, textarea, select, details, [tabindex]") ||
-          [],
-      )
+    const toggleMenu = (state: "open" | "closed") => {
+      menuTrigger.setAttribute("data-state", state)
+      menuClose.setAttribute("data-state", state)
+      menu.setAttribute("data-state", state)
 
       Array.from(
         document.querySelectorAll("button, a, input, textarea, select, details, [tabindex]"),
       )
-        .filter((element) => !accessibleElements.includes(element))
-        .forEach((accessibleElement) => {
-          if (accessibleElement.getAttribute("tabindex") === null) {
-            accessibleElement.setAttribute("tabindex", "-1")
+        .filter((element) => !menuElements.includes(element))
+        .forEach((element) => {
+          if (element.getAttribute("tabindex") === null) {
+            element.setAttribute("tabindex", "-1")
           } else {
-            accessibleElement.removeAttribute("tabindex")
+            element.removeAttribute("tabindex")
           }
         })
 
@@ -145,18 +135,8 @@ const links = [
       document.body.classList.toggle("md:overflow-auto")
     }
 
-    menuButtons.forEach((menuButton) => menuButton.addEventListener("click", toggleMenu))
-    menuAnchors.forEach((menuAnchor) => menuAnchor.addEventListener("click", toggleMenu))
-
-    const adjustScrollbar = () => {
-      menuContent?.style.setProperty(
-        "margin-right",
-        `${window.innerWidth - document.body.clientWidth}px`,
-      )
-    }
-
-    adjustScrollbar()
-
-    window.addEventListener("resize", adjustScrollbar, true)
+    menuTrigger.addEventListener("click", () => toggleMenu("open"))
+    menuClose.addEventListener("click", () => toggleMenu("closed"))
+    menuAnchors.forEach((anchor) => anchor.addEventListener("click", () => toggleMenu("closed")))
   })
 </script>

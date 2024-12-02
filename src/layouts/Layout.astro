@@ -112,10 +112,6 @@ const openGraph = {
     --color-secondary: #ddd;
   }
 
-  html {
-    scrollbar-gutter: stable;
-  }
-
   body {
     background: var(--color-secondary) url("/images/concrete.png");
   }
@@ -156,6 +152,7 @@ const openGraph = {
     })
 
     burst.el.style.zIndex = 100
+
     document.addEventListener("click", (event) => {
       burst.tune({ x: event.pageX, y: event.pageY }).replay()
     })
