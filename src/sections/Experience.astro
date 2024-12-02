@@ -36,7 +36,11 @@ const experience = [
 ]
 ---
 
-<SectionContainer id="experience" title="Experiencia laboral">
+<SectionContainer id="experience">
   <Briefcase slot="icon" />
+  <Fragment slot="title">
+    <span class="sm:hidden">Experiencia</span>
+    <span class="hidden sm:block">Experiencia laboral</span>
+  </Fragment>
   <Timeline elements={experience} options={{ month: "short", year: "numeric" }} />
 </SectionContainer>

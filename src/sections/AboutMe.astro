@@ -5,8 +5,9 @@ import SectionContainer from "@/components/SectionContainer.astro"
 import User from "@/icons/phosphor/User.astro"
 ---
 
-<SectionContainer id="about" title="Sobre mí">
+<SectionContainer id="about">
   <User slot="icon" />
+  <Fragment slot="title">Sobre mí</Fragment>
   <article class="flex flex-col items-center justify-between gap-12 lg:flex-row">
     <div
       class:list={[

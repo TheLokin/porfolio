@@ -38,7 +38,8 @@ const education = [
 ]
 ---
 
-<SectionContainer id="education" title="Educación">
+<SectionContainer id="education">
   <GraduationCap slot="icon" />
+  <Fragment slot="title">Educación</Fragment>
   <Timeline elements={education} options={{ year: "numeric" }} />
 </SectionContainer>

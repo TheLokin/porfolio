@@ -1,10 +1,9 @@
 ---
 type Props = {
   id: string
-  title: string
 }
 
-const { id, title } = Astro.props
+const { id } = Astro.props
 ---
 
 <section class="flex scroll-mt-16 flex-col gap-8" id={id}>
@@ -13,7 +12,7 @@ const { id, title } = Astro.props
       <slot name="icon" />
     </div>
     <h2 class="typography-4xl font-semibold">
-      {title}
+      <slot name="title" />
     </h2>
   </header>
   <slot />

@@ -66,8 +66,9 @@ const proyects = [
 ]
 ---
 
-<SectionContainer id="proyects" title="Proyectos">
+<SectionContainer id="proyects">
   <Package slot="icon" />
+  <Fragment slot="title">Proyectos</Fragment>
   {
     proyects.map((proyect) => (
       <article class="group grid grid-cols-7 gap-x-12 gap-y-4" id={proyect.id}>
