@@ -14,13 +14,15 @@ import Layout from "@/layouts/Layout.astro"
       transition:name="logo"
       width={800}
     />
-    <hgroup class="flex flex-col items-center text-center">
-      <h1 class="typography-6xl pb-8 font-extrabold uppercase">Error 404</h1>
-      <h2 class="typography-3xl pb-6 font-semibold uppercase">Página no encontrada</h2>
-      <p class="typography-xl max-w-80">
-        ¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica que la dirección sea
+    <div class="flex flex-col items-center gap-4 text-center">
+      <hgroup>
+        <h1 class="typography-5xl font-extrabold uppercase">Error 404</h1>
+        <h2 class="typography-3xl font-semibold uppercase">Página no encontrada</h2>
+      </hgroup>
+      <p class="typography-lg max-w-80">
+        ¡Hola! Lo sentimos, pero no logramos encontrar lo que buscas. Verifica que la dirección sea
         correcta.
       </p>
-    </hgroup>
+    </div>
   </section>
 </Layout>
