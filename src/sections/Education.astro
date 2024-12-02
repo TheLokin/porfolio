@@ -1,7 +1,7 @@
 ---
 import SectionContainer from "@/components/SectionContainer.astro"
 import Timeline from "@/components/Timeline.astro"
-import Books from "@/icons/phosphor/Books.astro"
+import GraduationCap from "@/icons/phosphor/GraduationCap.astro"
 
 const education = [
   {
@@ -39,6 +39,6 @@ const education = [
 ---
 
 <SectionContainer id="education" title="Educación">
-  <Books slot="icon" />
+  <GraduationCap slot="icon" />
   <Timeline elements={education} options={{ year: "numeric" }} />
 </SectionContainer>
