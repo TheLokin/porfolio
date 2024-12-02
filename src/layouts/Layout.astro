@@ -41,7 +41,6 @@ const openGraph = {
     <meta content="#ddd" name="theme-color" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href={openGraph.url} rel="canonical" />
-    {/* <link href="/manifest.json" rel="manifest" /> */}
 
     {/* Favicon Meta Tags */}
     <link href="/icons/android-icon-128x128.png" rel="icon" sizes="128x128" />
@@ -127,6 +126,7 @@ const openGraph = {
 
   ::-webkit-scrollbar {
     @apply w-2.5;
+    background: var(--color-secondary) url("/images/concrete.png");
   }
 
   ::-webkit-scrollbar-thumb {
@@ -137,29 +137,26 @@ const openGraph = {
 <script>
   import { Burst } from "@mojs/core"
 
-  const burst = new Burst({
-    left: 0,
-    top: 0,
-    radius: { 4: 19 },
-    angle: 45,
-    children: {
-      shape: "line",
-      radius: 3,
-      scale: 1,
-      stroke: "#333",
-      strokeDasharray: "100%",
-      strokeDashoffset: { "-100%": "100%" },
-      duration: 700,
-      easing: "quad.out",
-    },
-  })
-
   document.addEventListener("astro:page-load", () => {
+    const burst = new Burst({
+      left: 0,
+      top: 0,
+      radius: { 4: 19 },
+      angle: 45,
+      children: {
+        shape: "line",
+        radius: 3,
+        scale: 1,
+        stroke: "#333",
+        strokeDasharray: "100%",
+        strokeDashoffset: { "-100%": "100%" },
+        duration: 700,
+        easing: "quad.out",
+      },
+    })
+
+    burst.el.style.zIndex = 100
     document.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement
-
-      if (target.matches("a") || target.matches("button")) return
-
       burst.tune({ x: event.pageX, y: event.pageY }).replay()
     })
   })
