@@ -15,7 +15,12 @@ const isOpen = state === "open"
 <button
   aria-expanded={isOpen}
   aria-label={isOpen ? "Cerrar menú." : "Abrir menú."}
-  class:list={["group inline-grid", "[&_svg]:size-8 [&_svg]:shrink-0", className]}
+  class:list={[
+    "group inline-grid",
+    "[&_svg]:pointer-events-none [&_svg]:size-8 [&_svg]:shrink-0",
+    ,
+    className,
+  ]}
   data-state="closed"
   type="button"
   {...props}
