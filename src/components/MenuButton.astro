@@ -17,26 +17,15 @@ const isOpen = state === "open"
   aria-label={isOpen ? "Cerrar menú." : "Abrir menú."}
   class:list={[
     "group inline-grid",
+    "[&_svg]:col-start-1 [&_svg]:row-start-1",
     "[&_svg]:pointer-events-none [&_svg]:size-8 [&_svg]:shrink-0",
-    ,
+    "[&_svg]:transition-[transform,opacity] [&_svg]:duration-300 [&_svg]:ease-out",
     className,
   ]}
   data-state="closed"
   type="button"
   {...props}
 >
-  <List
-    class:list={[
-      "col-start-1 row-start-1",
-      "transition-[transform,opacity] duration-300 ease-out",
-      "group-data-open:-rotate-45 group-data-open:opacity-0",
-    ]}
-  />
-  <X
-    class:list={[
-      "col-start-1 row-start-1 rotate-45 opacity-0",
-      "transition-[transform,opacity] duration-300 ease-out",
-      "group-data-open:rotate-0 group-data-open:opacity-100",
-    ]}
-  />
+  <List class="group-data-open:-rotate-45 group-data-open:opacity-0" />
+  <X class="rotate-45 opacity-0 group-data-open:rotate-0 group-data-open:opacity-100" />
 </button>
