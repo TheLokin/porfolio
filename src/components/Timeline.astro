@@ -14,7 +14,7 @@ type Props = {
 
 const { elements, options } = Astro.props
 
-const formatDateTime = (date: Date, options: Intl.DateTimeFormatOptions): string => {
+const formatDate = (date: Date, options: Intl.DateTimeFormatOptions): string => {
   const parts = []
 
   if (options.year) parts.push(date.getFullYear())
@@ -53,11 +53,11 @@ const formatDateTime = (date: Date, options: Intl.DateTimeFormatOptions): string
           <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
           <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
           <span class="typography-sm uppercase tracking-wide opacity-90">
-            <time datetime={formatDateTime(element.date.from, options)}>
+            <time datetime={formatDate(element.date.from, options)}>
               {element.date.from.toLocaleString("es", options) || "actualidad"}
             </time>
             -
-            <time datetime={element.date.to && formatDateTime(element.date.to, options)}>
+            <time datetime={element.date.to && formatDate(element.date.to, options)}>
               {element.date.to?.toLocaleString("es", options) || "actualidad"}
             </time>
           </span>
