@@ -62,7 +62,9 @@ function formatToDate(date: Date, month: boolean) {
             },
           ]}
         >
-          <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
+          <h3 class="typography-lg max-w-4xl text-balance font-semibold tracking-wide">
+            {element.title}
+          </h3>
           <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
           <span class="typography-sm uppercase tracking-wide opacity-90">
             <time datetime={formatToDatetime(element.date.from, month)}>

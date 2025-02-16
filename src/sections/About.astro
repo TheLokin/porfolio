@@ -5,10 +5,10 @@ import User from "@/icons/phosphor/user.svg"
 import Me from "@/images/me.avif"
 import { Image } from "astro:assets"
 
-const { currentLocale = "es" } = Astro
+const { currentLocale = "es" } = Astro as { currentLocale: "es" | "gl" | "en" }
 const i18n = getI18N({ currentLocale })
 
-const description: Record<string, { p1: string; p2: string }> = {
+const description: Record<"es" | "gl" | "en", { p1: string; p2: string }> = {
   es: {
     p1: "Soy <strong>ingeniero informático por la Universidad de A Coruña</strong>. Desde noviembre de 2022 he estado desarrollándome profesionalmente en la industria del software. Gran parte de <strong>mi carrera se ha centrado en el desarrollo full stack</strong>, por lo que me manejo bien en el backend, aunque donde realmente <strong>destaco es en el frontend</strong>.",
     p2: "Por experiencias pasadas, <strong>mis lenguajes de programación son Kotlin y JavaScript/TypeScript</strong>, aunque en los comienzos de mi carrera también trabajé con Python. Por supuesto, <strong>manejo HTML y CSS</strong>, lo que me permite maquetar correctamente. También estoy familiarizado con el manejo de <strong>soluciones en la nube, tanto AWS como Google Cloud</strong>. Aunque he trabajado con estas tecnologías, siempre estoy dispuesto a aprender nuevas herramientas.",
@@ -27,9 +27,7 @@ const description: Record<string, { p1: string; p2: string }> = {
 <SectionContainer id="about">
   <User slot="icon" />
   <Fragment slot="title">{i18n.SECTION.ABOUT.TITLE}</Fragment>
-  <article
-    class="flex max-w-5xl flex-col items-center justify-between gap-x-12 gap-y-8 lg:flex-row"
-  >
+  <article class="flex flex-col items-center gap-x-12 gap-y-8 lg:flex-row">
     <div
       class:list={[
         "max-w-64 rotate-3 overflow-hidden rounded-2xl drop-shadow-xl",
@@ -38,7 +36,7 @@ const description: Record<string, { p1: string; p2: string }> = {
     >
       <Image src={Me} alt={i18n.IMAGE.ME} format="avif" class="aspect-square object-cover" />
     </div>
-    <div class="flex flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
+    <div class="flex max-w-xl flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
       <p set:html={description[currentLocale].p1} />
       <p set:html={description[currentLocale].p2} />
     </div>

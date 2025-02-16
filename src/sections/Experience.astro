@@ -1,37 +1,79 @@
 ---
 import SectionContainer from "@/components/SectionContainer.astro"
 import Timeline from "@/components/Timeline.astro"
-import Briefcase from "@/icons/phosphor/Briefcase.astro"
+import { getI18N } from "@/i18n"
+import Briefcase from "@/icons/phosphor/briefcase.svg"
 
-const experience = [
+const { currentLocale } = Astro as { currentLocale: "es" | "gl" | "en" }
+const i18n = getI18N({ currentLocale })
+
+const experience: {
+  title: { es: string; gl: string; en: string }
+  subtitle: { es: string; gl: string; en: string }
+  date: { from: Date; to?: Date }
+  description?: { es: string; gl: string; en: string }
+}[] = [
   {
-    title: "Técnico de Apoyo a la Investigación",
-    subtitle: "CITIC - Centro de Investigación TIC",
+    title: {
+      es: "Técnico de Apoyo a la Investigación",
+      gl: "Técnico de Apoio á Investigación",
+      en: "Research Support Technician",
+    },
+    subtitle: {
+      es: "CITIC - Centro de Investigación TIC",
+      gl: "CITIC - Centro de Investigación TIC",
+      en: "CITIC - Research Center for ICT",
+    },
     date: {
       from: new Date(2023, 3),
     },
-    description:
-      "Responsable del diseño y desarrollo de sistemas y componentes para herramientas de digitalización en el sector naval, alcanzando una mejora del 27% en la eficiencia de los operarios mediante la implementación de soluciones innovadoras.",
+    description: {
+      es: "Liderazgo en proyectos de digitalización en el sector naval, coordinando equipos para el desarrollo de componentes tecnológicos, el análisis de requerimientos específicos del sector y la integración de soluciones innovadoras que optimicen procesos industriales.",
+      gl: "Liderado en proxectos de dixitalización no sector naval, coordinando equipos para o desenvolvemento de compoñentes tecnolóxicos, o análise de requisitos específicos do sector e a integración de solucións innovadoras que optimicen os procesos industriais.",
+      en: "Leadership in digitalization projects in the naval sector, coordinating teams for the development of technological components, analyzing industry-specific requirements, and integrating innovative solutions to optimize industrial processes.",
+    },
   },
   {
-    title: "Desarrollador Software",
-    subtitle: "Enxenio",
+    title: {
+      es: "Desarrollador Software",
+      gl: "Desarrollador Software",
+      en: "Software Developer",
+    },
+    subtitle: {
+      es: "Enxenio",
+      gl: "Enxenio",
+      en: "Enxenio",
+    },
     date: {
       from: new Date(2022, 10),
       to: new Date(2023, 2),
     },
-    description:
-      "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto.",
+    description: {
+      es: "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto.",
+      gl: "Desenvolvemento de aplicacións móbiles para iOS e Android, cunha participación integral en todo o ciclo de vida do desenvolvemento. Comunicación constante co cliente e traballo en equipo para asegurar a entrega do produto.",
+      en: "Development of mobile applications for iOS and Android, with full involvement in the entire development lifecycle. Constant communication with the client and teamwork to ensure product delivery.",
+    },
   },
   {
-    title: "Beca de Colaboración en Departamentos Universitarios",
-    subtitle: "Universidad de A Coruña",
+    title: {
+      es: "Beca de Colaboración en Departamentos Universitarios",
+      gl: "Beca de Colaboración en Departamentos Universitarios",
+      en: "Collaboration Scholarship in University Departments",
+    },
+    subtitle: {
+      es: "Universidad de A Coruña",
+      gl: "Universidade da Coruña",
+      en: "University of A Coruña",
+    },
     date: {
       from: new Date(2020, 9),
       to: new Date(2021, 4),
     },
-    description:
-      "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico.",
+    description: {
+      es: "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico.",
+      gl: "Responsable do estudo metodolóxico para mellorar imaxes de fondo de ollo con aprendizaxe profunda. Xestión de datos para optimizar a precisión do procesamento, evaluando e validando as imaxes para o diagnóstico oftalmolóxico.",
+      en: "In charge of the methodological study for improving fundus images with deep learning. Data management to optimize processing accuracy, evaluating and validating images for ophthalmological diagnosis.",
+    },
   },
 ]
 ---
@@ -39,8 +81,16 @@ const experience = [
 <SectionContainer id="experience">
   <Briefcase slot="icon" />
   <Fragment slot="title">
-    <span class="sm:hidden">Experiencia</span>
-    <span class="hidden sm:block">Experiencia laboral</span>
+    <span class="sm:hidden">{i18n.SECTION.EXPERIENCE.SHORT_TITLE}</span>
+    <span class="hidden sm:block">{i18n.SECTION.EXPERIENCE.TITLE}</span>
   </Fragment>
-  <Timeline elements={experience} options={{ month: "short", year: "numeric" }} />
+  <Timeline
+    elements={experience.map((experience) => ({
+      ...experience,
+      title: experience.title[currentLocale],
+      subtitle: experience.subtitle[currentLocale],
+      description: experience.description && experience.description[currentLocale],
+    }))}
+    month
+  />
 </SectionContainer>
