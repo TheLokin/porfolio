@@ -1,26 +1,30 @@
 ---
+import LanguageSwitch from "@/components/LanguageSwitch.astro"
 import MenuButton from "@/components/MenuButton.astro"
 import Link from "@/components/ui/Link.astro"
 import Separator from "@/components/ui/Separator.astro"
-import Code from "@/icons/phosphor/Code.astro"
+import { getI18N } from "@/i18n"
 import Footer from "@/sections/Footer.astro"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 
 const links = [
   {
-    label: "Experiencia",
-    href: "/#experience",
+    label: i18n.SECTION.EXPERIENCE.SHORT_TITLE,
+    href: `/${currentLocale}/#experience`,
   },
   {
-    label: "Proyectos",
-    href: "/#proyects",
+    label: i18n.SECTION.PROJECTS.TITLE,
+    href: `/${currentLocale}/#proyects`,
   },
   {
-    label: "Educación",
-    href: "/#education",
+    label: i18n.SECTION.EDUCATION.TITLE,
+    href: `/${currentLocale}/#education`,
   },
   {
-    label: "Sobre mí",
-    href: "/#about",
+    label: i18n.SECTION.ABOUT.TITLE,
+    href: `/${currentLocale}/#about`,
   },
 ]
 ---
@@ -28,22 +32,19 @@ const links = [
 <header class="sticky top-0 z-10">
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
-    <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 p-4 md:px-14">
-      <Link
-        aria-label="Ir a la página principal."
-        class="typography-lg inline-flex items-center gap-2 font-semibold tracking-wide"
-        href="/"
-      >
-        <Code class="size-8 shrink-0" />
-        TheLokin
-      </Link>
+    <div class="relative mx-auto flex max-w-6xl items-center justify-end gap-4 p-4 md:px-14">
+      <LanguageSwitch class="absolute start-0 top-0" />
       <MenuButton aria-controls="menu" class="md:hidden" id="menu-trigger" state="closed" />
       <nav class="hidden md:block">
         <ul class="flex gap-4">
           {
             links.map((link) => (
               <li>
-                <Link class="typography-lg font-semibold" href={link.href} variant="underline">
+                <Link
+                  class="typography-lg font-semibold leading-none"
+                  href={link.href}
+                  variant="underline"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -57,13 +58,13 @@ const links = [
     class:list={[
       "invisible fixed inset-0 overflow-y-auto px-2 opacity-0 scrollbar-hide md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
-      "data-open:visible data-open:opacity-100",
+      "data-[state=open]:visible data-[state=open]:opacity-100",
     ]}
     data-state="closed"
     id="menu"
   >
     <div class="flex items-center justify-between px-2 py-4">
-      <span class="typography-lg font-semibold uppercase">Menú</span>
+      <span class="typography-lg font-semibold uppercase">{i18n.MENU.TITLE}</span>
       <MenuButton aria-controls="menu" id="menu-close" state="open" />
     </div>
     <Separator />

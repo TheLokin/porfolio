@@ -5,12 +5,20 @@
     "REPOSITORY": "Repositorio do proxecto \"{proyect}\", abrirase nunha nova pestana."
   },
   "IMAGE": {
-    "ME": "Foto de perfil de Diego Ramil López."
+    "ME": "Foto de perfil de Diego Ramil López.",
+    "LOGO": "Logo de Diego Ramil López."
   },
   "MENU": {
     "TITLE": "Menú",
     "OPEN": "Abrir menú.",
     "CLOSE": "Pechar menú."
+  },
+  "HERO": {
+    "TEXT_1": "Ola, son",
+    "TEXT_2": "Desenvolvedor",
+    "TEXT_3": "Frontend",
+    "TEXT_4": "Situado en",
+    "TEXT_5": "España"
   },
   "SECTION": {
     "EXPERIENCE": {
@@ -35,5 +43,10 @@
     "HEART_EMOJI": "amor",
     "CONNECTOR": "e",
     "COFFEE_EMOJI": "café"
+  },
+  "ERROR_404": {
+    "TITLE": "Error 404",
+    "SUBTITLE": "Páxina non atopada",
+    "MESSAGE": "Ola! Sentímolo, pero non conseguimos atopar o que buscas. Verifica que o enderezo sexa correcto."
   }
 }
