@@ -1,10 +1,14 @@
 ---
 import Link from "@/components/ui/Link.astro"
+import { getI18N } from "@/i18n"
 import GitHub from "@/icons/simple/github.svg"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
 <Link
-  aria-label="GitHub de Diego, se abrirá en una nueva pestaña."
+  aria-label={i18n.GITHUB}
   href="https://github.com/TheLokin"
   rel="noopener noreferrer"
   target="_blank"
