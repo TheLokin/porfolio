@@ -1,0 +1,26 @@
+{
+  "LINK": {
+    "LINKEDIN": "LinkedIn de Diego, abrirase nunha nova pestana.",
+    "GITHUB": "GitHub de Diego, abrirase nunha nova pestana."
+  },
+  "MENU": {
+    "TITLE": "Menú",
+    "OPEN": "Abrir menú.",
+    "CLOSE": "Pechar menú."
+  },
+  "SECTION": {
+    "EXPERIENCE": "Experiencia",
+    "PROJECTS": "Proxectos",
+    "EDUCATION": "Educación",
+    "ABOUT": "Sobre min"
+  },
+  "TIMELINE": {
+    "PRESENT": "Actualidade"
+  },
+  "FOOTER": {
+    "TEXT": "Deseñado e desenvolvido con",
+    "HEART_EMOJI": "amor",
+    "CONNECTOR": "e",
+    "COFFEE_EMOJI": "café"
+  }
+}
