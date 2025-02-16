@@ -1,4 +1,12 @@
 ---
+import { getI18N } from "@/i18n"
+import { format } from "date-fns"
+import { es } from "date-fns/locale/es"
+import { gl } from "date-fns/locale/gl"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+
 type Props = {
   elements: {
     title: string
@@ -9,19 +17,23 @@ type Props = {
     }
     description?: string
   }[]
-  options: Intl.DateTimeFormatOptions
+  month?: boolean
 }
 
-const { elements, options } = Astro.props
+const { elements, month = false } = Astro.props
 
-function formatDate(date: Date, options: Intl.DateTimeFormatOptions): string {
-  const parts = []
+function formatToDatetime(date: Date, month: boolean) {
+  const parts = [date.getFullYear().toString()]
 
-  if (options.year) parts.push(date.getFullYear())
-  if (options.month) parts.push(String(date.getMonth() + 1).padStart(2, "0"))
-  if (options.day) parts.push(String(date.getDate()).padStart(2, "0"))
+  if (month) parts.push(String(date.getMonth() + 1).padStart(2, "0"))
 
   return parts.join("-")
+}
+
+function formatToDate(date: Date, month: boolean) {
+  return format(date, month ? "MMM yyyy" : "yyyy", {
+    locale: currentLocale === "en" ? undefined : currentLocale === "es" ? es : gl,
+  })
 }
 ---
 
@@ -53,12 +65,12 @@ function formatDate(date: Date, options: Intl.DateTimeFormatOptions): string {
           <h3 class="typography-lg text-balance font-semibold tracking-wide">{element.title}</h3>
           <h4 class="text-balance font-medium tracking-wide">{element.subtitle}</h4>
           <span class="typography-sm uppercase tracking-wide opacity-90">
-            <time datetime={formatDate(element.date.from, options)}>
-              {element.date.from.toLocaleString("es", options) || "actualidad"}
+            <time datetime={formatToDatetime(element.date.from, month)}>
+              {formatToDate(element.date.from, month)}
             </time>
             -
-            <time datetime={element.date.to && formatDate(element.date.to, options)}>
-              {element.date.to?.toLocaleString("es", options) || "actualidad"}
+            <time datetime={element.date.to && formatToDatetime(element.date.to, month)}>
+              {element.date.to ? formatToDate(element.date.to, month) : i18n.TIMELINE.PRESENT}
             </time>
           </span>
         </div>
