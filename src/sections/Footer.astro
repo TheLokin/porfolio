@@ -2,6 +2,10 @@
 import GitHubLink from "@/components/GitHubLink.astro"
 import LinkedInLink from "@/components/LinkedInLink.astro"
 import Separator from "@/components/ui/Separator.astro"
+import { getI18N } from "@/i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
 <footer class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-4">
@@ -11,10 +15,10 @@ import Separator from "@/components/ui/Separator.astro"
     TheLokin
     <span aria-hidden="true" class="hidden md:inline">|</span>
     <br aria-hidden="true" class="block md:hidden" />
-    Diseñado y desarrollado con
-    <span aria-label="amor">🤎</span>
-    y
-    <span aria-label="café">☕</span>.
+    {i18n.FOOTER.TEXT}
+    <span aria-label={i18n.FOOTER.HEART_EMOJI}>🤎</span>
+    {i18n.FOOTER.CONNECTOR}
+    <span aria-label={i18n.FOOTER.COFFEE_EMOJI}>☕</span>.
   </span>
   <Separator class="md:hidden" />
   <nav>
