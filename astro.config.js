@@ -20,12 +20,10 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+  devToolbar: {    enabled: false},
   experimental: {
     svg: {
       mode: "sprite",
     },
-  },
-  devToolbar: {
-    enabled: false,
   },
 })
