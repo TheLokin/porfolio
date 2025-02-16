@@ -1,42 +1,10 @@
 {
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "explorer.fileNesting.patterns": {
-    "package.json": "package-lock.json,pnpm-lock.yaml,yarn.lock,bun.lockb",
-    "astro.config.js": "tsconfig.json",
-    "tailwind.config.js": "postcss.config.js"
-  },
-  "editor.linkedEditing": true,
-  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "files.defaultLanguage": "${activeEditorLanguage}",
-  "files.associations": {
-    "*.svg": "html"
-  },
-  "files.exclude": {
-    "dist": true,
-    ".astro": true,
-    ".vercel": true,
-    "node_modules": true
-  },
   "eslint.format.enable": true,
-  "eslint.validate": ["astro", "javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "eslint.validate": ["javascript", "typescript", "astro"],
   "prettier.documentSelectors": ["**/*.astro"],
   "tailwindCSS.classAttributes": ["class", "class:list"]
 }
