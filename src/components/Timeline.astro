@@ -14,7 +14,7 @@ type Props = {
 
 const { elements, options } = Astro.props
 
-const formatDate = (date: Date, options: Intl.DateTimeFormatOptions): string => {
+function formatDate(date: Date, options: Intl.DateTimeFormatOptions): string {
   const parts = []
 
   if (options.year) parts.push(date.getFullYear())
@@ -38,7 +38,7 @@ const formatDate = (date: Date, options: Intl.DateTimeFormatOptions): string => 
           "md:before:absolute md:before:-start-6 md:before:top-2 md:before:-ms-2 md:before:size-4 md:before:rounded-full md:before:bg-primary",
           "relative gap-x-12 gap-y-4 md:start-12 md:pb-2 md:pe-12",
           {
-            "grid md:grid-cols-5": typeof element.description !== "undefined",
+            "grid md:grid-cols-5": element.description,
           },
         ]}
       >
@@ -46,7 +46,7 @@ const formatDate = (date: Date, options: Intl.DateTimeFormatOptions): string => 
           class:list={[
             "flex flex-col",
             {
-              "col-span-2": typeof element.description !== "undefined",
+              "col-span-2": element.description,
             },
           ]}
         >
