@@ -3,8 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/icons/*": ["./src/assets/icons/*"],
+      "@/images/*": ["./src/assets/images/*"]
     }
-  },
-  "exclude": ["public", "node_modules"]
+  }
 }
