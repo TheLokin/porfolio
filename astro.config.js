@@ -8,22 +8,12 @@ export default defineConfig({
   site: "https://thelokin.dev",
   output: "server",
   integrations: [tailwind(), sitemap(), robotsTxt()],
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
+  adapter: vercel({ webAnalytics: { enabled: true } }),
   i18n: {
     defaultLocale: "es",
     locales: ["es", "gl", "en"],
-    routing: {
-      prefixDefaultLocale: true,
-    },
+    routing: { prefixDefaultLocale: true },
   },
-  devToolbar: {    enabled: false},
-  experimental: {
-    svg: {
-      mode: "sprite",
-    },
-  },
+  devToolbar: { enabled: false },
+  experimental: { svg: { mode: "sprite" } },
 })
