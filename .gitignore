@@ -3,21 +3,14 @@ node_modules
 
 # build files
 dist
-
-# vercel
-.vercel
-
-# astro
 .astro
+.vercel
 
 # package manager
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
 bun.lockb
-
-# environment variables
-.env*
 
 # macOS-specific files
 .DS_Store
