@@ -3,16 +3,28 @@
     "LINKEDIN": "LinkedIn de Diego, se abrirá en una nueva pestaña.",
     "GITHUB": "GitHub de Diego, se abrirá en una nueva pestaña."
   },
+  "IMAGE":{
+    "ME": "Profile picture of Diego Ramil López."
+  },
   "MENU": {
     "TITLE": "Menú",
     "OPEN": "Abrir menú.",
     "CLOSE": "Cerrar menú."
   },
   "SECTION": {
-    "EXPERIENCE": "Experiencia",
-    "PROJECTS": "Proyectos",
-    "EDUCATION": "Educación",
-    "ABOUT": "Sobre mí"
+    "EXPERIENCE": {
+      "TITLE": "Experiencia laboral",
+      "SHORT_TITLE": "Experiencia"
+    },
+    "PROJECTS": {
+      "TITLE": "Proyectos"
+    },
+    "EDUCATION": {
+      "TITLE": "Educación"
+    },
+    "ABOUT": {
+      "TITLE": "Sobre mí"
+    }
   },
   "TIMELINE": {
     "PRESENT": "Actualidad"
