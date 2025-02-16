@@ -1,8 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types"
 
-import List from "@/icons/phosphor/List.astro"
-import X from "@/icons/phosphor/X.astro"
+import { getI18N } from "@/i18n"
+import List from "@/icons/phosphor/list.svg"
+import X from "@/icons/phosphor/x.svg"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 
 type Props = HTMLAttributes<"button"> & {
   state: "open" | "closed"
@@ -14,7 +18,7 @@ const isOpen = state === "open"
 
 <button
   aria-expanded={isOpen}
-  aria-label={isOpen ? "Cerrar menú." : "Abrir menú."}
+  aria-label={isOpen ? i18n.MENU.CLOSE : i18n.MENU.OPEN}
   class:list={[
     "group inline-grid",
     "[&_svg]:col-start-1 [&_svg]:row-start-1",
@@ -26,6 +30,8 @@ const isOpen = state === "open"
   type="button"
   {...props}
 >
-  <List class="group-data-open:-rotate-45 group-data-open:opacity-0" />
-  <X class="rotate-45 opacity-0 group-data-open:rotate-0 group-data-open:opacity-100" />
+  <List class="group-data-[state=open]:-rotate-45 group-data-[state=open]:opacity-0" />
+  <X
+    class="rotate-45 opacity-0 group-data-[state=open]:rotate-0 group-data-[state=open]:opacity-100"
+  />
 </button>
