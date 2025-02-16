@@ -1,9 +1,10 @@
 {
   "LINK": {
     "LINKEDIN": "Diego's LinkedIn, it will open in a new tab.",
-    "GITHUB": "Diego's GitHub, it will open in a new tab."
+    "GITHUB": "Diego's GitHub, it will open in a new tab.",
+    "REPOSITORY": "Repository of the project \"{proyect}\", it will open in a new tab."
   },
-  "IMAGE":{
+  "IMAGE": {
     "ME": "Foto de perfil de Diego Ramil López."
   },
   "MENU": {

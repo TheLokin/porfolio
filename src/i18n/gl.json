@@ -1,9 +1,10 @@
 {
   "LINK": {
     "LINKEDIN": "LinkedIn de Diego, abrirase nunha nova pestana.",
-    "GITHUB": "GitHub de Diego, abrirase nunha nova pestana."
+    "GITHUB": "GitHub de Diego, abrirase nunha nova pestana.",
+    "REPOSITORY": "Repositorio do proxecto \"{proyect}\", abrirase nunha nova pestana."
   },
-  "IMAGE":{
+  "IMAGE": {
     "ME": "Foto de perfil de Diego Ramil López."
   },
   "MENU": {
