@@ -1,20 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-  darkMode: "class",
   content: ["./src/**/*.{html,md,mdx,js,jsx,astro,ts,tsx,svelte,vue}"],
   theme: {
-    data: {
-      open: "state=open",
-      closed: "state=closed",
-    },
     extend: {
       fontFamily: {
-        sora: ["Sora Variable", "system-ui", "sans-serif"],
+        sora: ["Sora Variable", "system-ui"],
       },
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
       },
     },
   },
@@ -33,7 +29,6 @@ export default {
             display: "none",
           },
         },
-
         ".scrollbar-default": {
           /* IE and Edge */
           "-ms-overflow-style": "auto",
@@ -47,7 +42,6 @@ export default {
           },
         },
       })
-
       addComponents({
         /* 48px */
         ".typography-6xl": {
@@ -112,7 +106,6 @@ export default {
           letterSpacing: "-0.025em",
         },
       })
-
       addVariant("any-hover", "@media (any-hover: hover) { &:hover }")
     },
   ],
