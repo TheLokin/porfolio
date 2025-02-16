@@ -1,28 +1,31 @@
-import node from "@astrojs/node"
 import sitemap from "@astrojs/sitemap"
 import tailwind from "@astrojs/tailwind"
-import vercel from "@astrojs/vercel/serverless"
-import { defineConfig } from "astro/config"
+import vercel from "@astrojs/vercel"
 import robotsTxt from "astro-robots-txt"
-
-let adapter = vercel({
-  webAnalytics: {
-    enabled: true,
-  },
-})
-
-if (process.argv.includes("--node")) {
-  adapter = node({
-    mode: "standalone",
-  })
-}
+import { defineConfig } from "astro/config"
 
 export default defineConfig({
-  site: "https://thelokin.vercel.app",
+  site: "https://thelokin.dev",
   output: "server",
   integrations: [tailwind(), sitemap(), robotsTxt()],
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "gl", "en"],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
+  experimental: {
+    svg: {
+      mode: "sprite",
+    },
+  },
   devToolbar: {
     enabled: false,
   },
-  adapter,
 })
