@@ -1,8 +1,9 @@
 import type { APIRoute } from "astro"
 
+import { Buffer } from "node:buffer"
 import { ImageResponse } from "@vercel/og"
 
-const responseToDataUrl = async (response: Response) => {
+async function responseToDataUrl(response: Response) {
   const contentType = response.headers.get("content-type")
   const arrayBuffer = await response.arrayBuffer()
   const base64String = Buffer.from(arrayBuffer).toString("base64")
@@ -13,7 +14,7 @@ const responseToDataUrl = async (response: Response) => {
 export const GET: APIRoute = async ({ request }: { request: Request }) => {
   const [logoUrl, backgroundUrl, SoraRegular, SoraExtraBold] = await Promise.all([
     fetch(new URL("/images/logo.png", request.url)).then(responseToDataUrl),
-    fetch(new URL("/images/concrete-light.png", request.url)).then(responseToDataUrl),
+    fetch(new URL("/images/grainy.webp", request.url)).then(responseToDataUrl),
     fetch("https://api.fontsource.org/v1/fonts/sora/latin-400-normal.ttf").then((res) =>
       res.arrayBuffer(),
     ),
@@ -28,7 +29,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
       tw: "w-full h-full flex items-center justify-center relative px-22 text-[#333]",
       style: {
         fontFamily: "Sora Regular",
-        background: "#ddd",
+        background: "#dddad2",
         backgroundImage: `url(${backgroundUrl})`,
       },
       children: [
