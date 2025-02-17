@@ -1,8 +1,14 @@
-# Porfolio 🚀
+# 🚀 Porfolio
+
+<div align="center">
+    <a href="https://thelokin.dev/">
+        <img src=".github/porfolio.webp">
+    </a>
+</div>
 
 ## 🛠️ Stack
 
-- https://astro.build/
-- https://tailwindcss.com/
-- https://simpleicons.org/
-- https://phosphoricons.com/
+- [Astro](https://astro.build/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Simple Icons](https://simpleicons.org/)
+- [Phosphor Icons](https://phosphoricons.com/)
