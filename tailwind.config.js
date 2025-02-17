@@ -1,6 +1,5 @@
-import animations from "tailwindcss-animated"
-
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./src/**/*.{html,md,mdx,js,jsx,astro,ts,tsx,svelte,vue}"],
   theme: {
@@ -16,8 +15,6 @@ export default {
     },
   },
   plugins: [
-    animations,
-
     ({ addUtilities, addComponents, addVariant }) => {
       addUtilities({
         ".scrollbar-hide": {

@@ -1,5 +1,5 @@
 ---
-import LanguageSelector from "@/components/LanguageSelector.astro"
+import LocaleSelector from "@/components/LocaleSelector.astro"
 import MenuButton from "@/components/MenuButton.astro"
 import Link from "@/components/ui/Link.astro"
 import Separator from "@/components/ui/Separator.astro"
@@ -37,26 +37,25 @@ const links = [
 
 <header
   class:list={[
-    "top-0 z-10",
     {
-      sticky,
+      "sticky top-0 z-10": sticky,
     },
   ]}
 >
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
     <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-end gap-4 px-4 md:px-14">
-      <LanguageSelector class="absolute start-2 top-0 md:start-10" />
-      <MenuButton aria-controls="menu" class="md:hidden" id="menu-trigger" state="closed" />
+      <LocaleSelector class="absolute start-2 top-0 md:start-10" />
+      <MenuButton id="menu-trigger" state="closed" aria-controls="menu" class="md:hidden" />
       <nav class="hidden md:block">
         <ul class="flex gap-4">
           {
             links.map((link) => (
               <li>
                 <Link
-                  class="typography-lg font-semibold leading-none"
                   href={link.href}
                   variant="underline"
+                  class="typography-lg font-semibold leading-none"
                 >
                   {link.label}
                 </Link>
@@ -68,17 +67,17 @@ const links = [
     </div>
   </div>
   <div
+    id="menu"
+    data-state="closed"
     class:list={[
-      "invisible fixed inset-0 overflow-y-auto px-2 opacity-0 scrollbar-hide md:hidden",
+      "invisible fixed inset-0 z-10 overflow-y-auto px-2 opacity-0 scrollbar-hide md:hidden",
       "transition-[visibility,opacity] duration-300 ease-in-out motion-reduce:transition-none",
       "data-[state=open]:visible data-[state=open]:opacity-100",
     ]}
-    data-state="closed"
-    id="menu"
   >
     <div class="flex h-16 items-center justify-between px-2">
       <span class="typography-lg font-semibold uppercase">{i18n.MENU.TITLE}</span>
-      <MenuButton aria-controls="menu" id="menu-close" state="open" />
+      <MenuButton id="menu-close" state="open" aria-controls="menu" />
     </div>
     <Separator />
     <nav>
@@ -86,7 +85,7 @@ const links = [
         {
           links.map((link) => (
             <li class="flex justify-center">
-              <Link class="typography-lg font-semibold" href={link.href}>
+              <Link href={link.href} class="typography-lg font-semibold">
                 {link.label}
               </Link>
             </li>
