@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro"
 
 import { Buffer } from "node:buffer"
+import { getI18N } from "@/i18n"
 import { ImageResponse } from "@vercel/og"
 
 async function responseToDataUrl(response: Response) {
@@ -11,7 +12,12 @@ async function responseToDataUrl(response: Response) {
   return `data:${contentType};base64,${base64String}`
 }
 
-export const GET: APIRoute = async ({ request }: { request: Request }) => {
+export const GET: APIRoute = async ({ params, request }) => {
+  const currentLocale = params.lang || "es"
+  const i18n = getI18N({ currentLocale })
+
+  console.log(new URL("/images/logo.png", request.url))
+
   const [logoUrl, backgroundUrl, SoraRegular, SoraExtraBold] = await Promise.all([
     fetch(new URL("/images/logo.png", request.url)).then(responseToDataUrl),
     fetch(new URL("/images/grainy.webp", request.url)).then(responseToDataUrl),
@@ -65,7 +71,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
                                 lineHeight: "3rem",
                                 letterSpacing: "-0.025em",
                               },
-                              children: "Hola, soy",
+                              children: i18n.OPEN_GRAPH.TEXT_1,
                             },
                           },
                           {
@@ -99,20 +105,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
                                 letterSpacing: "-0.025em",
                                 fontFamily: "Sora Extra Bold",
                               },
-                              children: "Desarrollador",
-                            },
-                          },
-                          {
-                            type: "div",
-                            props: {
-                              tw: "flex",
-                              style: {
-                                fontSize: "2.5rem",
-                                lineHeight: "3rem",
-                                letterSpacing: "-0.025em",
-                                fontFamily: "Sora Extra Bold",
-                              },
-                              children: "Frontend",
+                              children: i18n.OPEN_GRAPH.TEXT_2,
                             },
                           },
                         ],
@@ -132,7 +125,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
                                 lineHeight: "3rem",
                                 letterSpacing: "-0.025em",
                               },
-                              children: "Ubicado en",
+                              children: i18n.OPEN_GRAPH.TEXT_3,
                             },
                           },
                           {
@@ -145,7 +138,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
                                 letterSpacing: "-0.025em",
                                 fontFamily: "Sora Extra Bold",
                               },
-                              children: "España",
+                              children: i18n.OPEN_GRAPH.TEXT_4,
                             },
                           },
                           {
@@ -178,7 +171,7 @@ export const GET: APIRoute = async ({ request }: { request: Request }) => {
               lineHeight: "2.5rem",
               letterSpacing: "-0.025em",
             },
-            children: "TheLokin | Porfolio",
+            children: i18n.OPEN_GRAPH.FOOTNOTE,
           },
         },
       ],

@@ -5,6 +5,13 @@
     "IMAGE_ALT": "Preview of my software development portfolio.",
     "KEYWORDS": "Diego Ramil López, TheLokin, frontend developer, web development, mobile development, JavaScript, React, Next.js, HTML, CSS, Tailwind CSS, UI/UX"
   },
+  "OPEN_GRAPH": {
+    "TEXT_1": "Hello, I'm",
+    "TEXT_2": "Frontend Developer",
+    "TEXT_3": "Based in",
+    "TEXT_4": "Spain",
+    "FOOTNOTE": "TheLokin | Portfolio"
+  },
   "LINK": {
     "LINKEDIN": "Diego's LinkedIn, it will open in a new tab.",
     "GITHUB": "Diego's GitHub, it will open in a new tab."
@@ -97,6 +104,7 @@
   "ERROR_404": {
     "CODE": "Error 404",
     "TITLE": "Page not found",
-    "TEXT": "Hello! We're sorry, but we couldn't find what you're looking for. Please check that the address is correct."
+    "TEXT": "Hello! We're sorry, but we couldn't find what you're looking for. Please check that the address is correct.",
+    "LINK": "Back to the home page"
   }
 }

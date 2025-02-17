@@ -2,8 +2,15 @@
   "SEO": {
     "TITLE": "Desenvolvedor Frontend",
     "DESCRIPTION": "Son enxeñeiro informático con experiencia en desenvolvemento web e móbil. Descobre os meus proxectos, desde solucións na nube ata aplicacións modernas.",
-    "IMAGE_ALT": "Vista previa do meu portfolio de desenvolvemento software.",
+    "IMAGE_ALT": "Vista previa do meu portafolio de desenvolvemento software.",
     "KEYWORDS": "Diego Ramil López, TheLokin, desenvolvedor frontend, desenvolvemento web, desenvolvemento móbil, JavaScript, React, Next.js, HTML, CSS, Tailwind CSS, UI/UX"
+  },
+  "OPEN_GRAPH": {
+    "TEXT_1": "Ola, son",
+    "TEXT_2": "Desenvolvedor Frontend",
+    "TEXT_3": "Situado en",
+    "TEXT_4": "España",
+    "FOOTNOTE": "TheLokin | Portafolio"
   },
   "LINK": {
     "LINKEDIN": "LinkedIn de Diego, abrirase nunha nova pestana.",
@@ -97,6 +104,7 @@
   "ERROR_404": {
     "CODE": "Error 404",
     "TITLE": "Páxina non atopada",
-    "TEXT": "Ola! Sentímolo, pero non conseguimos atopar o que buscas. Verifica que o enderezo sexa correcto."
+    "TEXT": "Ola! Sentímolo, pero non conseguimos atopar o que buscabas. Verifica que o enderezo sexa correcto.",
+    "LINK": "Volver á páxina de inicio"
   }
 }

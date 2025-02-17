@@ -3,6 +3,7 @@ import Link from "@/components/ui/Link.astro"
 import CaretDown from "@/icons/phosphor/caret-down.svg"
 
 const { pathname } = Astro.url
+const path = pathname.split("/").slice(2).join("/")
 const { currentLocale = "es" } = Astro
 
 const { class: className } = Astro.props
@@ -18,10 +19,11 @@ const locales = [
   <ul class="hidden lg:flex">
     {
       locales.map((locale) => (
-        <Link href={pathname.replace(currentLocale, locale.code)}>
+        <Link href={`/${locale.code}/${path}`}>
           <li
             class:list={[
               "flex h-16 items-center justify-center px-10",
+              "transition-opacity duration-200 motion-reduce:transition-none",
               {
                 "bg-tertiary": currentLocale === locale.code,
                 "bg-primary opacity-90 any-hover:opacity-100": currentLocale !== locale.code,
@@ -36,19 +38,27 @@ const locales = [
     }
   </ul>
   <div class="relative inline-block lg:hidden">
-    <div class="group transition-opacity">
-      <button
-        type="button"
-        class="inline-flex h-16 min-w-[175px] items-center justify-center gap-2 bg-tertiary px-10"
-        style="clip-path: polygon(3% 0%, 0% 100%, 100% 100%, 90% 0);"
-      >
-        {locales.find((locale) => locale.code === currentLocale)?.name}
-        <CaretDown
-          class="size-4 shrink-0 transition-transform duration-200 ease-in-out group-hover:rotate-180"
-        />
+    <div class:list={["group", "transition-opacity duration-200 motion-reduce:transition-none"]}>
+      <button type="button">
+        <div
+          class="inline-flex h-16 min-w-[175px] items-center justify-center gap-2 bg-tertiary px-10"
+          style="clip-path: polygon(3% 0%, 0% 100%, 100% 100%, 90% 0);"
+        >
+          {locales.find((locale) => locale.code === currentLocale)?.name}
+          <CaretDown
+            class:list={[
+              "size-4 shrink-0",
+              "transition-transform duration-200 ease-in-out motion-reduce:transition-none",
+              "group-hover:rotate-180",
+            ]}
+          />
+        </div>
       </button>
       <ul
-        class="absolute hidden w-full group-hover:block group-hover:animate-fade group-hover:animate-duration-200"
+        class:list={[
+          "absolute hidden w-full",
+          "group-hover:block group-hover:animate-fade group-hover:animate-duration-200",
+        ]}
       >
         {
           locales
@@ -56,8 +66,11 @@ const locales = [
             .map((locale, index) => (
               <li>
                 <Link
-                  href={pathname.replace(currentLocale, locale.code)}
-                  class="inline-flex h-16 w-full items-center justify-center bg-primary px-10 opacity-90 any-hover:opacity-100"
+                  href={`/${locale.code}/${path}`}
+                  class:list={[
+                    "inline-flex h-16 w-full items-center justify-center bg-primary px-10 opacity-90",
+                    "any-hover:opacity-100",
+                  ]}
                   style={{
                     "clip-path":
                       index === 0
