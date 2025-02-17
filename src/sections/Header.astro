@@ -9,6 +9,12 @@ import Footer from "@/sections/Footer.astro"
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
+type Props = {
+  sticky?: boolean
+}
+
+const { sticky = false } = Astro.props
+
 const links = [
   {
     label: i18n.SECTION.EXPERIENCE.SHORT_TITLE,
@@ -29,7 +35,14 @@ const links = [
 ]
 ---
 
-<header class="sticky top-0 z-10">
+<header
+  class:list={[
+    "top-0 z-10",
+    {
+      sticky,
+    },
+  ]}
+>
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
     <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-end gap-4 px-4 md:px-14">
