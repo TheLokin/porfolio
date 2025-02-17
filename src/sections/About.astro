@@ -36,7 +36,7 @@ const description: Record<"es" | "gl" | "en", { p1: string; p2: string }> = {
     >
       <Image src={Me} alt={i18n.IMAGE.ME} format="avif" class="aspect-square object-cover" />
     </div>
-    <div class="flex max-w-xl flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
+    <div class="flex max-w-2xl flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
       <p set:html={description[currentLocale].p1} />
       <p set:html={description[currentLocale].p2} />
     </div>

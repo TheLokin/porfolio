@@ -8,9 +8,9 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<Layout nofollow noindex title="Página no encontrada">
+<Layout nofollow noindex title={i18n.ERROR_404.SUBTITLE}>
   <section class="flex flex-col items-center md:flex-row md:gap-12">
-    <Image src={Logo} alt={i18n.IMAGE.LOGO} class="max-w-64" transition:name="logo" />
+    <Image src={Logo} alt={i18n.IMAGE.LOGO} class="max-w-64" />
     <div class="flex w-full flex-col items-center gap-4 text-center">
       <hgroup>
         <h1 class="typography-5xl font-extrabold uppercase">{i18n.ERROR_404.TITLE}</h1>

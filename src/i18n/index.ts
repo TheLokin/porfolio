@@ -2,7 +2,7 @@ import english from "@/i18n/en.json"
 import spanish from "@/i18n/es.json"
 import galician from "@/i18n/gl.json"
 
-export const LANG = {
+const LANG = {
   SPANISH: "es",
   GALICIAN: "gl",
   ENGLISH: "en",

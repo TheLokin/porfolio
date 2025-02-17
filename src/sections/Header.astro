@@ -1,5 +1,5 @@
 ---
-import LanguageSwitch from "@/components/LanguageSwitch.astro"
+import LanguageSelector from "@/components/LanguageSelector.astro"
 import MenuButton from "@/components/MenuButton.astro"
 import Link from "@/components/ui/Link.astro"
 import Separator from "@/components/ui/Separator.astro"
@@ -32,8 +32,8 @@ const links = [
 <header class="sticky top-0 z-10">
   {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
   <div class="transition-scroll">
-    <div class="relative mx-auto flex max-w-6xl items-center justify-end gap-4 p-4 md:px-14">
-      <LanguageSwitch class="absolute start-0 top-0" />
+    <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-end gap-4 px-4 md:px-14">
+      <LanguageSelector class="absolute start-2 top-0 md:start-10" />
       <MenuButton aria-controls="menu" class="md:hidden" id="menu-trigger" state="closed" />
       <nav class="hidden md:block">
         <ul class="flex gap-4">
@@ -63,7 +63,7 @@ const links = [
     data-state="closed"
     id="menu"
   >
-    <div class="flex items-center justify-between px-2 py-4">
+    <div class="flex h-16 items-center justify-between px-2">
       <span class="typography-lg font-semibold uppercase">{i18n.MENU.TITLE}</span>
       <MenuButton aria-controls="menu" id="menu-close" state="open" />
     </div>

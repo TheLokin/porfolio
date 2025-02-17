@@ -1,27 +1,30 @@
 ---
-import "@fontsource-variable/sora"
-
-import { ViewTransitions } from "astro:transitions"
-
 import Separator from "@/components/ui/Separator.astro"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
+import { ClientRouter } from "astro:transitions"
+
+import "@fontsource-variable/sora"
 
 type Props = {
   title: string
+  description?: string
   noindex?: boolean
   nofollow?: boolean
 }
 
-const { title, noindex = false, nofollow = false } = Astro.props
-const description =
-  "Soy ingeniero informático con experiencia en desarrollo web y móvil. Descubre mis proyectos, desde soluciones en la nube hasta aplicaciones modernas."
+const {
+  title,
+  description = "Soy ingeniero informático con experiencia en desarrollo web y móvil. Descubre mis proyectos, desde soluciones en la nube hasta aplicaciones modernas.",
+  noindex = false,
+  nofollow = false,
+} = Astro.props
+
 const robots = `${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`
 const openGraph = {
   url: Astro.site?.origin,
-  title: "Porfolio de Diego",
+  title: "TheLokin",
   description,
-  siteName: "TheLokin",
   image: {
     url: `${Astro.site?.origin}/og.png`,
     alt: "Vista previa de mi porfolio de desarrollo software.",
@@ -34,11 +37,11 @@ const openGraph = {
 <html class="scroll-smooth motion-reduce:scroll-auto" dir="ltr" lang="es">
   <head>
     {/* HTML Meta Tags */}
-    <title>{`Porfolio de Diego - ${title}`}</title>
+    <title>{`TheLokin - ${title}`}</title>
     <meta charset="utf-8" />
     <meta content={description} name="description" />
     <meta content="Diego Ramil López" name="author" />
-    <meta content="#ddd" name="theme-color" />
+    <meta content="#dddad2" name="theme-color" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href={openGraph.url} rel="canonical" />
 
@@ -50,7 +53,6 @@ const openGraph = {
     <link href="/icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
     <link href="/icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
     <link href="/icons/apple-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
-    <link href="/icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 
@@ -69,10 +71,9 @@ const openGraph = {
     {/* <meta content="en_US" property="og:locale:alternate" /> */}
     <meta content={openGraph.title} property="og:title" />
     <meta content={openGraph.description} property="og:description" />
-    <meta content={openGraph.siteName} property="og:site_name" />
     <meta content={openGraph.image.url} property="og:image" />
     <meta content={openGraph.image.alt} property="og:image:alt" />
-    <meta content="image/webp" property="og:image:type" />
+    <meta content="image/png" property="og:image:type" />
     <meta content="1200" property="og:image:width" />
     <meta content="630" property="og:image:height" />
 
@@ -85,7 +86,7 @@ const openGraph = {
     <meta content={openGraph.image.url} name="twitter:image" />
     <meta content={openGraph.image.alt} name="twitter:image:alt" />
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
 
   <body
@@ -96,7 +97,7 @@ const openGraph = {
     ]}
   >
     <Header />
-    <div class="mx-auto max-w-5xl px-2 md:px-10">
+    <div class="mx-auto max-w-6xl px-2 md:px-10">
       <main class="flex flex-col gap-16 px-2 py-4 pb-16 md:px-4">
         <slot />
       </main>
@@ -109,16 +110,10 @@ const openGraph = {
 <style is:global>
   :root {
     --color-primary: #333;
-    --color-secondary: #ddd;
+    --color-secondary: #dddad2;
+    --color-tertiary: #183749;
 
-    --background-image: var(--color-secondary) url("/images/concrete-light.png");
-  }
-
-  .dark {
-    --color-primary: #ddd;
-    --color-secondary: #333;
-
-    --background-image: var(--color-secondary) url("/images/concrete-dark.png");
+    --background-image: var(--color-secondary) url("/images/grainy.webp");
   }
 
   body {
@@ -143,7 +138,7 @@ const openGraph = {
   import { Burst } from "@mojs/core"
 
   document.addEventListener("astro:page-load", () => {
-    const options = {
+    const burst = new Burst({
       left: 0,
       top: 0,
       radius: { 4: 19 },
@@ -158,31 +153,6 @@ const openGraph = {
         duration: 700,
         easing: "quad.out",
       },
-    }
-
-    let burst = new Burst(options)
-
-    document.documentElement.addEventListener("theme", (event) => {
-      const themeEvent = event as CustomEvent
-      const isDark = themeEvent.detail === "dark"
-
-      if (isDark) {
-        burst = new Burst({
-          ...options,
-          children: {
-            ...options.children,
-            stroke: "#ddd",
-          },
-        })
-      } else {
-        burst = new Burst({
-          ...options,
-          children: {
-            ...options.children,
-            stroke: "#333",
-          },
-        })
-      }
     })
 
     burst.el.style.zIndex = 100
