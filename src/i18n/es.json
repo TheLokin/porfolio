@@ -1,12 +1,18 @@
 {
+  "SEO": {
+    "TITLE": "Desarrollador Frontend",
+    "DESCRIPTION":
+      "Soy ingeniero informático con experiencia en desarrollo web y móvil. Descubre mis proyectos, desde soluciones en la nube hasta aplicaciones modernas.",
+    "IMAGE_ALT": "Vista previa de mi porfolio de desarrollo software.",
+    "KEYWORDS":
+      "Diego Ramil López, TheLokin, desarrollador frontend, desarrollo web, desarrollo móvil, JavaScript, React, Next.js, HTML, CSS, Tailwind CSS, UI/UX"
+  },
   "LINK": {
     "LINKEDIN": "LinkedIn de Diego, se abrirá en una nueva pestaña.",
-    "GITHUB": "GitHub de Diego, se abrirá en una nueva pestaña.",
-    "REPOSITORY": "Repositorio del proyecto \"{proyect}\", se abrirá en una nueva pestaña."
+    "GITHUB": "GitHub de Diego, se abrirá en una nueva pestaña."
   },
-  "IMAGE": {
-    "ME": "Foto de perfil de Diego Ramil López.",
-    "LOGO": "Logo de Diego Ramil López."
+  "TIMELINE": {
+    "PRESENT": "Actualidad"
   },
   "MENU": {
     "TITLE": "Menú",
@@ -14,29 +20,75 @@
     "CLOSE": "Cerrar menú."
   },
   "HERO": {
-    "TEXT_1": "Hola, soy",
-    "TEXT_2": "Desarrollador",
-    "TEXT_3": "Frontend",
-    "TEXT_4": "Ubicado en",
-    "TEXT_5": "España"
+    "H1": "Hola, soy <strong>Diego</strong> <br aria-hidden=\"true\" /> <strong>Desarrollador Frontend</strong> <br aria-hidden=\"true\" /> Ubicado en <strong>España</strong>.",    
+    "IMAGE_ALT": "Logo de Diego Ramil López."
   },
   "SECTION": {
     "EXPERIENCE": {
       "TITLE": "Experiencia laboral",
-      "SHORT_TITLE": "Experiencia"
+      "SHORT_TITLE": "Experiencia",
+      "EXAMPLES": [
+        {
+          "TITLE": "Técnico de Apoyo a la Investigación",
+          "SUBTITLE": "CITIC - Centro de Investigación TIC",
+          "DESCRIPTION": "Liderazgo en proyectos de digitalización en el sector naval, coordinando equipos para el desarrollo de componentes tecnológicos, el análisis de requerimientos específicos del sector y la integración de soluciones innovadoras que optimicen procesos industriales."
+        },
+        {
+          "TITLE": "Desarrollador Software",
+          "SUBTITLE": "Enxenio",
+          "DESCRIPTION": "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto."
+        },
+        {
+          "TITLE": "Beca de Colaboración en Departamentos Universitarios",
+          "SUBTITLE": "Universidad de A Coruña",
+          "DESCRIPTION": "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico."
+        }
+      ]
     },
     "PROJECTS": {
-      "TITLE": "Proyectos"
+      "TITLE": "Proyectos",
+      "EXAMPLES": [
+        {
+          "LABEL": "Repositorio del proyecto La Velada del Año IV, se abrirá en una nueva pestaña.",
+          "SUBTITLE": "Página web oficial",
+          "DESCRIPTION": "Contribución al desarrollo de la página web del evento de boxeo entre streamers y creadores de contenido, organizado por Ibai Llanos. La iniciativa fue desarrollada como proyecto de código abierto bajo la dirección de Miguel Ángel Durán.",
+          "IMAGE_ALT": "Captura de pantalla de la página web de La Velada del Año IV."
+        },      
+        {
+          "LABEL": "Repositorio del proyecto Temzone, se abrirá en una nueva pestaña.",
+          "SUBTITLE": "Mapa interactivo de Temtem",
+          "DESCRIPTION": "Desarrollo de una solución multiplataforma para escritorio y dispositivos móviles, diseñada como un mapa interactivo del videojuego Temtem. El proyecto fue galardonado con el 3.º puesto en la XVI Edición de los Premios A Noite.",
+          "IMAGE_ALT": "Captura de pantalla de la aplicación Temzone."
+        }
+      ]
     },
     "EDUCATION": {
-      "TITLE": "Educación"
+      "TITLE": "Educación",
+      "EXAMPLES": [
+        {
+          "TITLE": "Doctorado en Tecnologías de la Información y de las Comunicaciones en Redes Móviles",
+          "SUBTITLE": "Universidad de A Coruña"
+        },
+        {
+          "TITLE": "Máster Universitario en Ingeniería Informática",
+          "SUBTITLE": "Universidade da Coruña"
+        },
+        {
+          "TITLE": "Grado en Ingeniería Informática, Ingeniería del Software",
+          "SUBTITLE": "Universidade da Coruña"
+        },
+        {
+          "TITLE": "Grado en Ingeniería Informática, Ciencias de la Computación",
+          "SUBTITLE": "Universidade da Coruña"
+        }
+      ]
     },
     "ABOUT": {
-      "TITLE": "Sobre mí"
+      "TITLE": "Sobre mí",
+      "IMAGE_ALT": "Foto de perfil de Diego Ramil López.",
+      "P1": "Soy <strong>ingeniero informático por la Universidad de A Coruña</strong>. Desde noviembre de 2022 he estado desarrollándome profesionalmente en la industria del software. Gran parte de <strong>mi carrera se ha centrado en el desarrollo full stack</strong>, por lo que me manejo bien en el backend, aunque donde realmente <strong>destaco es en el frontend</strong>.",
+      "P2": "Por experiencias pasadas, <strong>mis lenguajes de programación son Kotlin y JavaScript/TypeScript</strong>, aunque en los comienzos de mi carrera también trabajé con Python. Por supuesto, <strong>manejo HTML y CSS</strong>, lo que me permite maquetar correctamente. También estoy familiarizado con el manejo de <strong>soluciones en la nube, tanto AWS como Google Cloud</strong>. Aunque he trabajado con estas tecnologías, siempre estoy dispuesto a aprender nuevas herramientas."
     }
-  },
-  "TIMELINE": {
-    "PRESENT": "Actualidad"
   },
   "FOOTER": {
     "TEXT": "Diseñado y desarrollado con",
@@ -45,8 +97,8 @@
     "COFFEE_EMOJI": "café"
   },
   "ERROR_404": {
-    "TITLE": "Error 404",
-    "SUBTITLE": "Página no encontrada",
-    "MESSAGE": "¡Hola! Lo sentimos, pero no logramos encontrar lo que buscas. Verifica que la dirección sea correcta."
+    "CODE": "Error 404",
+    "TITLE": "Página no encontrada",
+    "TEXT": "¡Hola! Lo sentimos, pero no logramos encontrar lo que buscas. Verifica que la dirección sea correcta."
   }
 }

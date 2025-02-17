@@ -5,23 +5,8 @@ import User from "@/icons/phosphor/user.svg"
 import Me from "@/images/me.avif"
 import { Image } from "astro:assets"
 
-const { currentLocale = "es" } = Astro as { currentLocale: "es" | "gl" | "en" }
+const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-
-const description: Record<"es" | "gl" | "en", { p1: string; p2: string }> = {
-  es: {
-    p1: "Soy <strong>ingeniero informático por la Universidad de A Coruña</strong>. Desde noviembre de 2022 he estado desarrollándome profesionalmente en la industria del software. Gran parte de <strong>mi carrera se ha centrado en el desarrollo full stack</strong>, por lo que me manejo bien en el backend, aunque donde realmente <strong>destaco es en el frontend</strong>.",
-    p2: "Por experiencias pasadas, <strong>mis lenguajes de programación son Kotlin y JavaScript/TypeScript</strong>, aunque en los comienzos de mi carrera también trabajé con Python. Por supuesto, <strong>manejo HTML y CSS</strong>, lo que me permite maquetar correctamente. También estoy familiarizado con el manejo de <strong>soluciones en la nube, tanto AWS como Google Cloud</strong>. Aunque he trabajado con estas tecnologías, siempre estoy dispuesto a aprender nuevas herramientas.",
-  },
-  gl: {
-    p1: "Son <strong>enxeñeiro informático pola Universidade da Coruña</strong>. Dende novembro de 2022, estiven desenvolvéndome profesionalmente na industria do software. Gran parte <strong>da miña carreira centrouse no desenvolvemento full stack</strong>, polo que me desenvolvo ben no backend, aínda que onde realmente <strong>destaco é no frontend</strong>.",
-    p2: "Por experiencias pasadas, <strong>as miñas linguaxes de programación son Kotlin e JavaScript/TypeScript</strong>, aínda que nos comezos da miña carreira tamén traballei con Python. Por suposto, <strong>manexo HTML e CSS</strong>, o que me permite maquetar correctamente. Tamén estou familiarizado co manexo de <strong>solucións na nube, tanto AWS como Google Cloud</strong>. Aínda que traballei con estas tecnoloxías, sempre estou disposto a aprender novas ferramentas.",
-  },
-  en: {
-    p1: "I'm a <strong>computer engineer from the University of A Coruña</strong>. Since November 2022, I've been developing my professional career in the software industry. A significant part of <strong>my work has been focused on full-stack development</strong>, so I'm comfortable with backend tasks, although <strong>my real strength is in frontend development</strong>.",
-    p2: "Based on my past experience, <strong>my main programming languages are Kotlin and JavaScript/TypeScript</strong>, although at the beginning of my career, I also worked with Python. Of course, <strong>I'm proficient in HTML and CSS</strong>, which allows me to create well-structured layouts. I'm also familiar with <strong>cloud solutions like AWS and Google Cloud</strong>. While I've worked with these technologies, I'm always eager to learn new tools.",
-  },
-}
 ---
 
 <SectionContainer id="about">
@@ -34,11 +19,16 @@ const description: Record<"es" | "gl" | "en", { p1: string; p2: string }> = {
         "m-2 outline outline-2 -outline-offset-1 outline-primary",
       ]}
     >
-      <Image src={Me} alt={i18n.IMAGE.ME} format="avif" class="aspect-square object-cover" />
+      <Image
+        src={Me}
+        alt={i18n.SECTION.ABOUT.IMAGE_ALT}
+        format="avif"
+        class="aspect-square object-cover"
+      />
     </div>
     <div class="flex max-w-2xl flex-col gap-4 [&_p]:text-pretty [&_strong]:font-semibold">
-      <p set:html={description[currentLocale].p1} />
-      <p set:html={description[currentLocale].p2} />
+      <p set:html={i18n.SECTION.ABOUT.P1} />
+      <p set:html={i18n.SECTION.ABOUT.P2} />
     </div>
   </article>
 </SectionContainer>

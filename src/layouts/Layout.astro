@@ -1,21 +1,25 @@
 ---
 import Separator from "@/components/ui/Separator.astro"
+import { getI18N } from "@/i18n"
 import Footer from "@/sections/Footer.astro"
 import Header from "@/sections/Header.astro"
 import { ClientRouter } from "astro:transitions"
 
 import "@fontsource-variable/sora"
 
+const { currentLocale = "es" } = Astro
+const i18n = getI18N({ currentLocale })
+
 type Props = {
-  title: string
+  title?: string
   description?: string
   noindex?: boolean
   nofollow?: boolean
 }
 
 const {
-  title,
-  description = "Soy ingeniero informático con experiencia en desarrollo web y móvil. Descubre mis proyectos, desde soluciones en la nube hasta aplicaciones modernas.",
+  title = i18n.SEO.TITLE,
+  description = i18n.SEO.DESCRIPTION,
   noindex = false,
   nofollow = false,
 } = Astro.props
@@ -26,15 +30,15 @@ const openGraph = {
   title: "TheLokin",
   description,
   image: {
-    url: `${Astro.site?.origin}/og.png`,
-    alt: "Vista previa de mi porfolio de desarrollo software.",
+    url: `${Astro.site?.origin}/${currentLocale}/og.png`,
+    alt: i18n.SEO.IMAGE_ALT,
   },
   twitter: "@diegoramil98",
 }
 ---
 
 <!doctype html>
-<html class="scroll-smooth motion-reduce:scroll-auto" dir="ltr" lang="es">
+<html class="scroll-smooth motion-reduce:scroll-auto" dir="ltr" lang={currentLocale}>
   <head>
     {/* HTML Meta Tags */}
     <title>{`TheLokin - ${title}`}</title>
@@ -59,16 +63,14 @@ const openGraph = {
     {/* Search Engine Meta Tags */}
     <meta content={robots} name="robots" />
     <meta content={robots} name="googlebot" />
-    <meta
-      content="Diego Ramil López, desarrollador frontend, desarrollo web, desarrollo móvil, React, JavaScript, Next.js, Tailwind CSS, HTML, CSS, UI/UX, desarrollo de interfaces"
-      name="keywords"
-    />
+    <meta content={i18n.SEO.KEYWORDS} name="keywords" />
 
     {/* Open Graph Meta Tags */}
     <meta content="website" property="og:type" />
     <meta content={openGraph.url} property="og:url" />
     <meta content="es_ES" property="og:locale" />
-    {/* <meta content="en_US" property="og:locale:alternate" /> */}
+    <meta content="gl_ES" property="og:locale:alternate" />
+    <meta content="en_US" property="og:locale:alternate" />
     <meta content={openGraph.title} property="og:title" />
     <meta content={openGraph.description} property="og:description" />
     <meta content={openGraph.image.url} property="og:image" />

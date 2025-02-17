@@ -4,72 +4,36 @@ import Timeline from "@/components/Timeline.astro"
 import { getI18N } from "@/i18n"
 import GraduationCap from "@/icons/phosphor/graduation-cap.svg"
 
-const { currentLocale } = Astro as { currentLocale: "es" | "gl" | "en" }
+const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
-const education: {
-  title: { es: string; gl: string; en: string }
-  subtitle: { es: string; gl: string; en: string }
-  date: { from: Date; to?: Date }
-}[] = [
+const education = [
   {
-    title: {
-      es: "Doctorado en Tecnologías de la Información y de las Comunicaciones en Redes Móviles",
-      gl: "Doutoramento en Tecnoloxías da Información e das Comunicacións en Redes Móbiles",
-      en: "PhD in Information and Communication Technologies in Mobile Networks",
-    },
-    subtitle: {
-      es: "Universidad de A Coruña",
-      gl: "Universidade da Coruña",
-      en: "University of A Coruña",
-    },
+    title: i18n.SECTION.EDUCATION.EXAMPLES[0].TITLE,
+    subtitle: i18n.SECTION.EDUCATION.EXAMPLES[0].SUBTITLE,
     date: {
       from: new Date(2023, 8),
     },
   },
   {
-    title: {
-      es: "Máster Universitario en Ingeniería Informática",
-      gl: "Mestrado Universitario en Enxeñaría Informática",
-      en: "Master's Degree in Computer Engineering",
-    },
-    subtitle: {
-      es: "Universidad de A Coruña",
-      gl: "Universidade da Coruña",
-      en: "University of A Coruña",
-    },
+    title: i18n.SECTION.EDUCATION.EXAMPLES[1].TITLE,
+    subtitle: i18n.SECTION.EDUCATION.EXAMPLES[1].SUBTITLE,
     date: {
       from: new Date(2021, 8),
       to: new Date(2023, 8),
     },
   },
   {
-    title: {
-      es: "Grado en Ingeniería Informática, Ingeniería del Software",
-      gl: "Grado en Enxeñaría Informática, Enxeñaría do Software",
-      en: "Bachelor's Degree in Computer Engineering, Software Engineering",
-    },
-    subtitle: {
-      es: "Universidad de A Coruña",
-      gl: "Universidade da Coruña",
-      en: "University of A Coruña",
-    },
+    title: i18n.SECTION.EDUCATION.EXAMPLES[2].TITLE,
+    subtitle: i18n.SECTION.EDUCATION.EXAMPLES[2].SUBTITLE,
     date: {
       from: new Date(2016, 8),
       to: new Date(2021, 8),
     },
   },
   {
-    title: {
-      es: "Grado en Ingeniería Informática, Ciencias de la Computación",
-      gl: "Grado en Enxeñaría Informática, Ciencias da Computación",
-      en: "Bachelor's Degree in Computer Engineering, Computer Science",
-    },
-    subtitle: {
-      es: "Universidad de A Coruña",
-      gl: "Universidade da Coruña",
-      en: "University of A Coruña",
-    },
+    title: i18n.SECTION.EDUCATION.EXAMPLES[3].TITLE,
+    subtitle: i18n.SECTION.EDUCATION.EXAMPLES[3].SUBTITLE,
     date: {
       from: new Date(2016, 8),
       to: new Date(2021, 8),
@@ -81,11 +45,5 @@ const education: {
 <SectionContainer id="education">
   <GraduationCap slot="icon" />
   <Fragment slot="title">{i18n.SECTION.EDUCATION.TITLE}</Fragment>
-  <Timeline
-    elements={education.map((education) => ({
-      ...education,
-      title: education.title[currentLocale],
-      subtitle: education.subtitle[currentLocale],
-    }))}
-  />
+  <Timeline elements={education} />
 </SectionContainer>

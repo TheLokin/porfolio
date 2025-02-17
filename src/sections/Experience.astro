@@ -4,76 +4,35 @@ import Timeline from "@/components/Timeline.astro"
 import { getI18N } from "@/i18n"
 import Briefcase from "@/icons/phosphor/briefcase.svg"
 
-const { currentLocale } = Astro as { currentLocale: "es" | "gl" | "en" }
+const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
-const experience: {
-  title: { es: string; gl: string; en: string }
-  subtitle: { es: string; gl: string; en: string }
-  date: { from: Date; to?: Date }
-  description?: { es: string; gl: string; en: string }
-}[] = [
+const experience = [
   {
-    title: {
-      es: "Técnico de Apoyo a la Investigación",
-      gl: "Técnico de Apoio á Investigación",
-      en: "Research Support Technician",
-    },
-    subtitle: {
-      es: "CITIC - Centro de Investigación TIC",
-      gl: "CITIC - Centro de Investigación TIC",
-      en: "CITIC - Research Center for ICT",
-    },
+    title: i18n.SECTION.EXPERIENCE.EXAMPLES[0].TITLE,
+    subtitle: i18n.SECTION.EXPERIENCE.EXAMPLES[0].SUBTITLE,
     date: {
       from: new Date(2023, 3),
     },
-    description: {
-      es: "Liderazgo en proyectos de digitalización en el sector naval, coordinando equipos para el desarrollo de componentes tecnológicos, el análisis de requerimientos específicos del sector y la integración de soluciones innovadoras que optimicen procesos industriales.",
-      gl: "Liderado en proxectos de dixitalización no sector naval, coordinando equipos para o desenvolvemento de compoñentes tecnolóxicos, o análise de requisitos específicos do sector e a integración de solucións innovadoras que optimicen os procesos industriais.",
-      en: "Leadership in digitalization projects in the naval sector, coordinating teams for the development of technological components, analyzing industry-specific requirements, and integrating innovative solutions to optimize industrial processes.",
-    },
+    description: i18n.SECTION.EXPERIENCE.EXAMPLES[0].DESCRIPTION,
   },
   {
-    title: {
-      es: "Desarrollador Software",
-      gl: "Desarrollador Software",
-      en: "Software Developer",
-    },
-    subtitle: {
-      es: "Enxenio",
-      gl: "Enxenio",
-      en: "Enxenio",
-    },
+    title: i18n.SECTION.EXPERIENCE.EXAMPLES[1].TITLE,
+    subtitle: i18n.SECTION.EXPERIENCE.EXAMPLES[1].SUBTITLE,
     date: {
       from: new Date(2022, 10),
       to: new Date(2023, 2),
     },
-    description: {
-      es: "Desarrollo de aplicaciones móviles para iOS y Android, con participación integral en todo el ciclo de vida del desarrollo. Comunicación constante con el cliente y trabajo en equipo para asegurar la entrega del producto.",
-      gl: "Desenvolvemento de aplicacións móbiles para iOS e Android, cunha participación integral en todo o ciclo de vida do desenvolvemento. Comunicación constante co cliente e traballo en equipo para asegurar a entrega do produto.",
-      en: "Development of mobile applications for iOS and Android, with full involvement in the entire development lifecycle. Constant communication with the client and teamwork to ensure product delivery.",
-    },
+    description: i18n.SECTION.EXPERIENCE.EXAMPLES[1].DESCRIPTION,
   },
   {
-    title: {
-      es: "Beca de Colaboración en Departamentos Universitarios",
-      gl: "Beca de Colaboración en Departamentos Universitarios",
-      en: "Collaboration Scholarship in University Departments",
-    },
-    subtitle: {
-      es: "Universidad de A Coruña",
-      gl: "Universidade da Coruña",
-      en: "University of A Coruña",
-    },
+    title: i18n.SECTION.EXPERIENCE.EXAMPLES[2].TITLE,
+    subtitle: i18n.SECTION.EXPERIENCE.EXAMPLES[2].SUBTITLE,
     date: {
       from: new Date(2020, 9),
       to: new Date(2021, 4),
     },
-    description: {
-      es: "Responsable del estudio metodológico para mejorar imágenes de fondo de ojo con aprendizaje profundo. Gestión de datos para optimizar la precisión del procesamiento, evaluando y validando las imágenes para el diagnóstico oftalmológico.",
-      gl: "Responsable do estudo metodolóxico para mellorar imaxes de fondo de ollo con aprendizaxe profunda. Xestión de datos para optimizar a precisión do procesamento, evaluando e validando as imaxes para o diagnóstico oftalmolóxico.",
-      en: "In charge of the methodological study for improving fundus images with deep learning. Data management to optimize processing accuracy, evaluating and validating images for ophthalmological diagnosis.",
-    },
+    description: i18n.SECTION.EXPERIENCE.EXAMPLES[2].DESCRIPTION,
   },
 ]
 ---
@@ -84,13 +43,5 @@ const experience: {
     <span class="sm:hidden">{i18n.SECTION.EXPERIENCE.SHORT_TITLE}</span>
     <span class="hidden sm:block">{i18n.SECTION.EXPERIENCE.TITLE}</span>
   </Fragment>
-  <Timeline
-    elements={experience.map((experience) => ({
-      ...experience,
-      title: experience.title[currentLocale],
-      subtitle: experience.subtitle[currentLocale],
-      description: experience.description && experience.description[currentLocale],
-    }))}
-    month
-  />
+  <Timeline elements={experience} month />
 </SectionContainer>

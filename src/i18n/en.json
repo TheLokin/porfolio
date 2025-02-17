@@ -1,12 +1,16 @@
 {
+  "SEO": {
+    "TITLE": "Frontend Developer",
+    "DESCRIPTION": "I'm a computer engineer with experience in web and mobile development. Discover my projects, from cloud solutions to modern applications.",
+    "IMAGE_ALT": "Preview of my software development portfolio.",
+    "KEYWORDS": "Diego Ramil López, TheLokin, frontend developer, web development, mobile development, JavaScript, React, Next.js, HTML, CSS, Tailwind CSS, UI/UX"
+  },
   "LINK": {
     "LINKEDIN": "Diego's LinkedIn, it will open in a new tab.",
-    "GITHUB": "Diego's GitHub, it will open in a new tab.",
-    "REPOSITORY": "Repository of the project \"{proyect}\", it will open in a new tab."
+    "GITHUB": "Diego's GitHub, it will open in a new tab."
   },
-  "IMAGE": {
-    "ME": "Profile picture of Diego Ramil López.",
-    "LOGO": "Logo of Diego Ramil López."
+  "TIMELINE": {
+    "PRESENT": "Present"
   },
   "MENU": {
     "TITLE": "Menu",
@@ -14,29 +18,75 @@
     "CLOSE": "Close menu."
   },
   "HERO": {
-    "TEXT_1": "Hello, I'm",
-    "TEXT_2": "Frontend",
-    "TEXT_3": "Developer",
-    "TEXT_4": "Based in",
-    "TEXT_5": "Spain"
+    "H1": "Hello, I'm <strong>Diego</strong> <br aria-hidden=\"true\" /> <strong>Frontend Developer</strong> <br aria-hidden=\"true\" /> Based in <strong>Spain</strong>.",
+    "IMAGE_ALT": "Logo of Diego Ramil López."
   },
   "SECTION": {
     "EXPERIENCE": {
       "TITLE": "Work experience",
-      "SHORT_TITLE": "Experience"
+      "SHORT_TITLE": "Experience",
+      "EXAMPLES": [
+        {
+          "TITLE": "Research Support Technician",
+          "SUBTITLE": "CITIC - Research Center for ICT",
+          "DESCRIPTION": "Leadership in digitalization projects in the naval sector, coordinating teams for the development of technological components, analyzing industry-specific requirements, and integrating innovative solutions to optimize industrial processes."
+        },      
+        {
+          "TITLE": "Software Developer",
+          "SUBTITLE": "Enxenio",
+          "DESCRIPTION": "Development of mobile applications for iOS and Android, with full involvement in the entire development lifecycle. Constant communication with the client and teamwork to ensure product delivery."
+        },            
+        {
+          "TITLE": "Collaboration Scholarship in University Departments",
+          "SUBTITLE": "University of A Coruña",
+          "DESCRIPTION": "In charge of the methodological study for improving fundus images with deep learning. Data management to optimize processing accuracy, evaluating and validating images for ophthalmological diagnosis."
+        }
+      ]
     },
     "PROJECTS": {
-      "TITLE": "Projects"
+      "TITLE": "Projects",
+      "EXAMPLES": [
+        {
+          "LABEL": "Repository of the project La Velada del Año IV, it will open in a new tab.",
+          "SUBTITLE": "Official website",
+          "DESCRIPTION": "Contribution to the development of the website for the boxing event between streamers and content creators, organized by Ibai Llanos. The initiative was developed as an open-source project under the direction of Miguel Ángel Durán.",
+          "IMAGE_ALT": "Screenshot of the website of La Velada del Año IV."
+        },      
+        {
+          "LABEL": "Repository of the project Temzone, it will open in a new tab.",
+          "SUBTITLE": "Interactive map of Temtem",
+          "DESCRIPTION": "Development of a cross-platform solution for desktop and mobile devices, designed as an interactive map for the video game Temtem. The project was awarded 3rd place in the 16th Edition of the A Noite Awards.",
+          "IMAGE_ALT": "Screenshot of the Temzone application."
+        }
+      ]
     },
     "EDUCATION": {
-      "TITLE": "Education"
+      "TITLE": "Education",
+      "EXAMPLES": [
+        {
+          "TITLE": "PhD in Information and Communication Technologies in Mobile Networks",
+          "SUBTITLE": "University of A Coruña"
+        },
+        {
+          "TITLE": "Master's Degree in Computer Engineering",
+          "SUBTITLE": "University of A Coruña"
+        },
+        {
+          "TITLE": "Bachelor's Degree in Computer Engineering, Software Engineering",
+          "SUBTITLE": "University of A Coruña"
+        },
+        {
+          "TITLE": "Bachelor's Degree in Computer Engineering, Computer Science",
+          "SUBTITLE": "University of A Coruña"
+        }
+      ]
     },
     "ABOUT": {
-      "TITLE": "About me"
+      "TITLE": "About me",
+      "IMAGE_ALT": "Profile picture of Diego Ramil López.",
+      "P1": "I'm a <strong>computer engineer from the University of A Coruña</strong>. Since November 2022, I've been developing my professional career in the software industry. A significant part of <strong>my work has been focused on full-stack development</strong>, so I'm comfortable with backend tasks, although <strong>my real strength is in frontend development</strong>.",
+      "P2": "Based on my past experience, <strong>my main programming languages are Kotlin and JavaScript/TypeScript</strong>, although at the beginning of my career, I also worked with Python. Of course, <strong>I'm proficient in HTML and CSS</strong>, which allows me to create well-structured layouts. I'm also familiar with <strong>cloud solutions like AWS and Google Cloud</strong>. While I've worked with these technologies, I'm always eager to learn new tools."
     }
-  },
-  "TIMELINE": {
-    "PRESENT": "Present"
   },
   "FOOTER": {
     "TEXT": "Designed and developed with",
@@ -45,8 +95,8 @@
     "COFFEE_EMOJI": "coffee"
   },
   "ERROR_404": {
-    "TITLE": "Error 404",
-    "SUBTITLE": "Page not found",
-    "MESSAGE": "Hello! We're sorry, but we couldn't find what you're looking for. Please check that the address is correct."
+    "CODE": "Error 404",
+    "TITLE": "Page not found",
+    "TEXT": "Hello! We're sorry, but we couldn't find what you're looking for. Please check that the address is correct."
   }
 }

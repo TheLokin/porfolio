@@ -8,16 +8,16 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<Layout nofollow noindex title={i18n.ERROR_404.SUBTITLE}>
+<Layout nofollow noindex title={i18n.ERROR_404.TITLE}>
   <section class="flex flex-col items-center md:flex-row md:gap-12">
     <Image src={Logo} alt={i18n.IMAGE.LOGO} class="max-w-64" />
     <div class="flex w-full flex-col items-center gap-4 text-center">
       <hgroup>
-        <h1 class="typography-5xl font-extrabold uppercase">{i18n.ERROR_404.TITLE}</h1>
-        <h2 class="typography-3xl font-semibold uppercase">{i18n.ERROR_404.SUBTITLE}</h2>
+        <h1 class="typography-5xl font-extrabold uppercase">{i18n.ERROR_404.CODE}</h1>
+        <h2 class="typography-3xl font-semibold uppercase">{i18n.ERROR_404.TITLE}</h2>
       </hgroup>
       <p class="typography-lg max-w-md">
-        {i18n.ERROR_404.MESSAGE}
+        {i18n.ERROR_404.TEXT}
       </p>
     </div>
   </section>

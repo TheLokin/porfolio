@@ -16,7 +16,7 @@ import lavelada from "@/images/lavelada.avif"
 import temzone from "@/images/temzone.avif"
 import { Image } from "astro:assets"
 
-const { currentLocale } = Astro as { currentLocale: "es" | "gl" | "en" }
+const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
 const TAG = {
@@ -48,47 +48,23 @@ const TAG = {
 
 const proyects = [
   {
-    id: "lavelada",
+    label: i18n.SECTION.PROJECTS.EXAMPLES[0].LABEL,
     title: "La Velada del Año IV",
-    subtitle: {
-      es: "Página web oficial",
-      gl: "Páxina web oficial",
-      en: "Official website",
-    },
-    description: {
-      es: "Contribución al desarrollo de la página web del evento de boxeo entre streamers y creadores de contenido, organizado por Ibai Llanos. La iniciativa fue desarrollada como proyecto de código abierto bajo la dirección de Miguel Ángel Durán.",
-      gl: "Contribución ao desenvolvemento da páxina web do evento de boxeo entre streamers e creadores de contido, organizado por Ibai Llanos. A iniciativa foi desenvolvida como proxecto de código aberto baixo a dirección de Miguel Ángel Durán.",
-      en: "Contribution to the development of the website for the boxing event between streamers and content creators, organized by Ibai Llanos. The initiative was developed as an open-source project under the direction of Miguel Ángel Durán.",
-    },
+    subtitle: i18n.SECTION.PROJECTS.EXAMPLES[0].SUBTITLE,
+    description: i18n.SECTION.PROJECTS.EXAMPLES[0].DESCRIPTION,
     tags: [TAG.Astro, TAG.TailwindCSS],
     image: lavelada,
-    alt: {
-      es: "Captura de pantalla de la página web de La Velada del Año IV.",
-      gl: "Captura de pantalla da páxina web de La Velada do Ano IV.",
-      en: "Screenshot of the website of La Velada del Año IV.",
-    },
+    alt: i18n.SECTION.PROJECTS.EXAMPLES[0].IMAGE_ALT,
     github: "https://github.com/midudev/la-velada-web-oficial",
   },
   {
-    id: "temzone",
+    label: i18n.SECTION.PROJECTS.EXAMPLES[1].LABEL,
     title: "Temzone",
-    subtitle: {
-      es: "Mapa interactivo de Temtem",
-      gl: "Mapa interactivo de Temtem",
-      en: "Interactive map of Temtem",
-    },
-    description: {
-      es: "Desarrollo de una solución multiplataforma para escritorio y dispositivos móviles, diseñada como un mapa interactivo del videojuego Temtem. El proyecto fue galardonado con el 3.º puesto en la XVI Edición de los Premios A Noite.",
-      gl: "Desenvolvemento dunha solución multiplataforma para escritorio e dispositivos móbiles, deseñada como un mapa interactivo do videoxogo Temtem. O proxecto foi galardoado co 3.º posto na XVI Edición dos Premios A Noite.",
-      en: "Development of a cross-platform solution for desktop and mobile devices, designed as an interactive map for the video game Temtem. The project was awarded 3rd place in the 16th Edition of the A Noite Awards.",
-    },
+    subtitle: i18n.SECTION.PROJECTS.EXAMPLES[1].SUBTITLE,
+    description: i18n.SECTION.PROJECTS.EXAMPLES[1].DESCRIPTION,
     tags: [TAG.Kotlin, TAG.Electron, TAG.TailwindCSS, TAG.Firebase, TAG.CloudflareWorkers],
     image: temzone,
-    alt: {
-      es: "Captura de pantalla de la aplicación Temzone.",
-      gl: "Captura de pantalla da aplicación Temzone.",
-      en: "Screenshot of the Temzone application.",
-    },
+    alt: i18n.SECTION.PROJECTS.EXAMPLES[1].IMAGE_ALT,
     github: "https://github.com/Temtem-Interactive-Map",
   },
 ]
@@ -101,8 +77,8 @@ const proyects = [
     proyects.map((proyect) => (
       <article class="grid grid-cols-7 gap-x-12 gap-y-4">
         <Link
-          aria-label={i18n.LINK.REPOSITORY.replace("{proyect}", proyect.title)}
-          class:list={["col-span-7 lg:order-2 lg:col-span-4"]}
+          aria-label={proyect.label}
+          class="col-span-7 lg:order-2 lg:col-span-4"
           href={proyect.github}
           rel="noopener noreferrer"
           target="_blank"
@@ -117,7 +93,7 @@ const proyects = [
               <ArrowUpRight aria-hidden="true" class="size-8 shrink-0 text-primary" />
             </div>
             <Image
-              alt={proyect.alt[currentLocale]}
+              alt={proyect.alt}
               class:list={[
                 "aspect-video object-cover",
                 "transition-transform duration-500 motion-reduce:transition-none",
@@ -137,7 +113,7 @@ const proyects = [
                 </h3>
                 <GitHub aria-hidden="true" class="mt-px size-6 shrink-0" />
               </div>
-              <h4 class="typography-lg text-balance">{proyect.subtitle[currentLocale]}</h4>
+              <h4 class="typography-lg text-balance">{proyect.subtitle}</h4>
             </header>
             <ul class="flex flex-wrap gap-2">
               {proyect.tags.map((tag) => (
@@ -150,7 +126,7 @@ const proyects = [
               ))}
             </ul>
           </div>
-          <p class="text-pretty">{proyect.description[currentLocale]}</p>
+          <p class="text-pretty">{proyect.description}</p>
         </div>
       </article>
     ))

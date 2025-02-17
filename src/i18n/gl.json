@@ -1,12 +1,16 @@
 {
+  "SEO": {
+    "TITLE": "Desenvolvedor Frontend",
+    "DESCRIPTION": "Son enxeñeiro informático con experiencia en desenvolvemento web e móbil. Descobre os meus proxectos, desde solucións na nube ata aplicacións modernas.",
+    "IMAGE_ALT": "Vista previa do meu portfolio de desenvolvemento software.",
+    "KEYWORDS": "Diego Ramil López, TheLokin, desenvolvedor frontend, desenvolvemento web, desenvolvemento móbil, JavaScript, React, Next.js, HTML, CSS, Tailwind CSS, UI/UX"
+  },
   "LINK": {
     "LINKEDIN": "LinkedIn de Diego, abrirase nunha nova pestana.",
-    "GITHUB": "GitHub de Diego, abrirase nunha nova pestana.",
-    "REPOSITORY": "Repositorio do proxecto \"{proyect}\", abrirase nunha nova pestana."
+    "GITHUB": "GitHub de Diego, abrirase nunha nova pestana."
   },
-  "IMAGE": {
-    "ME": "Foto de perfil de Diego Ramil López.",
-    "LOGO": "Logo de Diego Ramil López."
+  "TIMELINE": {
+    "PRESENT": "Actualidade"
   },
   "MENU": {
     "TITLE": "Menú",
@@ -14,29 +18,75 @@
     "CLOSE": "Pechar menú."
   },
   "HERO": {
-    "TEXT_1": "Ola, son",
-    "TEXT_2": "Desenvolvedor",
-    "TEXT_3": "Frontend",
-    "TEXT_4": "Situado en",
-    "TEXT_5": "España"
+    "H1": "Ola, son <strong>Diego</strong> <br aria-hidden=\"true\" /> <strong>Desenvolvedor Frontend</strong> <br aria-hidden=\"true\" /> Situado en <strong>España</strong>.",
+    "IMAGE_ALT": "Logo de Diego Ramil López."
   },
   "SECTION": {
     "EXPERIENCE": {
       "TITLE": "Experiencia laboral",
-      "SHORT_TITLE": "Experiencia"
+      "SHORT_TITLE": "Experiencia",
+      "EXAMPLES": [
+        {
+          "TITLE": "Técnico de Apoio á Investigación",
+          "SUBTITLE": "CITIC - Centro de Investigación TIC",
+          "DESCRIPTION": "Liderado en proxectos de dixitalización no sector naval, coordinando equipos para o desenvolvemento de compoñentes tecnolóxicos, o análise de requisitos específicos do sector e a integración de solucións innovadoras que optimicen os procesos industriais."
+        },      
+        {
+          "TITLE": "Desarrollador Software",
+          "SUBTITLE": "Enxenio",
+          "DESCRIPTION": "Desenvolvemento de aplicacións móbiles para iOS e Android, cunha participación integral en todo o ciclo de vida do desenvolvemento. Comunicación constante co cliente e traballo en equipo para asegurar a entrega do produto."
+        },      
+        {
+          "TITLE": "Beca de Colaboración en Departamentos Universitarios",
+          "SUBTITLE": "Universidade da Coruña",
+          "DESCRIPTION": "Responsable do estudo metodolóxico para mellorar imaxes de fondo de ollo con aprendizaxe profunda. Xestión de datos para optimizar a precisión do procesamento, evaluando e validando as imaxes para o diagnóstico oftalmolóxico."
+        }
+      ]
     },
     "PROJECTS": {
-      "TITLE": "Proxectos"
+      "TITLE": "Proxectos",
+      "EXAMPLES": [
+        {
+          "LABEL": "Repositorio do proxecto La Velada del Año IV, abrirase nunha nova pestana.",
+          "SUBTITLE": "Páxina web oficial",
+          "DESCRIPTION": "Contribución ao desenvolvemento da páxina web do evento de boxeo entre streamers e creadores de contido, organizado por Ibai Llanos. A iniciativa foi desenvolvida como proxecto de código aberto baixo a dirección de Miguel Ángel Durán.",
+          "IMAGE_ALT": "Captura de pantalla da páxina web de La Velada do Ano IV."
+        },
+        {
+          "LABEL": "Repositorio do proxecto Temzone, abrirase nunha nova pestana.",
+          "SUBTITLE": "Mapa interactivo de Temtem",
+          "DESCRIPTION": "Desenvolvemento dunha solución multiplataforma para escritorio e dispositivos móbiles, deseñada como un mapa interactivo do videoxogo Temtem. O proxecto foi galardoado co 3.º posto na XVI Edición dos Premios A Noite.",
+          "IMAGE_ALT": "Captura de pantalla da aplicación Temzone."
+        }
+      ]
     },
     "EDUCATION": {
-      "TITLE": "Educación"
+      "TITLE": "Educación",
+      "EXAMPLES": [
+        {
+          "TITLE": "Doutoramento en Tecnoloxías da Información e das Comunicacións en Redes Móbiles",
+          "SUBTITLE": "Universidade da Coruña"
+        },
+        {
+          "TITLE": "Mestrado Universitario en Enxeñaría Informática",
+          "SUBTITLE": "Universidade da Coruña"
+        },
+        {
+          "TITLE": "Grado en Enxeñaría Informática, Enxeñaría do Software",
+          "SUBTITLE": "Universidade da Coruña"
+        },
+        {
+          "TITLE": "Grado en Enxeñaría Informática, Ciencias da Computación",
+          "SUBTITLE": "Universidade da Coruña"
+        }
+      ]
     },
     "ABOUT": {
-      "TITLE": "Sobre min"
+      "TITLE": "Sobre min",
+      "IMAGE_ALT": "Foto de perfil de Diego Ramil López.",
+      "P1": "Son <strong>enxeñeiro informático pola Universidade da Coruña</strong>. Dende novembro de 2022, estiven desenvolvéndome profesionalmente na industria do software. Gran parte <strong>da miña carreira centrouse no desenvolvemento full stack</strong>, polo que me desenvolvo ben no backend, aínda que onde realmente <strong>destaco é no frontend</strong>.",
+      "P2": "Por experiencias pasadas, <strong>as miñas linguaxes de programación son Kotlin e JavaScript/TypeScript</strong>, aínda que nos comezos da miña carreira tamén traballei con Python. Por suposto, <strong>manexo HTML e CSS</strong>, o que me permite maquetar correctamente. Tamén estou familiarizado co manexo de <strong>solucións na nube, tanto AWS como Google Cloud</strong>. Aínda que traballei con estas tecnoloxías, sempre estou disposto a aprender novas ferramentas."
     }
-  },
-  "TIMELINE": {
-    "PRESENT": "Actualidade"
   },
   "FOOTER": {
     "TEXT": "Deseñado e desenvolvido con",
@@ -45,8 +95,8 @@
     "COFFEE_EMOJI": "café"
   },
   "ERROR_404": {
-    "TITLE": "Error 404",
-    "SUBTITLE": "Páxina non atopada",
-    "MESSAGE": "Ola! Sentímolo, pero non conseguimos atopar o que buscas. Verifica que o enderezo sexa correcto."
+    "CODE": "Error 404",
+    "TITLE": "Páxina non atopada",
+    "TEXT": "Ola! Sentímolo, pero non conseguimos atopar o que buscas. Verifica que o enderezo sexa correcto."
   }
 }
