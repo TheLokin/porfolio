@@ -5,6 +5,10 @@ import Education from "@/sections/Education.astro"
 import Experience from "@/sections/Experience.astro"
 import Hero from "@/sections/Hero.astro"
 import Proyects from "@/sections/Proyects.astro"
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "gl" } }, { params: { lang: "en" } }]
+}
 ---
 
 <Layout>

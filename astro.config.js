@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config"
 
 export default defineConfig({
   site: "https://thelokin.dev",
-  output: "server",
+  output: "static",
   integrations: [tailwind(), sitemap(), robotsTxt()],
   adapter: vercel({ webAnalytics: { enabled: true } }),
   i18n: {

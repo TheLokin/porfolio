@@ -4,6 +4,10 @@ import { Buffer } from "node:buffer"
 import { getI18N } from "@/i18n"
 import { ImageResponse } from "@vercel/og"
 
+export async function getStaticPaths() {
+  return [{ params: { lang: "es" } }, { params: { lang: "gl" } }, { params: { lang: "en" } }]
+}
+
 async function responseToDataUrl(response: Response) {
   const contentType = response.headers.get("content-type")
   const arrayBuffer = await response.arrayBuffer()
