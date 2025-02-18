@@ -1,7 +1,6 @@
 ---
 import Link from "@/components/ui/Link.astro"
 import { getI18N } from "@/i18n"
-import Logo from "@/images/logo.png"
 import Layout from "@/layouts/Layout.astro"
 import { Image } from "astro:assets"
 
@@ -11,7 +10,13 @@ const i18n = getI18N({ currentLocale })
 
 <Layout nofollow noindex title={i18n.ERROR_404.TITLE}>
   <section class="flex flex-col items-center md:flex-row md:gap-12">
-    <Image src={Logo} alt={i18n.HERO.IMAGE_ALT} class="max-w-64" />
+    <Image
+      src="/images/logo.png"
+      alt={i18n.HERO.IMAGE_ALT}
+      width={800}
+      height={800}
+      class="max-w-64"
+    />
     <div class="flex w-full flex-col items-center gap-4 text-center">
       <hgroup>
         <h1 class="typography-5xl font-extrabold uppercase">{i18n.ERROR_404.CODE}</h1>

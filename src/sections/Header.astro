@@ -35,15 +35,8 @@ const links = [
 ]
 ---
 
-<header
-  class:list={[
-    {
-      "sticky top-0 z-10": sticky,
-    },
-  ]}
->
-  {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-  <div class="transition-scroll">
+<header class:list={[{ "sticky top-0 z-10": sticky }]}>
+  <div class:list={[{ "transition-scroll": sticky }]}>
     <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-end gap-4 px-4 md:px-14">
       <LocaleSelector class="absolute start-2 top-0 md:start-10" />
       <MenuButton id="menu-trigger" state="closed" aria-controls="menu" class="md:hidden" />

@@ -12,8 +12,6 @@ import Electron from "@/icons/simple/electron.svg"
 import Firebase from "@/icons/simple/firebase.svg"
 import Kotlin from "@/icons/simple/kotlin.svg"
 import TailwindCSS from "@/icons/simple/tailwind.svg"
-import lavelada from "@/images/lavelada.avif"
-import temzone from "@/images/temzone.avif"
 import { Image } from "astro:assets"
 
 const { currentLocale } = Astro
@@ -53,7 +51,7 @@ const proyects = [
     subtitle: i18n.SECTION.PROJECTS.EXAMPLES[0].SUBTITLE,
     description: i18n.SECTION.PROJECTS.EXAMPLES[0].DESCRIPTION,
     tags: [TAG.Astro, TAG.TailwindCSS],
-    image: lavelada,
+    image: "/images/lavelada.avif",
     alt: i18n.SECTION.PROJECTS.EXAMPLES[0].IMAGE_ALT,
     github: "https://github.com/midudev/la-velada-web-oficial",
   },
@@ -63,7 +61,7 @@ const proyects = [
     subtitle: i18n.SECTION.PROJECTS.EXAMPLES[1].SUBTITLE,
     description: i18n.SECTION.PROJECTS.EXAMPLES[1].DESCRIPTION,
     tags: [TAG.Kotlin, TAG.Electron, TAG.TailwindCSS, TAG.Firebase, TAG.CloudflareWorkers],
-    image: temzone,
+    image: "/images/temzone.avif",
     alt: i18n.SECTION.PROJECTS.EXAMPLES[1].IMAGE_ALT,
     github: "https://github.com/Temtem-Interactive-Map",
   },
@@ -93,14 +91,15 @@ const proyects = [
               <ArrowUpRight aria-hidden="true" class="size-8 shrink-0 text-primary" />
             </div>
             <Image
+              src={proyect.image}
               alt={proyect.alt}
+              width={960}
+              height={720}
               class:list={[
                 "aspect-video object-cover",
                 "transition-transform duration-500 motion-reduce:transition-none",
                 "md:any-hover:scale-105",
               ]}
-              format="avif"
-              src={proyect.image}
             />
           </div>
         </Link>

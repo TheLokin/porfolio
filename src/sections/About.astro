@@ -2,7 +2,6 @@
 import SectionContainer from "@/components/SectionContainer.astro"
 import { getI18N } from "@/i18n"
 import User from "@/icons/phosphor/user.svg"
-import Me from "@/images/me.avif"
 import { Image } from "astro:assets"
 
 const { currentLocale } = Astro
@@ -20,9 +19,10 @@ const i18n = getI18N({ currentLocale })
       ]}
     >
       <Image
-        src={Me}
+        src="/images/me.avif"
         alt={i18n.SECTION.ABOUT.IMAGE_ALT}
-        format="avif"
+        width={1600}
+        height={1600}
         class="aspect-square object-cover"
       />
     </div>

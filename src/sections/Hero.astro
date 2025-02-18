@@ -2,7 +2,6 @@
 import GitHubLink from "@/components/GitHubLink.astro"
 import LinkedInLink from "@/components/LinkedInLink.astro"
 import { getI18N } from "@/i18n"
-import Logo from "@/images/logo.png"
 import { Image } from "astro:assets"
 
 const { currentLocale } = Astro
@@ -10,7 +9,13 @@ const i18n = getI18N({ currentLocale })
 ---
 
 <section class="flex flex-col items-center justify-between md:flex-row-reverse">
-  <Image src={Logo} alt={i18n.HERO.IMAGE_ALT} class="max-w-64" />
+  <Image
+    src="/images/logo.png"
+    alt={i18n.HERO.IMAGE_ALT}
+    width={800}
+    height={800}
+    class="max-w-64"
+  />
   <div class="flex flex-col gap-4 md:h-64">
     <div class="flex h-full items-center">
       <h1
