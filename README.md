@@ -1,4 +1,4 @@
-# 🚀 Porfolio
+# Porfolio
 
 <div align="center">
     <a href="https://thelokin.dev/">
