@@ -22,7 +22,6 @@
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "6.0.0",
     "@astrojs/vercel": "8.0.7",
-    "astro-robots-txt": "1.0.0",
     "class-variance-authority": "0.7.1",
     "date-fns": "4.1.0",
     "eslint": "9.20.1",

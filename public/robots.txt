@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://thelokin.dev
+
+# Sitemaps
+Sitemap: https://thelokin.dev/sitemap-index.xml
