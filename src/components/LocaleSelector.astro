@@ -1,10 +1,11 @@
 ---
 import Link from "@/components/ui/Link.astro"
 import CaretDown from "@/icons/phosphor/caret-down.svg"
+import { getRelativeLocaleUrl } from "@/lib/utils"
 
-const { pathname } = Astro.url
-const path = pathname.split("/").slice(2).join("/")
 const { currentLocale = "es" } = Astro
+const pathname =
+  currentLocale === "es" ? Astro.url.pathname : Astro.url.pathname.split("/").slice(2).join("/")
 
 const { class: className } = Astro.props
 
@@ -19,7 +20,7 @@ const locales = [
   <ul class="hidden lg:flex">
     {
       locales.map((locale) => (
-        <Link href={`/${locale.code}/${path}`}>
+        <Link href={getRelativeLocaleUrl(locale.code, pathname)}>
           <li
             class:list={[
               "flex h-16 items-center justify-center px-10",
@@ -71,7 +72,7 @@ const locales = [
               return (
                 <li>
                   <Link
-                    href={`/${locale.code}/${path}`}
+                    href={getRelativeLocaleUrl(locale.code, pathname)}
                     role="option"
                     tabindex={-1}
                     data-value={locale.code}

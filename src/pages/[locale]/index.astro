@@ -7,7 +7,7 @@ import Hero from "@/sections/Hero.astro"
 import Proyects from "@/sections/Proyects.astro"
 
 export async function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "gl" } }, { params: { lang: "en" } }]
+  return [{ params: { locale: "gl" } }, { params: { locale: "en" } }]
 }
 ---
 

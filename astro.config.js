@@ -12,7 +12,6 @@ export default defineConfig({
   i18n: {
     defaultLocale: "es",
     locales: ["es", "gl", "en"],
-    routing: { prefixDefaultLocale: true },
   },
   devToolbar: { enabled: false },
   experimental: { svg: { mode: "sprite" } },

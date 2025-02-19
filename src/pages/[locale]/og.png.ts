@@ -1,23 +1,15 @@
 import type { APIRoute } from "astro"
 
-import { Buffer } from "node:buffer"
 import { getI18N } from "@/i18n"
+import { responseToDataUrl } from "@/lib/utils"
 import { ImageResponse } from "@vercel/og"
 
 export async function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "gl" } }, { params: { lang: "en" } }]
-}
-
-async function responseToDataUrl(response: Response) {
-  const contentType = response.headers.get("content-type")
-  const arrayBuffer = await response.arrayBuffer()
-  const base64String = Buffer.from(arrayBuffer).toString("base64")
-
-  return `data:${contentType};base64,${base64String}`
+  return [{ params: { locale: "es" } }, { params: { locale: "gl" } }, { params: { locale: "en" } }]
 }
 
 export const GET: APIRoute = async ({ params, request }) => {
-  const currentLocale = params.lang || "es"
+  const currentLocale = params.locale || "es"
   const i18n = getI18N({ currentLocale })
 
   const [logoUrl, backgroundUrl, SoraRegular, SoraExtraBold] = await Promise.all([
