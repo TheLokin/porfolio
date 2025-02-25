@@ -10,8 +10,6 @@ const i18n = getI18N({ currentLocale })
 
 <footer class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-4">
   <span class="text-pretty text-center">
-    &copy;
-    <span data-year>{new Date().getFullYear()}</span>
     TheLokin
     <span aria-hidden="true" class="hidden md:inline">|</span>
     <br aria-hidden="true" class="block md:hidden" />
@@ -32,13 +30,3 @@ const i18n = getI18N({ currentLocale })
     </ul>
   </nav>
 </footer>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const dataYear = document.querySelectorAll("[data-year]")
-
-    dataYear.forEach((date) => {
-      date.textContent = new Date().getFullYear().toString()
-    })
-  })
-</script>
