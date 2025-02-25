@@ -110,7 +110,15 @@ const proyects = [
                 <h3 class="typography-2xl flex gap-1 text-balance font-semibold tracking-wide">
                   {proyect.title}
                 </h3>
-                <GitHub aria-hidden="true" class="mt-px size-6 shrink-0" />
+                <Link
+                  aria-label={proyect.label}
+                  href={proyect.github}
+                  class="mt-px size-6"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <GitHub class="size-6 shrink-0" />
+                </Link>
               </div>
               <h4 class="typography-lg text-balance">{proyect.subtitle}</h4>
             </header>
